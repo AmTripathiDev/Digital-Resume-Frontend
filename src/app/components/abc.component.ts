@@ -2,23 +2,25 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-abc',
-  template: `<h3>{{'Welcome!'}} {{userName}} with id: {{userId}}
-    load with function: {{getUserName()}}</h3>
-  <button (click)="toggleButton()" [disabled]="isButtonDisabled">{{isButtonDisabled ? "Enable me" : "Disable Me" }}</button>
-  <button (click)="this.isButtonDisabled = false">Enable Button</button>
+  template: `
+    <div>
+      <label>Username</label>
+      <input (input)="getUserName($event)" placeholder="Enter UserName"/>
+      <button (click)="saveUserName()">Save Name</button>
+      <h1>Your Username is: {{displayName}}</h1>
+    </div>
   `,
   styles: [``]
 })
 export class AbcComponent {
-  userName = 'shagun';
-  userId = 10;
-  isButtonDisabled = false;
+  userName = '';
+  displayName = '';
 
-  getUserName() {
-    return this.userName;
+  getUserName(data) {
+    this.userName = data.target.value;
   }
 
-  toggleButton() {
-    this.isButtonDisabled = !this.isButtonDisabled;
+  saveUserName() {
+    this.displayName = this.userName;
   }
 }
