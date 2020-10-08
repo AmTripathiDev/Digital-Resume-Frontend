@@ -5,22 +5,18 @@ import {Component} from '@angular/core';
   template: `
     <div>
       <label>Username</label>
-      <input (input)="getUserName($event)" placeholder="Enter UserName"/>
-      <button (click)="saveUserName()">Save Name</button>
+      <input [(ngModel)]="displayName" placeholder="Enter UserName"/>
       <h1>Your Username is: {{displayName}}</h1>
+      <button (click)="changeName()">change Name</button>
     </div>
   `,
   styles: [``]
 })
 export class AbcComponent {
-  userName = '';
   displayName = '';
 
-  getUserName(data) {
-    this.userName = data.target.value;
-  }
 
-  saveUserName() {
-    this.displayName = this.userName;
+  changeName() {
+    this.displayName = 'i am a new value';
   }
 }
