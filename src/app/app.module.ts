@@ -3,13 +3,13 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {AbcComponent} from './components/abc.component';
+import {VideoComponent} from './components/video.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AbcComponent
+    VideoComponent
   ],
   imports: [
     BrowserModule,
