@@ -3,15 +3,14 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-video (editVideo)="onEdit()" title="video 1" desc="video 1 description" url="#"></app-video>
-    <app-video (editVideo)="onEdit()" title="video 2" desc="video 2 description" url="#"></app-video>
+    <h1>Material Button</h1>
+    <button mat-button color="accent">Normal</button>
+    <button mat-raised-button color="primary">Raised</button>
+    <button  mat-stroked-button color="warn">Stroked</button>
   `,
   styles: [`
   `]
 })
 export class AppComponent {
-  onEdit() {
-    console.log('called edit button');
-  }
 }
 
