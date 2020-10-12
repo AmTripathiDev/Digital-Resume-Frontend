@@ -9,10 +9,20 @@ import {Component} from '@angular/core';
       <button mat-button color="primary">Contact Us</button>
       <button mat-button color="accent">Login</button>
     </mat-toolbar>
-    <mat-card style="width: 30vw;margin-left: 2%;margin-top: 2%;background: #9c27b0">
+    <mat-card fxLayoutAlign="center" fxLayout="column" style="width: 30vw;margin-left: 2%;margin-top: 2%;background: #9c27b0">
+      <div fxLayout="row" fxLayoutGap="20px">
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput placeholder="FirstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name">
+        </mat-form-field>
+      </div>
       <mat-form-field>
-        <mat-label>Favorite food</mat-label>
-        <input matInput placeholder="Ex. Pizza">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email">
       </mat-form-field>
     </mat-card>
   `,
