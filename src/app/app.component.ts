@@ -4,23 +4,27 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-root',
   template: `
-    <div [formGroup]="this.loginForm" class="overlay" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="40px">
+    <form class="overlay" fxLayoutAlign="center center"
+          fxLayout="column"
+          fxLayoutGap="40px" (ngSubmit)="this.loginForm.valid && login()" [formGroup]="this.loginForm">
       <img width="20%" src="../assets/digiresume-green.png">
       <mat-card fxLayout="column">
         <h2>Login</h2>
         <mat-form-field>
           <input formControlName="email" type="email" matInput placeholder="Email"/>
+          <mat-error>Valid Email is Required</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input formControlName="password" type="password" matInput placeholder="Password"/>
+          <mat-error> (8-12 Digit) Password is Required</mat-error>
         </mat-form-field>
-        <a href="#">Forgot Password?</a>
+        <a style="margin-top: 2rem;" href="#">Forgot Password?</a>
         <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
-          <button color="primary" mat-raised-button>Login</button>
+          <button type="submit" color="primary" mat-raised-button>Login</button>
           <button color="accent" mat-raised-button>Signup</button>
         </div>
       </mat-card>
-    </div>
+    </form>
   `,
   styles: [`
     .overlay {
@@ -43,9 +47,13 @@ export class AppComponent {
 
   constructor() {
     this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required]),
-      password: new FormControl(null, [Validators.required])
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)])
     });
+  }
+
+  login() {
+    console.log(this.loginForm.value);
   }
 }
 
