@@ -1,17 +1,18 @@
 import {Component} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   template: `
-    <div class="overlay" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="40px">
+    <div [formGroup]="this.loginForm" class="overlay" fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="40px">
       <img width="20%" src="../assets/digiresume-green.png">
       <mat-card fxLayout="column">
         <h2>Login</h2>
         <mat-form-field>
-          <input type="email" matInput placeholder="Email"/>
+          <input formControlName="email" type="email" matInput placeholder="Email"/>
         </mat-form-field>
         <mat-form-field>
-          <input type="password" matInput placeholder="Password"/>
+          <input formControlName="password" type="password" matInput placeholder="Password"/>
         </mat-form-field>
         <a href="#">Forgot Password?</a>
         <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
@@ -38,5 +39,13 @@ import {Component} from '@angular/core';
   `]
 })
 export class AppComponent {
+  loginForm: FormGroup;
+
+  constructor() {
+    this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required])
+    });
+  }
 }
 
