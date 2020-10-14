@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Observable} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -45,7 +45,6 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent {
   loginForm: FormGroup;
-  myObserver: Observable<any>;
 
   constructor() {
     this.loginForm = new FormGroup({
@@ -55,18 +54,25 @@ export class AppComponent {
   }
 
   login() {
-    this.myObserver = new Observable((emitter) => {
-      emitter.next(this.loginForm.value);
-      emitter.next('hello');
-    });
-    this.myObserver.subscribe((data) => {
-      console.log(data);
-    });
+    // using map
+    // observable is throwing -> email & password
+    // const mapObserver = this.loginForm.valueChanges.pipe(map(data => {
+    //   return data.email;
+    // }));
+    // mapObserver.subscribe(data => {
+    //   console.log(data);
+    // });
+
+    // using filter
+    // const filterObserver = this.loginForm.valueChanges.pipe(filter(data => {
+    //   return data.email === 'shagungarg2010@gmail.com';
+    // }));
+    // filterObserver.subscribe(data => {
+    //   console.log(data);
+    // });
   }
-  signup(){
-    this.myObserver.subscribe((data) => {
-      console.log(data);
-    });
+
+  signup() {
   }
 }
 
