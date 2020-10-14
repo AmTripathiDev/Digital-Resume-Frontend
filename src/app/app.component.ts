@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
         <a style="margin-top: 2rem;" href="#">Forgot Password?</a>
         <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
           <button type="submit" color="primary" mat-raised-button>Login</button>
-          <button color="accent" mat-raised-button>Signup</button>
+          <button (click)="signup()" type="button" color="accent" mat-raised-button>Signup</button>
         </div>
       </mat-card>
     </form>
@@ -44,6 +45,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class AppComponent {
   loginForm: FormGroup;
+  myObserver: Observable<any>;
 
   constructor() {
     this.loginForm = new FormGroup({
@@ -53,7 +55,18 @@ export class AppComponent {
   }
 
   login() {
-    console.log(this.loginForm.value);
+    this.myObserver = new Observable((emitter) => {
+      emitter.next(this.loginForm.value);
+      emitter.next('hello');
+    });
+    this.myObserver.subscribe((data) => {
+      console.log(data);
+    });
+  }
+  signup(){
+    this.myObserver.subscribe((data) => {
+      console.log(data);
+    });
   }
 }
 
