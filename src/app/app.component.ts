@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable, combineLatest} from 'rxjs';
+import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -51,12 +52,8 @@ export class AppComponent {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)])
     });
-    // combine latest
-    const observableA = this.loginForm.valueChanges;
-    const observableB = new Observable((emitter) => {
-      emitter.next('hello');
-    });
-    combineLatest([observableA, observableB]).subscribe(data => {
+    const observer = this.loginForm.valueChanges.pipe(map(data => data.email), debounceTime(500), distinctUntilChanged());
+    observer.subscribe(data => {
       console.log(data);
     });
   }
