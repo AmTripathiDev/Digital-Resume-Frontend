@@ -20,22 +20,6 @@ import {AlertService} from './services/alert-service';
           <input formControlName="password" type="password" matInput placeholder="Password"/>
           <mat-error> (8-12 Digit) Password is Required</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <input formControlName="confirm_password" matInput placeholder="Confirm Password"/>
-          <mat-error> Confirm Password is Required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="name" matInput placeholder="Your Name"/>
-          <mat-error> Name is Required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="experience_level" matInput placeholder="Experience Level"/>
-          <mat-error> Exp Level is Required</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input formControlName="job_category" matInput placeholder="Job Category"/>
-          <mat-error> Job Category is Required</mat-error>
-        </mat-form-field>
         <a style="margin-top: 2rem;" href="#">Forgot Password?</a>
         <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
           <button type="submit" color="primary" mat-raised-button>Login</button>
@@ -61,8 +45,8 @@ import {AlertService} from './services/alert-service';
     }
 
     mat-card {
-      height: 38rem;
-      width: 35rem;
+      height: 25rem;
+      width: 25rem;
     }
   `]
 })
@@ -74,15 +58,21 @@ export class AppComponent {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)]),
-      confirm_password: new FormControl(null, [Validators.required]),
-      name: new FormControl(null, [Validators.required]),
-      experience_level: new FormControl(null, [Validators.required]),
-      job_category: new FormControl(null, [Validators.required]),
     });
   }
 
 
   login() {
+    this.loading = true;
+    const request$ = this.apiService.login(this.loginForm.value);
+    request$.subscribe((data) => {
+      console.log(data);
+      this.loading = false;
+      this.alterService.success('login Successful');
+    }, (error) => {
+      console.log(error);
+      this.loading = false;
+    });
   }
 
   signup() {

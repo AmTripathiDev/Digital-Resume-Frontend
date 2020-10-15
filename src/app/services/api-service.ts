@@ -12,4 +12,8 @@ export class ApiService {
   }) {
     return this.httpService.post('/user/signup', data);
   }
+
+  login(data: { email: string, password: string }) {
+    return this.httpService.get('/user/login', data);
+  }
 }
