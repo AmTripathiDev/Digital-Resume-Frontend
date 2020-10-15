@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Observable, combineLatest} from 'rxjs';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -47,14 +46,19 @@ import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 export class AppComponent {
   loginForm: FormGroup;
 
-  constructor() {
+  // private httpClient: HttpClient;
+
+  constructor(private httpClient: HttpClient) {
+    // this.httpClient = httpClient;
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)])
     });
-    const observer = this.loginForm.valueChanges.pipe(map(data => data.email), debounceTime(500), distinctUntilChanged());
-    observer.subscribe(data => {
+    const data: any = {page: 2};
+    this.httpClient.get('https://reqres.in/api/users', {params: data}).subscribe((data) => {
       console.log(data);
+    }, (error) => {
+      console.log(error);
     });
   }
 
