@@ -78,12 +78,6 @@ export class LoginComponent {
   signup() {
     this.router.navigate(['signup']);
     // we are using this navigate to change our route
-    // this.loading = true;
-    // this.apiService.signup(this.loginForm.value).subscribe((data) => {
-    //   this.loading = false;
-    //   this.alterService.success('signup Successful');
-    // }, (error) => {
-    //   this.loading = false;
-    // });
+
   }
 }
