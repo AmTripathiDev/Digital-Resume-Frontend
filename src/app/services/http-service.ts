@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AlertService} from './alert-service';
 import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 @Injectable()
 export class HttpService {
@@ -11,12 +11,12 @@ export class HttpService {
   constructor(private httpClient: HttpClient, private alertService: AlertService) {
   }
 
-  get(url: string, paramData?: any) {
+  get(url: string, paramData?: any): Observable<any> {
     const data = {params: paramData};
     return this.httpClient.get(this.baseURl + url, data).pipe(catchError(this.errorHandler.bind(this)));
   }
 
-  post(url: string, body: any) {
+  post(url: string, body: any): Observable<any> {
     return this.httpClient.post(this.baseURl + url, body).pipe(catchError(this.errorHandler.bind(this)));
   }
 

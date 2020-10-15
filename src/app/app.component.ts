@@ -66,7 +66,6 @@ export class AppComponent {
     this.loading = true;
     const request$ = this.apiService.login(this.loginForm.value);
     request$.subscribe((data) => {
-      console.log(data);
       this.loading = false;
       this.alterService.success('login Successful');
     }, (error) => {
