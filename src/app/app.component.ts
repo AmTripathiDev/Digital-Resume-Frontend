@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {HttpService} from './services/http-service';
 import {ApiService} from './services/api-service';
+import {AlertService} from './services/alert-service';
 
 @Component({
   selector: 'app-root',
@@ -48,13 +47,15 @@ import {ApiService} from './services/api-service';
 export class AppComponent {
   loginForm: FormGroup;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private alertService: AlertService) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)])
     });
     this.apiService.getUsers().subscribe(data => {
-      console.log(data);
+      this.alertService.success('done!');
+    }, error => {
+      this.alertService.error(error.message);
     });
   }
 

@@ -11,6 +11,7 @@ const data = [
   MatToolbarModule,
   MatInputModule,
   MatCardModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
