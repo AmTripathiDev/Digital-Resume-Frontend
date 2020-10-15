@@ -12,22 +12,26 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http-service';
 import {ApiService} from './services/api-service';
 import {AlertService} from './services/alert-service';
+import {LoginComponent} from './container/login.component';
+import {SignupComponent} from './container/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideoComponent
+    VideoComponent,
+    LoginComponent,
+    SignupComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        MaterialModule,
-        FlexLayoutModule,
-        HttpClientModule,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule,
+    HttpClientModule,
+  ],
   providers: [HttpService, ApiService, AlertService],
   bootstrap: [AppComponent]
 })
