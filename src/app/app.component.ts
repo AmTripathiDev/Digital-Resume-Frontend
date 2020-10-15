@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpService} from './services/http-service';
+import {ApiService} from './services/api-service';
 
 @Component({
   selector: 'app-root',
@@ -46,19 +48,13 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 export class AppComponent {
   loginForm: FormGroup;
 
-  // private httpClient: HttpClient;
-
-  constructor(private httpClient: HttpClient) {
-    // this.httpClient = httpClient;
+  constructor(private apiService: ApiService) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)])
     });
-    const data: any = {page: 2};
-    this.httpClient.get('https://reqres.in/api/users', {params: data}).subscribe((data) => {
+    this.apiService.getUsers().subscribe(data => {
       console.log(data);
-    }, (error) => {
-      console.log(error);
     });
   }
 
