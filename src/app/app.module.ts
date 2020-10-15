@@ -11,7 +11,6 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpService} from './services/http-service';
 import {ApiService} from './services/api-service';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {AlertService} from './services/alert-service';
 
 @NgModule({
@@ -19,16 +18,16 @@ import {AlertService} from './services/alert-service';
     AppComponent,
     VideoComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    FlexLayoutModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule,
+        HttpClientModule,
+    ],
   providers: [HttpService, ApiService, AlertService],
   bootstrap: [AppComponent]
 })

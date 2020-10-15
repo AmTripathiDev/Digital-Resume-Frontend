@@ -6,7 +6,7 @@ import {throwError} from 'rxjs';
 
 @Injectable()
 export class HttpService {
-  private baseURl = 'https://reqres.in/aio';
+  private baseURl = 'http://localhost:5000/api';
 
   constructor(private httpClient: HttpClient, private alertService: AlertService) {
   }
@@ -14,6 +14,10 @@ export class HttpService {
   get(url: string, paramData?: any) {
     const data = {params: paramData};
     return this.httpClient.get(this.baseURl + url, data).pipe(catchError(this.errorHandler.bind(this)));
+  }
+
+  post(url: string, body: any) {
+    return this.httpClient.post(this.baseURl + url, body).pipe(catchError(this.errorHandler.bind(this)));
   }
 
   private errorHandler(response: any) {
