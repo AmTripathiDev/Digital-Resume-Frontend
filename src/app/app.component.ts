@@ -54,9 +54,9 @@ export class AppComponent {
     });
     this.apiService.getUsers().subscribe(data => {
       this.alertService.success('done!');
-    }, error => {
-      this.alertService.error(error.message);
-    });
+    }, (error => {
+      console.log(error);
+    }));
   }
 
 
