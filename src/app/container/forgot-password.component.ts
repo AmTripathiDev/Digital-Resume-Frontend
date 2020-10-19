@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ApiService} from '../services/api-service';
+import {AlertService} from '../services/alert-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -68,7 +71,8 @@ export class ForgotPasswordComponent {
   forgotPasswordForm: FormGroup;
   isEmailSent = false;
 
-  constructor() {
+  constructor(private apiService: ApiService,
+              private alertService: AlertService, private router: Router) {
     this.forgotPasswordForm = new FormGroup({
       email: new FormControl(null, !this.isEmailSent ? [Validators.required] : []),
       code: new FormControl(null, []),
@@ -79,13 +83,30 @@ export class ForgotPasswordComponent {
 
 
   sendEmail() {
-    this.isEmailSent = true;
-    this.forgotPasswordForm.get('code').setValidators([Validators.required]);
-    this.forgotPasswordForm.get('new_password').setValidators([Validators.required]);
-    this.forgotPasswordForm.get('confirm_password').setValidators([Validators.required]);
+    this.loading = true;
+    this.apiService.sendResetPasswordEmail(this.forgotPasswordForm.value).subscribe((data) => {
+      this.loading = false;
+      this.isEmailSent = true;
+      this.alertService.success('Email has been sent to ' + this.forgotPasswordForm.get('email').value);
+      this.forgotPasswordForm.get('code').setValidators([Validators.required]);
+      this.forgotPasswordForm.get('new_password').setValidators([Validators.required]);
+      this.forgotPasswordForm.get('confirm_password').setValidators([Validators.required]);
+    }, (error => {
+      this.loading = false;
+    }));
   }
 
   changePassword() {
+    this.loading = true;
+    const observer$ = this.apiService.resetPassword(this.forgotPasswordForm.value);
+    observer$.subscribe((data) => {
+      this.loading = false;
+      console.log(data);
+      this.router.navigate(['login']);
+      this.alertService.success('Password Updated Successfully');
+    }, (error => {
+      this.loading = false;
+    }));
   }
 }
 
