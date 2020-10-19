@@ -14,13 +14,15 @@ import {ApiService} from './services/api-service';
 import {AlertService} from './services/alert-service';
 import {LoginComponent} from './container/login.component';
 import {SignupComponent} from './container/signup.component';
+import {ForgotPasswordComponent} from './container/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     VideoComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

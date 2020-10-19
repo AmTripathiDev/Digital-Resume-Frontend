@@ -21,7 +21,7 @@ import {Router} from '@angular/router';
           <input formControlName="password" type="password" matInput placeholder="Password"/>
           <mat-error> (8-12 Digit) Password is Required</mat-error>
         </mat-form-field>
-        <a style="margin-top: 2rem;" href="#">Forgot Password?</a>
+        <a style="margin-top: 2rem;" href="/forgot-password">Forgot Password?</a>
         <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
           <button type="submit" color="primary" mat-raised-button>Login</button>
           <button (click)="signup()" type="button" color="accent" mat-raised-button>Signup</button>
