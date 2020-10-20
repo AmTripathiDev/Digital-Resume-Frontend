@@ -2,9 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpService} from './http-service';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
+import {map} from 'rxjs/operators';
+
 
 @Injectable()
 export class ApiService {
+  private readonly authToken = 'auth token';
+
   constructor(private httpService: HttpService) {
   }
 
@@ -15,8 +19,23 @@ export class ApiService {
     return this.httpService.post('/user/signup', data);
   }
 
-  login(data: { email: string, password: string }): Observable<User> {
-    return this.httpService.get('/user/login', data);
+  loginAndSetToken(data: { email: string, password: string }): Observable<User> {
+    return this.httpService.get('/user/login', data).pipe(map(res => {
+      this.setAuthToken(res.token);
+      return res;
+    }));
+  }
+
+  getAuthToken() {
+    return localStorage.getItem(this.authToken);
+  }
+
+  setAuthToken(value) {
+    localStorage.setItem(this.authToken, value);
+  }
+
+  removeAuthToken() {
+    localStorage.removeItem(this.authToken);
   }
 
   sendResetPasswordEmail(data: { email: string }): Observable<any> {

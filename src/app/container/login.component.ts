@@ -65,7 +65,7 @@ export class LoginComponent {
 
   login() {
     this.loading = true;
-    const request$ = this.apiService.login(this.loginForm.value);
+    const request$ = this.apiService.loginAndSetToken(this.loginForm.value);
     request$.subscribe((data) => {
       this.loading = false;
       this.alterService.success('login Successful');
