@@ -5,10 +5,11 @@ import {SignupComponent} from './container/signup.component';
 import {ForgotPasswordComponent} from './container/forgot-password.component';
 import {VerificationComponent} from './container/verification.component';
 import {AuthGuard} from './guards/auth-guard';
+import {AnonGuard} from './guards/anon-guard';
 
-const routes: Routes = [{path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'forgot-password', component: ForgotPasswordComponent},
+const routes: Routes = [{path: 'login', component: LoginComponent, canActivate: [AnonGuard]},
+  {path: 'signup', component: SignupComponent, canActivate: [AnonGuard]},
+  {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AnonGuard]},
   {path: 'verify', component: VerificationComponent, canActivate: [AuthGuard]}];
 
 @NgModule({
