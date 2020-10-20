@@ -7,9 +7,21 @@ import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ApiService {
-  private readonly authToken = 'auth token';
+  private static authToken = 'auth token';
 
   constructor(private httpService: HttpService) {
+  }
+
+  static getAuthToken() {
+    return localStorage.getItem(ApiService.authToken);
+  }
+
+  static setAuthToken(value) {
+    localStorage.setItem(ApiService.authToken, value);
+  }
+
+  static removeAuthToken() {
+    localStorage.removeItem(ApiService.authToken);
   }
 
   signup(data: {
@@ -21,22 +33,11 @@ export class ApiService {
 
   loginAndSetToken(data: { email: string, password: string }): Observable<User> {
     return this.httpService.get('/user/login', data).pipe(map(res => {
-      this.setAuthToken(res.token);
+      ApiService.setAuthToken(res.token);
       return res;
     }));
   }
 
-  getAuthToken() {
-    return localStorage.getItem(this.authToken);
-  }
-
-  setAuthToken(value) {
-    localStorage.setItem(this.authToken, value);
-  }
-
-  removeAuthToken() {
-    localStorage.removeItem(this.authToken);
-  }
 
   sendResetPasswordEmail(data: { email: string }): Observable<any> {
     return this.httpService.get('/user/reset/password/email', data);

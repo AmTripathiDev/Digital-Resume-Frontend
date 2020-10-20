@@ -69,6 +69,7 @@ export class LoginComponent {
     request$.subscribe((data) => {
       this.loading = false;
       this.alterService.success('login Successful');
+      this.router.navigate(['verify']);
     }, (error) => {
       console.log(error);
       this.loading = false;
