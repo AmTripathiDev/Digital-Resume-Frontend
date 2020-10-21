@@ -6,14 +6,16 @@ import {map} from 'rxjs/operators';
   selector: 'app-verification',
   template: `
     <div fxLayout="column" fxLayoutAlign="center center" class="overlay">
-      <mat-card fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxFlex="100%">
-        <mat-icon inline>unsubscribe</mat-icon>
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <h1>You haven't Verified your Email yet</h1>
-          <p>Please verify your email which is sent to <strong>{{email}} </strong> before continuing</p>
-        </div>
-        <button mat-raised-button color="primary">Send Email Again</button>
-      </mat-card>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <mat-card fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxFlex="100%">
+          <mat-icon inline>unsubscribe</mat-icon>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <h1>You haven't Verified your Email yet</h1>
+            <p>Please verify your email which is sent to <strong>{{email}} </strong> before continuing</p>
+          </div>
+          <button mat-raised-button color="primary">Send Email Again</button>
+        </mat-card>
+      </div>
     </div>
   `,
   styles: [`
@@ -26,11 +28,13 @@ import {map} from 'rxjs/operators';
     mat-icon {
       font-size: 6rem !important;
       color: #16cb99;
+      margin-top: 2.5rem !important;
     }
 
     h1 {
       font-weight: bold;
       font-size: 1.8rem;
+      text-align: center;
     }
 
     button {
@@ -47,8 +51,7 @@ import {map} from 'rxjs/operators';
     }
 
     mat-card {
-      max-width: 40% !important;
-      max-height: 50% !important;
+      max-width: 80% !important;
       box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 20px 10px inset !important;
     }
 
