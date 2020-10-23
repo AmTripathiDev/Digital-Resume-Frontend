@@ -19,6 +19,7 @@ import {VerificationComponent} from './container/verification.component';
 import {AuthGuard} from './guards/auth-guard';
 import {AnonGuard} from './guards/anon-guard';
 import {OnBoardingComponent} from './container/on-boarding.component';
+import {DashboardComponent} from './container/layout/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {OnBoardingComponent} from './container/on-boarding.component';
     SignupComponent,
     ForgotPasswordComponent,
     VerificationComponent,
-    OnBoardingComponent
+    OnBoardingComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
