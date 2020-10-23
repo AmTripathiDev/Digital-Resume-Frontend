@@ -6,11 +6,19 @@ import {ForgotPasswordComponent} from './container/forgot-password.component';
 import {VerificationComponent} from './container/verification.component';
 import {AuthGuard} from './guards/auth-guard';
 import {AnonGuard} from './guards/anon-guard';
+import {OnBoardingComponent} from './container/on-boarding.component';
 
-const routes: Routes = [{path: 'login', component: LoginComponent, canActivate: [AnonGuard]},
-  {path: 'signup', component: SignupComponent, canActivate: [AnonGuard]},
-  {path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AnonGuard]},
-  {path: 'verify', component: VerificationComponent, canActivate: [AuthGuard]}];
+
+
+const routes: Routes = [{
+  path: '', canActivate: [AnonGuard],
+  children: [{path: 'signup', component: SignupComponent},
+    {path: 'forgot-password', component: ForgotPasswordComponent},
+    {path: '', component: LoginComponent}]
+}, {
+  path: '', canActivate: [AuthGuard], children: [{path: 'verify', component: VerificationComponent},
+    {path: 'on-boarding', component: OnBoardingComponent}]
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
