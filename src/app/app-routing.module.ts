@@ -8,6 +8,10 @@ import {AuthGuard} from './guards/auth-guard';
 import {AnonGuard} from './guards/anon-guard';
 import {OnBoardingComponent} from './container/on-boarding.component';
 import {DashboardComponent} from './container/layout/dashboard.component';
+import {VerificationInComplete} from './guards/verification-in-complete';
+import {VerificationCompleted} from './guards/verification-completed';
+import {OnBoardingInComplete} from './guards/on-boarding-in-complete';
+import {OnBoardingComplete} from './guards/on-boarding-complete';
 
 
 const routes: Routes = [{
@@ -16,9 +20,18 @@ const routes: Routes = [{
     {path: 'forgot-password', component: ForgotPasswordComponent},
     {path: '', component: LoginComponent}]
 }, {
-  path: '', canActivate: [AuthGuard], children: [{path: 'verify', component: VerificationComponent},
-    {path: 'on-boarding', component: OnBoardingComponent},
-    {path: 'dashboard', component: DashboardComponent}]
+  path: '', canActivate: [AuthGuard], children: [{
+    path: 'verify', component: VerificationComponent,
+    canActivate: [VerificationInComplete]
+  },
+    {
+      path: 'on-boarding', component: OnBoardingComponent
+      , canActivate: [VerificationCompleted, OnBoardingInComplete]
+    },
+    {
+      path: 'dashboard', component: DashboardComponent,
+      canActivate: [VerificationCompleted, OnBoardingComplete]
+    }]
 }];
 
 @NgModule({

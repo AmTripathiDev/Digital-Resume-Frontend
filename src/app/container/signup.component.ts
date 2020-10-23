@@ -88,13 +88,13 @@ export class SignupComponent {
     this.apiService.signup(this.signupForm.value).subscribe((data) => {
       this.loading = false;
       this.alterService.success('signup Successful');
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
     }, (error) => {
       this.loading = false;
     });
   }
 
   login() {
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 }
