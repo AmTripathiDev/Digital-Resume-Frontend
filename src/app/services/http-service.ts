@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {AlertService} from './alert-service';
 import {catchError} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
+import {ApiService} from './api-service';
 
 @Injectable()
 export class HttpService {
@@ -12,16 +13,22 @@ export class HttpService {
   }
 
   get(url: string, paramData?: any): Observable<any> {
-    const data = {params: paramData};
+    const data = {params: paramData, headers: this.getAuthHeaders()};
     return this.httpClient.get(this.baseURl + url, data).pipe(catchError(this.errorHandler.bind(this)));
   }
 
   post(url: string, body: any): Observable<any> {
-    return this.httpClient.post(this.baseURl + url, body).pipe(catchError(this.errorHandler.bind(this)));
+    return this.httpClient.post(this.baseURl + url, body, {headers: this.getAuthHeaders()}).pipe(catchError(this.errorHandler.bind(this)));
   }
 
   patch(url: string, body: any): Observable<any> {
-    return this.httpClient.patch(this.baseURl + url, body).pipe(catchError(this.errorHandler.bind(this)));
+    return this.httpClient.patch(this.baseURl + url, body, {headers: this.getAuthHeaders()}).pipe(catchError(this.errorHandler.bind(this)));
+  }
+
+  private getAuthHeaders() {
+    return {
+      Authorization: `Bearer ${ApiService.getAuthToken()}`
+    };
   }
 
   private errorHandler(response: any) {
