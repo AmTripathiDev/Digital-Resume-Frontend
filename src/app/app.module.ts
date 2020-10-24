@@ -24,6 +24,7 @@ import {VerificationCompleted} from './guards/verification-completed';
 import {VerificationInComplete} from './guards/verification-in-complete';
 import {OnBoardingComplete} from './guards/on-boarding-complete';
 import {OnBoardingInComplete} from './guards/on-boarding-in-complete';
+import {OnBoardingIntroComponent} from './container/on-boarding-intro.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {OnBoardingInComplete} from './guards/on-boarding-in-complete';
     ForgotPasswordComponent,
     VerificationComponent,
     OnBoardingComponent,
-    DashboardComponent
+    DashboardComponent,
+    OnBoardingIntroComponent
   ],
   imports: [
     BrowserModule,
