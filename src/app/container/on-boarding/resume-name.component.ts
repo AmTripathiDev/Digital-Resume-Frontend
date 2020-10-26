@@ -4,9 +4,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 @Component({
   selector: 'app-resume-name',
   template: `
-    <div fxLayoutAlign="center center" fxLayout="column" class="overlay">
+    <div class="container" fxLayoutAlign="center center" fxLayout="column">
       <form (ngSubmit)="this.resumeForm.valid && this.createResume()" [formGroup]="this.resumeForm">
-        <mat-card fxLayout="column" fxLayoutGap="20px" style="height:30vh;width: 25vw">
+        <mat-card fxFlex="100%" fxLayout="column" fxLayoutGap="20px">
           <h1 style="font-size: 2rem">Name your Resume</h1>
           <mat-form-field>
             <input formControlName="name"
@@ -21,7 +21,12 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
       </form>
     </div>
   `,
-  styles: [``]
+  styles: [`
+
+    .container {
+      height: 100vh;
+    }
+  `]
 })
 
 export class ResumeNameComponent implements OnInit {
