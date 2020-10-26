@@ -3,19 +3,20 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-on-boarding',
   template: `
-
-    <ng-container *ngTemplateOutlet="onBoarding"></ng-container>
-    <ng-container *ngTemplateOutlet="card"></ng-container>
-    <ng-container *ngTemplateOutlet="test"></ng-container>
-    <ng-template #onBoarding>
-      <h1>I am on boarding template</h1>
-    </ng-template>
-    <ng-template #card>
-      <h1>I am card template</h1>
-    </ng-template>
-    <ng-template #test>
-      <h1>I am test template</h1>
-    </ng-template>
+    <mat-horizontal-stepper>
+      <mat-step>
+        <ng-template matStepLabel>Step 1</ng-template>
+        <h1>Hello this is inside step 1</h1>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Step 2</ng-template>
+        <h1>Hello this is inside step 2</h1>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Step 3</ng-template>
+        <h1>Hello this is inside step 3</h1>
+      </mat-step>
+    </mat-horizontal-stepper>
   `,
   styles: [``]
 })

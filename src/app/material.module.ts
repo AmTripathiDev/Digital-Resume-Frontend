@@ -16,7 +16,7 @@ const data = [
   MatSnackBarModule,
   MatProgressSpinnerModule,
   MatIconModule,
-  MatStepperModule
+  MatStepperModule,
 ];
 
 @NgModule({
