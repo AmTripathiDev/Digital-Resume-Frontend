@@ -5,7 +5,8 @@ import {map} from 'rxjs/operators';
 @Component({
   selector: 'app-verification',
   template: `
-    <div fxLayout="column" fxLayoutAlign="center center" class="overlay">
+    <div fxLayout="column" fxLayoutAlign="center center" class="overlay" style="  background: linear-gradient(to right bottom, rgb(125, 226, 97), rgb(66, 123, 181));
+">
       <div fxLayout="column" fxLayoutAlign="center center">
         <mat-card fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px" fxFlex="100%">
           <mat-icon inline>unsubscribe</mat-icon>
@@ -19,11 +20,6 @@ import {map} from 'rxjs/operators';
     </div>
   `,
   styles: [`
-    .overlay {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right bottom, rgb(125, 226, 97), rgb(66, 123, 181));;
-    }
 
     mat-icon {
       font-size: 6rem !important;
