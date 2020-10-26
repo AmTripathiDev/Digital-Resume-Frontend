@@ -6,13 +6,13 @@ import {ForgotPasswordComponent} from './container/forgot-password.component';
 import {VerificationComponent} from './container/verification.component';
 import {AuthGuard} from './guards/auth-guard';
 import {AnonGuard} from './guards/anon-guard';
-import {OnBoardingComponent} from './container/on-boarding.component';
+import {OnBoardingComponent} from './container/on-boarding/on-boarding.component';
 import {DashboardComponent} from './container/layout/dashboard.component';
 import {VerificationInComplete} from './guards/verification-in-complete';
 import {VerificationCompleted} from './guards/verification-completed';
 import {OnBoardingInComplete} from './guards/on-boarding-in-complete';
 import {OnBoardingComplete} from './guards/on-boarding-complete';
-import {OnBoardingIntroComponent} from './container/on-boarding-intro.component';
+import {OnBoardingIntroComponent} from './container/on-boarding/on-boarding-intro.component';
 
 
 const routes: Routes = [
