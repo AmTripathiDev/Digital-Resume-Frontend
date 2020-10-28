@@ -14,6 +14,10 @@ body {
   height: 100%;
 }
 
+.mat-tab-label {
+  color: white !important;
+}
+
 button {
   color: white !important;
 }
