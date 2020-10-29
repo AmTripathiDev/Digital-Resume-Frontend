@@ -1,4 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
+import {AlertService} from '../../../services/alert-service';
 
 @Component({
   selector: 'app-upload-image',
@@ -15,6 +16,7 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
         <span *ngIf="!isSelected">SELECT</span>
         <span *ngIf="isSelected">CHANGE</span>
       </button>
+      <img height="200px" #previewImg [src]="this.url">
     </div>
   `,
   styles: [`
@@ -29,11 +31,27 @@ export class UploadImageComponent {
   isSelected = false;
   selectButtonIcon = 'add';
   @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('previewImg') previewImg: ElementRef;
+  file: File;
+  MAX_IMAGE_SIZE = 2 * 1000 * 1000;
+  url = '';
 
-  constructor() {
+  constructor(private alertService: AlertService) {
   }
 
   onImageSelect(value) {
+    const file = value.target.files[0];
+    this.file = file;
+    if (this.file.size > this.MAX_IMAGE_SIZE) {
+      return this.alertService.error('File size should be less than 2mb');
+    }
+    if (file.type === 'image/png' || 'image/jpg' || 'image/jpeg' || 'image/JPG') {
+      this.isSelected = true;
+      this.selectButtonIcon = 'cached';
+      this.previewImg.nativeElement.src = window.URL.createObjectURL(this.file);
+    } else {
+      return this.alertService.error('Image must be of type png,jpg or jpeg');
+    }
   }
 
   onFileSelect() {
