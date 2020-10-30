@@ -1,10 +1,12 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {AlertService} from '../../../services/alert-service';
+import {ApiService} from '../../../services/api-service';
+import {Resume} from '../../../models/resume';
 
 @Component({
   selector: 'app-upload-image',
   template: `
-    <div style="margin-top: 3%" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="50px">
+    <div *ngIf="!loading" style="margin-top: 3%" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="50px">
       <input (change)="onImageSelect($event)" accept="image/jpeg, image/png" #fileInput hidden type="file"/>
       <h1 style="font-weight: bolder;font-size: 2rem">
         <mat-icon>cloud_upload</mat-icon>
@@ -17,6 +19,11 @@ import {AlertService} from '../../../services/alert-service';
         <span *ngIf="isSelected">CHANGE</span>
       </button>
       <img height="200px" #previewImg [src]="this.url">
+      <button (click)="save()" *ngIf="this.isSelected && !this.isUploaded" mat-raised-button color="accent">Save</button>
+      <button (click)="delete()" *ngIf="this.isSelected && this.isUploaded" mat-raised-button color="accent">Delete</button>
+    </div>
+    <div style="height: 100vh" fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner *ngIf="this.loading"></mat-spinner>
     </div>
   `,
   styles: [`
@@ -26,17 +33,33 @@ import {AlertService} from '../../../services/alert-service';
   `]
 })
 
-export class UploadImageComponent {
+export class UploadImageComponent implements AfterViewInit {
   isUploaded = false;
   isSelected = false;
+  loading = false;
   selectButtonIcon = 'add';
   @ViewChild('fileInput') fileInput: ElementRef;
   @ViewChild('previewImg') previewImg: ElementRef;
   file: File;
   MAX_IMAGE_SIZE = 2 * 1000 * 1000;
   url = '';
+  @Input() resume: Resume;
 
-  constructor(private alertService: AlertService) {
+  constructor(private alertService: AlertService, private apiService: ApiService) {
+  }
+
+  ngAfterViewInit() {
+    this.init();
+  }
+
+  init() {
+    if (this.resume) {
+      this.isUploaded = !!this.resume.image_url;
+      if (this.isUploaded) {
+        this.isSelected = true;
+        this.url = this.resume.image_url;
+      }
+    }
   }
 
   onImageSelect(value) {
@@ -56,5 +79,30 @@ export class UploadImageComponent {
 
   onFileSelect() {
     this.fileInput.nativeElement.click();
+  }
+
+  save() {
+    this.loading = true;
+    this.apiService.saveOrUpdateImage(this.file, this.resume._id).subscribe(data => {
+      this.loading = false;
+      this.isUploaded = true;
+      this.url = data.image_url;
+      this.alertService.success('Image uploaded Successfully');
+    }, error => {
+      this.loading = false;
+    });
+  }
+
+  delete() {
+    this.loading = true;
+    this.apiService.deleteImage(this.resume._id).subscribe(data => {
+      this.loading = false;
+      this.alertService.success('Image deleted Successfully');
+      this.isUploaded = false;
+      this.isSelected = false;
+      this.url = '';
+    }, error => {
+      this.loading = false;
+    });
   }
 }

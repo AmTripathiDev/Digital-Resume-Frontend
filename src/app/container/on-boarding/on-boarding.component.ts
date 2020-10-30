@@ -12,7 +12,7 @@ import {ApiService} from '../../services/api-service';
       </mat-step>
       <mat-step *ngIf="this.isFirstStepCompleted" optional>
         <ng-template matStepLabel>Upload Video & Image</ng-template>
-        <app-upload></app-upload>
+        <app-upload [resume]="resume"></app-upload>
       </mat-step>
     </mat-horizontal-stepper>
     <div *ngIf="this.loading" style="height: 100vh" fxLayout="column" fxLayoutAlign="center center">

@@ -26,6 +26,12 @@ export class HttpService {
     return this.httpClient.patch(this.baseURl + url, body, {headers: this.getAuthHeaders()}).pipe(catchError(this.errorHandler.bind(this)));
   }
 
+  delete(url: string, body?: any): Observable<any> {
+    return this.httpClient.request('delete', this.baseURl + url,
+      {body, headers: this.getAuthHeaders()});
+  }
+
+
   private getAuthHeaders() {
     return {
       Authorization: `Bearer ${AuthUtils.getAuthToken()}`
