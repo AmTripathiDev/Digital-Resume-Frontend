@@ -1,8 +1,8 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Resume} from '../../../models/resume';
-import {ApiService} from '../../../services/api-service';
-import {AlertService} from '../../../services/alert-service';
+import {Resume} from '../../models/resume';
+import {ApiService} from '../../services/api-service';
+import {AlertService} from '../../services/alert-service';
 
 @Component({
   selector: 'app-import-youtube',

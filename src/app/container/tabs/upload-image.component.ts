@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, ViewChild} from '@angular/core';
-import {AlertService} from '../../../services/alert-service';
-import {ApiService} from '../../../services/api-service';
-import {Resume} from '../../../models/resume';
+import {AlertService} from '../../services/alert-service';
+import {ApiService} from '../../services/api-service';
+import {Resume} from '../../models/resume';
 
 @Component({
   selector: 'app-upload-image',

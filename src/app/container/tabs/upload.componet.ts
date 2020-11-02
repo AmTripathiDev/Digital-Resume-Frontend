@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Resume} from '../../../models/resume';
+import {Resume} from '../../models/resume';
 
 @Component({
   selector: 'app-upload',
