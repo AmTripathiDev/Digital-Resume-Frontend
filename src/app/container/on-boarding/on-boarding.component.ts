@@ -14,6 +14,10 @@ import {ApiService} from '../../services/api-service';
         <ng-template matStepLabel>Upload Video & Image</ng-template>
         <app-upload [resume]="resume"></app-upload>
       </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Resume Form</ng-template>
+        <app-resume-form></app-resume-form>
+      </mat-step>
     </mat-horizontal-stepper>
     <div *ngIf="this.loading" style="height: 100vh" fxLayout="column" fxLayoutAlign="center center">
       <mat-spinner></mat-spinner>

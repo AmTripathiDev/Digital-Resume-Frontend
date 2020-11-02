@@ -8,6 +8,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 const data = [
   MatButtonModule,
@@ -18,7 +19,8 @@ const data = [
   MatProgressSpinnerModule,
   MatIconModule,
   MatStepperModule,
-  MatTabsModule
+  MatTabsModule,
+  MatExpansionModule
 ];
 
 @NgModule({
