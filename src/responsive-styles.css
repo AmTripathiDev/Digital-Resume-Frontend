@@ -8,4 +8,12 @@
     text-align: center !important;
     font-size: 1rem !important;
   }
+
+  .res-expansion-title {
+    margin-bottom: 2rem !important;
+  }
+
+  .res-mat-expansion-panel-header {
+    padding: 5px !important;
+  }
 }

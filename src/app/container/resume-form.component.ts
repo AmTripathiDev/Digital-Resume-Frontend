@@ -4,9 +4,9 @@ import {Component} from '@angular/core';
   selector: 'app-resume-form',
   template: `
     <mat-accordion fxLayout="column" fxLayoutAlign="center center">
-      <h1 class="tabs-heading">Enter details which you want to see on your Resume</h1>
+      <h1 class="tabs-heading res-expansion-title">Enter details which you want to see on your Resume</h1>
       <mat-expansion-panel>
-        <mat-expansion-panel-header>
+        <mat-expansion-panel-header class="res-mat-expansion-panel-header">
           <mat-panel-title>
             Contact Details
           </mat-panel-title>
@@ -28,6 +28,8 @@ import {Component} from '@angular/core';
     mat-expansion-panel {
       width: 90%;
     }
+
+
   `]
 })
 
