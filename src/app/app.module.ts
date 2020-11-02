@@ -28,6 +28,8 @@ import {OnBoardingIntroComponent} from './container/on-boarding/on-boarding-intr
 import {ResumeNameComponent} from './container/on-boarding/resume-name.component';
 import {UploadComponent} from './container/on-boarding/tabs/upload.componet';
 import {UploadImageComponent} from './container/on-boarding/tabs/upload-image.component';
+import {UploadFromDiskComponent} from './container/on-boarding/tabs/upload-from-disk.component';
+import {ImportYoutubeComponent} from './container/on-boarding/tabs/import-youtube.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import {UploadImageComponent} from './container/on-boarding/tabs/upload-image.co
     OnBoardingIntroComponent,
     ResumeNameComponent,
     UploadComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    UploadFromDiskComponent,
+    ImportYoutubeComponent
   ],
   imports: [
     BrowserModule,

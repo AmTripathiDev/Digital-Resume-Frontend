@@ -9,6 +9,13 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+
+.tabs-heading {
+  font-weight: bolder !important;
+  font-size: 2rem !important;
+  color: #538ec3;
+}
+
 .overlay {
   width: 100%;
   height: 100%;

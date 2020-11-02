@@ -8,7 +8,7 @@ import {Resume} from '../../../models/resume';
   template: `
     <div *ngIf="!loading" style="margin-top: 3%" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="50px">
       <input (change)="onImageSelect($event)" accept="image/jpeg, image/png" #fileInput hidden type="file"/>
-      <h1 style="font-weight: bolder;font-size: 2rem">
+      <h1 class="tabs-heading">
         <mat-icon>cloud_upload</mat-icon>
         Upload Profile Image
       </h1>
@@ -27,9 +27,6 @@ import {Resume} from '../../../models/resume';
     </div>
   `,
   styles: [`
-    h1 {
-      color: #538ec3;
-    }
   `]
 })
 
