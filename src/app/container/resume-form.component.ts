@@ -14,7 +14,6 @@ import {Component} from '@angular/core';
             Enter your Contact Details
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>This is my main content</p>
       </mat-expansion-panel>
     </mat-accordion>
   `,
