@@ -31,6 +31,8 @@ import {UploadImageComponent} from './container/tabs/upload-image.component';
 import {UploadFromDiskComponent} from './container/tabs/upload-from-disk.component';
 import {ImportYoutubeComponent} from './container/tabs/import-youtube.component';
 import {ResumeFormComponent} from './container/resume-form.component';
+import {ContactDetailsComponent} from './components/resume-form/resume-card/contact-details.component';
+import {ContactDetailFormComponent} from './components/resume-form/resume-dialogues/contact-detail-form.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {ResumeFormComponent} from './container/resume-form.component';
     UploadImageComponent,
     UploadFromDiskComponent,
     ImportYoutubeComponent,
-    ResumeFormComponent
+    ResumeFormComponent,
+    ContactDetailsComponent,
+    ContactDetailFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Resume} from '../models/resume';
 
 @Component({
   selector: 'app-resume-form',
@@ -14,6 +15,7 @@ import {Component} from '@angular/core';
             Enter your Contact Details
           </mat-panel-description>
         </mat-expansion-panel-header>
+        <app-contact-details [resume]="resume"></app-contact-details>
       </mat-expansion-panel>
     </mat-accordion>
   `,
@@ -33,6 +35,7 @@ import {Component} from '@angular/core';
 })
 
 export class ResumeFormComponent {
+  @Input() resume: Resume;
 
   constructor() {
   }

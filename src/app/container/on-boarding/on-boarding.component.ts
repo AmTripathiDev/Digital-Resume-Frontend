@@ -16,7 +16,7 @@ import {ApiService} from '../../services/api-service';
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Resume Form</ng-template>
-        <app-resume-form></app-resume-form>
+        <app-resume-form [resume]="resume"></app-resume-form>
       </mat-step>
     </mat-horizontal-stepper>
     <div *ngIf="this.loading" style="height: 100vh" fxLayout="column" fxLayoutAlign="center center">
