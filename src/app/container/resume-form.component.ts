@@ -17,6 +17,17 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-contact-details [resumeId]="resume._id" [contactDetails]="resume.contact_details"></app-contact-details>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="res-mat-expansion-panel-header">
+          <mat-panel-title>
+            Education
+          </mat-panel-title>
+          <mat-panel-description>
+            Enter your Qualification
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-education [resumeId]="resume._id" [educations]="resume.education"></app-education>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`

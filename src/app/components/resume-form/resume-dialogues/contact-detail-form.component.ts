@@ -121,14 +121,14 @@ export class ContactDetailFormComponent implements OnInit {
   save() {
     const observer$ = this.apiService.addContactDetails(this.contactDetailForm.value, this.data.resumeId);
     observer$.subscribe(data => {
-      console.log(data);
+      this.dialogRef.close();
     });
   }
 
   update() {
     const observer$ = this.apiService.updateContactDetails(this.contactDetailForm.value, this.data.contactDetails._id);
     observer$.subscribe(data => {
-      console.log(data);
+      this.dialogRef.close();
     });
   }
 }

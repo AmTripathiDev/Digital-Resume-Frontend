@@ -31,8 +31,11 @@ import {UploadImageComponent} from './container/tabs/upload-image.component';
 import {UploadFromDiskComponent} from './container/tabs/upload-from-disk.component';
 import {ImportYoutubeComponent} from './container/tabs/import-youtube.component';
 import {ResumeFormComponent} from './container/resume-form.component';
-import {ContactDetailsComponent} from './components/resume-form/resume-card/contact-details.component';
+import {ContactDetailsComponent} from './components/resume-form/contact-details.component';
 import {ContactDetailFormComponent} from './components/resume-form/resume-dialogues/contact-detail-form.component';
+import {EducationComponent} from './components/resume-form/education.component';
+import {EducationFormComponent} from './components/resume-form/resume-dialogues/education-form.component';
+import {MatOptionModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,9 @@ import {ContactDetailFormComponent} from './components/resume-form/resume-dialog
     ImportYoutubeComponent,
     ResumeFormComponent,
     ContactDetailsComponent,
-    ContactDetailFormComponent
+    ContactDetailFormComponent,
+    EducationComponent,
+    EducationFormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Contact} from '../../../models/resume';
+import {Contact} from '../../models/resume';
 import {MatDialog} from '@angular/material/dialog';
-import {ContactDetailFormComponent} from '../resume-dialogues/contact-detail-form.component';
+import {ContactDetailFormComponent} from './resume-dialogues/contact-detail-form.component';
 
 @Component({
   selector: 'app-contact-details',

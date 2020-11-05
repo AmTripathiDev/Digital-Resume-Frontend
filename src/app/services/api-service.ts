@@ -70,4 +70,12 @@ export class ApiService {
   addContactDetails(data, resumeId: string) {
     return this.httpService.post('/resume/add/contactDetails/' + resumeId, data);
   }
+
+  addEducation(data, resumeId: string) {
+    return this.httpService.post('/resume/add/education/' + resumeId, data);
+  }
+
+  updateEducation(data, educationId: string) {
+    return this.httpService.patch('/resume/add/education/' + educationId, data);
+  }
 }
