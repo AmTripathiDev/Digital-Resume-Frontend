@@ -15,7 +15,7 @@ import {Resume} from '../models/resume';
             Enter your Contact Details
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <app-contact-details [resume]="resume"></app-contact-details>
+        <app-contact-details [resumeId]="resume._id" [contactDetails]="resume.contact_details"></app-contact-details>
       </mat-expansion-panel>
     </mat-accordion>
   `,

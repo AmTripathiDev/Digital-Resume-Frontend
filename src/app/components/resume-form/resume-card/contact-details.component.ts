@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Resume} from '../../../models/resume';
+import {Contact, Resume} from '../../../models/resume';
 import {MatDialog} from '@angular/material/dialog';
 import {ContactDetailFormComponent} from '../resume-dialogues/contact-detail-form.component';
 
@@ -8,7 +8,7 @@ import {ContactDetailFormComponent} from '../resume-dialogues/contact-detail-for
   template: `
     <div style="position: relative" fxLayout="column" fxLayoutAlign="center center">
       <div class="cards-outer-div" fxLayout="column" fxLayoutAlign="center center">
-        <ng-container *ngIf="!this.resume.contact_details">
+        <ng-container *ngIf="!this.contactDetails">
           <h3 class="empty-heading">No Contact Details Added Yet</h3>
         </ng-container>
         <div fxLayoutAlign="center center">
@@ -39,14 +39,15 @@ import {ContactDetailFormComponent} from '../resume-dialogues/contact-detail-for
 })
 
 export class ContactDetailsComponent {
-  @Input() resume: Resume;
+  @Input() contactDetails: Contact;
+  @Input() resumeId: string;
 
   constructor(private matDialog: MatDialog) {
   }
 
   openContactForm() {
     this.matDialog.open(ContactDetailFormComponent, {
-      width: '256px', data: this.resume
+      width: '90%', height: '90%', data: {contactDetails: this.contactDetails, resumeId: this.resumeId}
     });
   }
 }
