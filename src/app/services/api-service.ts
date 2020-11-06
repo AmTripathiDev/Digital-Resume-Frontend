@@ -76,6 +76,10 @@ export class ApiService {
   }
 
   updateEducation(data, educationId: string) {
-    return this.httpService.patch('/resume/add/education/' + educationId, data);
+    return this.httpService.patch('/resume/update/education/' + educationId, data);
+  }
+
+  deleteEducation(educationId: string) {
+    return this.httpService.delete('/resume/delete/education/' + educationId);
   }
 }

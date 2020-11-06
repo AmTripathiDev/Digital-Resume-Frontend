@@ -1,5 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {Education} from '../../../models/education';
+import {ApiService} from '../../../services/api-service';
+import {AlertService} from '../../../services/alert-service';
+import {MatDialog} from '@angular/material/dialog';
+import {EducationFormComponent} from '../resume-dialogues/education-form.component';
 
 @Component({
   selector: 'app-education-card',
@@ -15,10 +19,10 @@ import {Education} from '../../../models/education';
         <div fxLayoutAlign="center center">
           <div class="hover-container">
             <div class="hover">
-              <button class="resume-form-mat-icon-button" mat-icon-button>
+              <button (click)="edit()" class="resume-form-mat-icon-button" mat-icon-button>
                 <mat-icon class="resume-form-mat-icon">create</mat-icon>
               </button>
-              <button class="resume-form-mat-icon-button" mat-icon-button>
+              <button (click)="delete()" class="resume-form-mat-icon-button" mat-icon-button>
                 <mat-icon class="resume-form-mat-icon">delete</mat-icon>
               </button>
             </div>
@@ -33,6 +37,19 @@ import {Education} from '../../../models/education';
 export class EducationCardComponent {
   @Input() education: Education;
 
-  constructor() {
+  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  }
+
+  edit() {
+    this.matDialog.open(EducationFormComponent, {
+      width: '90%', height: '90%', data: {education: this.education}
+    });
+  }
+
+  delete() {
+    this.apiService.deleteEducation(this.education._id)
+      .subscribe(data => {
+        this.alertService.success('education deleted Successfully');
+      });
   }
 }
