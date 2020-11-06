@@ -42,41 +42,8 @@ export interface DataType {
         <mat-form-field>
           <mat-label>Graduation Month</mat-label>
           <mat-select formControlName="graduation_month">
-            <mat-option value="January">
-              January
-            </mat-option>
-            <mat-option value="February">
-              February
-            </mat-option>
-            <mat-option value="March">
-              March
-            </mat-option>
-            <mat-option value="April">
-              April
-            </mat-option>
-            <mat-option value="May">
-              May
-            </mat-option>
-            <mat-option value="June">
-              June
-            </mat-option>
-            <mat-option value="July">
-              July
-            </mat-option>
-            <mat-option value="August">
-              August
-            </mat-option>
-            <mat-option value="September">
-              September
-            </mat-option>
-            <mat-option value="October">
-              October
-            </mat-option>
-            <mat-option value="November">
-              November
-            </mat-option>
-            <mat-option value="December">
-              December
+            <mat-option *ngFor="let month of this.monthArray" [value]="month">
+              {{month}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -96,6 +63,8 @@ export interface DataType {
 
 export class EducationFormComponent implements OnInit {
   educationForm: FormGroup;
+  monthArray = ['January', 'February', 'March', 'April',
+    'May', 'June', 'July', 'August', 'September', 'November', 'December'];
 
   constructor(public dialogRef: MatDialogRef<EducationFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) {
@@ -133,7 +102,6 @@ export class EducationFormComponent implements OnInit {
   save() {
     const observer$ = this.apiService.addEducation(this.educationForm.value, this.data.resumeId);
     observer$.subscribe(data => {
-      console.log(data);
       this.dialogRef.close();
     });
   }
