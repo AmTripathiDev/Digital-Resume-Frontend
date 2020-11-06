@@ -36,6 +36,8 @@ import {ContactDetailFormComponent} from './components/resume-form/resume-dialog
 import {EducationComponent} from './components/resume-form/education.component';
 import {EducationFormComponent} from './components/resume-form/resume-dialogues/education-form.component';
 import {MatOptionModule} from '@angular/material/core';
+import {EducationCardComponent} from './components/resume-form/resume-card/education-card.component';
+import {EducationListComponent} from './components/resume-form/resume-list/education-list.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import {MatOptionModule} from '@angular/material/core';
     ContactDetailsComponent,
     ContactDetailFormComponent,
     EducationComponent,
-    EducationFormComponent
+    EducationFormComponent,
+    EducationCardComponent,
+    EducationListComponent
   ],
   imports: [
     BrowserModule,
