@@ -28,6 +28,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-education [resumeId]="resume._id" [educations]="resume.education"></app-education>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Employment History</mat-panel-title>
+          <mat-panel-description>
+            Enter Your Work Experience
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-employment-history [resumeId]="resume._id" [employmentHistories]="resume.employment_history"></app-employment-history>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`

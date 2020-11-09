@@ -38,6 +38,10 @@ import {EducationFormComponent} from './components/resume-form/resume-dialogues/
 import {MatOptionModule} from '@angular/material/core';
 import {EducationCardComponent} from './components/resume-form/resume-card/education-card.component';
 import {EducationListComponent} from './components/resume-form/resume-list/education-list.component';
+import {EmploymentHistoryComponent} from './components/resume-form/employment-history.component';
+import {EmploymentHistoryListComponent} from './components/resume-form/resume-list/employment-history-list.component';
+import {EmploymentHistoryCardComponent} from './components/resume-form/resume-card/employment-history-card.component';
+import {EmploymentHistoryFormComponent} from './components/resume-form/resume-dialogues/employment-history-form.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,11 @@ import {EducationListComponent} from './components/resume-form/resume-list/educa
     EducationComponent,
     EducationFormComponent,
     EducationCardComponent,
-    EducationListComponent
+    EducationListComponent,
+    EmploymentHistoryComponent,
+    EmploymentHistoryListComponent,
+    EmploymentHistoryCardComponent,
+    EmploymentHistoryFormComponent
   ],
   imports: [
     BrowserModule,
