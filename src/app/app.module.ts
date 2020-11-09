@@ -65,6 +65,10 @@ import {ObjectiveComponent} from './components/resume-form/objective.component';
 import {ObjectiveListComponent} from './components/resume-form/resume-list/objective-list.component';
 import {ObjectiveFormComponent} from './components/resume-form/resume-dialogues/objective-form.component';
 import {ObjectiveCardComponent} from './components/resume-form/resume-card/objective-card.component';
+import {ReferenceComponent} from './components/resume-form/reference.component';
+import {ReferenceListComponent} from './components/resume-form/resume-list/reference-list.component';
+import {ReferenceFormComponent} from './components/resume-form/resume-dialogues/reference-form.component';
+import {ReferenceCardComponent} from './components/resume-form/resume-card/reference-card.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +120,11 @@ import {ObjectiveCardComponent} from './components/resume-form/resume-card/objec
     ObjectiveComponent,
     ObjectiveListComponent,
     ObjectiveFormComponent,
-    ObjectiveCardComponent
+    ObjectiveCardComponent,
+    ReferenceComponent,
+    ReferenceListComponent,
+    ReferenceFormComponent,
+    ReferenceCardComponent
   ],
   imports: [
     BrowserModule,
