@@ -49,6 +49,10 @@ import {SkillsComponent} from './components/resume-form/skills.component';
 import {SkillListComponent} from './components/resume-form/resume-list/skill-list.component';
 import {SkillCardComponent} from './components/resume-form/resume-card/skill-card.component';
 import {SkillFormComponent} from './components/resume-form/resume-dialogues/skill-form.component';
+import {LanguageComponent} from './components/language.component';
+import {LanguageListComponent} from './components/resume-form/resume-list/language-list.component';
+import {LanguageCardComponent} from './components/resume-form/resume-card/language-card.component';
+import {LanguageFormComponent} from './components/resume-form/resume-dialogues/language-form.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +88,11 @@ import {SkillFormComponent} from './components/resume-form/resume-dialogues/skil
     SkillsComponent,
     SkillListComponent,
     SkillCardComponent,
-    SkillFormComponent
+    SkillFormComponent,
+    LanguageComponent,
+    LanguageListComponent,
+    LanguageCardComponent,
+    LanguageFormComponent
   ],
   imports: [
     BrowserModule,

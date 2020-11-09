@@ -118,4 +118,17 @@ export class ApiService {
   deleteSkill(skillId: string) {
     return this.httpService.delete('/resume/delete/skill/' + skillId);
   }
+
+  addLanguage(data, resumeId: string) {
+    return this.httpService.post('/resume/add/language/' + resumeId, data);
+
+  }
+
+  updateLanguage(data: any, languageId: string) {
+    return this.httpService.patch('/resume/update/language/' + languageId, data);
+  }
+
+  deleteLanguage(languageId: string) {
+    return this.httpService.delete('/resume/delete/language/' + languageId);
+  }
 }

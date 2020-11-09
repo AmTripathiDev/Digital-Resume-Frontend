@@ -55,6 +55,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-skills [skills]="resume.skills" [resumeId]="resume._id"></app-skills>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Languages</mat-panel-title>
+          <mat-panel-description>
+            Describe your known Languages
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-language [resumeId]="resume._id" [languages]="resume.languages"></app-language>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
