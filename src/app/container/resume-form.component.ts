@@ -100,6 +100,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-reference [resumeId]="resume._id" [references]="resume.refrences"></app-reference>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Project Details</mat-panel-title>
+          <mat-panel-description>
+            Add your Project Details
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-project-details [resumeId]="resume._id" [projectDetails]="resume.projectDetails"></app-project-details>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
