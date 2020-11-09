@@ -191,4 +191,16 @@ export class ApiService {
   deleteProjectDetail(projectDetailId: string) {
     return this.httpService.delete('/resume/delete/projectDetail/' + projectDetailId);
   }
+
+  addStrength(data, resumeId: string) {
+    return this.httpService.post('/resume/add/strength/' + resumeId, data);
+  }
+
+  updateStrength(data: any, strengthId: string) {
+    return this.httpService.patch('/resume/update/strength/' + strengthId, data);
+  }
+
+  deleteStrength(strengthId: string) {
+    return this.httpService.delete('/resume/delete/strength/' + strengthId);
+  }
 }

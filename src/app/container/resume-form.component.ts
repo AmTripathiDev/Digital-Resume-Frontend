@@ -109,6 +109,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-project-details [resumeId]="resume._id" [projectDetails]="resume.projectDetails"></app-project-details>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Strength</mat-panel-title>
+          <mat-panel-description>
+            Add your Strengths
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-strength [resumeId]="resume._id" [strength]="resume.strengths"></app-strength>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
