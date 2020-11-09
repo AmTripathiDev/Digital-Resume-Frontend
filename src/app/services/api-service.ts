@@ -106,4 +106,16 @@ export class ApiService {
   updateInterest(data: any, interestId: string) {
     return this.httpService.patch('/resume/update/interest/' + interestId, data);
   }
+
+  addSkill(data, resumeId: string) {
+    return this.httpService.post('/resume/add/skill/' + resumeId, data);
+  }
+
+  updateSkill(data: any, skillId: string) {
+    return this.httpService.patch('/resume/update/skill/' + skillId, data);
+  }
+
+  deleteSkill(skillId: string) {
+    return this.httpService.delete('/resume/delete/skill/' + skillId);
+  }
 }

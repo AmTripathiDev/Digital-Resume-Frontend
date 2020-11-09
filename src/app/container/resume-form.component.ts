@@ -46,6 +46,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-interest [resumeId]="this.resume._id" [interests]="resume.interests"></app-interest>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Professional Skills</mat-panel-title>
+          <mat-panel-description>
+            Describe your Skills
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-skills [skills]="resume.skills" [resumeId]="resume._id"></app-skills>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`

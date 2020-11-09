@@ -15,7 +15,7 @@ interface DataType {
     <form [formGroup]="this.form" (submit)="this.form.valid && addOrUpdate()">
       <div fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
-          <textarea formControlName="interest" matInput placeholder="Designation"></textarea>
+          <textarea formControlName="interest" matInput placeholder="Interest"></textarea>
           <mat-error>Interest is Required</mat-error>
         </mat-form-field>
         <div fxLayout="row" fxLayoutAlign="end" fxLayoutGap="20px">
