@@ -82,6 +82,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-award [resumeId]="resume._id" [awards]="resume.award_achivements"></app-award>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Objectives</mat-panel-title>
+          <mat-panel-description>
+            Describe about your Objectives
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-objective [resumeId]="resume._id" [objectives]="resume.objectives"></app-objective>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
