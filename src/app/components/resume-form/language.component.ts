@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {Language} from '../models/language';
+import {Language} from '../../models/language';
 import {MatDialog} from '@angular/material/dialog';
-import {LanguageFormComponent} from './resume-form/resume-dialogues/language-form.component';
+import {LanguageFormComponent} from './resume-dialogues/language-form.component';
 
 @Component({
   selector: 'app-language',

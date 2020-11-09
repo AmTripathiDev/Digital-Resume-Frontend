@@ -49,10 +49,14 @@ import {SkillsComponent} from './components/resume-form/skills.component';
 import {SkillListComponent} from './components/resume-form/resume-list/skill-list.component';
 import {SkillCardComponent} from './components/resume-form/resume-card/skill-card.component';
 import {SkillFormComponent} from './components/resume-form/resume-dialogues/skill-form.component';
-import {LanguageComponent} from './components/language.component';
+import {LanguageComponent} from './components/resume-form/language.component';
 import {LanguageListComponent} from './components/resume-form/resume-list/language-list.component';
 import {LanguageCardComponent} from './components/resume-form/resume-card/language-card.component';
 import {LanguageFormComponent} from './components/resume-form/resume-dialogues/language-form.component';
+import {IndustrialExposureComponent} from './components/resume-form/industrial-exposure.component';
+import {IndustrialExposureListComponent} from './components/resume-form/resume-list/industrial-exposure-list.component';
+import {IndustrialExposureFormComponent} from './components/resume-form/resume-dialogues/industrial-exposure-form.component';
+import {IndustrialExposureCardComponent} from './components/resume-form/resume-card/industrial-exposure-card.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +96,11 @@ import {LanguageFormComponent} from './components/resume-form/resume-dialogues/l
     LanguageComponent,
     LanguageListComponent,
     LanguageCardComponent,
-    LanguageFormComponent
+    LanguageFormComponent,
+    IndustrialExposureComponent,
+    IndustrialExposureListComponent,
+    IndustrialExposureFormComponent,
+    IndustrialExposureCardComponent
   ],
   imports: [
     BrowserModule,

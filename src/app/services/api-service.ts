@@ -131,4 +131,16 @@ export class ApiService {
   deleteLanguage(languageId: string) {
     return this.httpService.delete('/resume/delete/language/' + languageId);
   }
+
+  addIndustrialExposure(data, resumeId: string) {
+    return this.httpService.post('/resume/add/industrialExposure/' + resumeId, data);
+  }
+
+  updateIndustrialExposure(data: any, industrialExposureId: string) {
+    return this.httpService.patch('/resume/update/industrialExposure/' + industrialExposureId, data);
+  }
+
+  deleteIndustrialExposure( industrialExposureId: string) {
+    return this.httpService.delete('/resume/delete/industrialExposure/' + industrialExposureId);
+  }
 }

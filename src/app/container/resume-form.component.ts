@@ -64,6 +64,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-language [resumeId]="resume._id" [languages]="resume.languages"></app-language>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="res-expansion-panel-width">
+          <mat-panel-title>Industrial Exposure as an Intern</mat-panel-title>
+          <mat-panel-description>
+            Describe about your Industrial Exposure as an Intern
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-industrial-exposure [resumeId]="resume._id" [industrialExposures]="resume.industrialExposures"></app-industrial-exposure>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
