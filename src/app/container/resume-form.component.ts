@@ -7,7 +7,7 @@ import {Resume} from '../models/resume';
     <mat-accordion fxLayout="column" fxLayoutAlign="center center">
       <h1 class="tabs-heading res-expansion-title">Enter details which you want to see on your Resume</h1>
       <mat-expansion-panel>
-        <mat-expansion-panel-header class="res-mat-expansion-panel-header">
+        <mat-expansion-panel-header>
           <mat-panel-title>
             Contact Details
           </mat-panel-title>
@@ -18,7 +18,7 @@ import {Resume} from '../models/resume';
         <app-contact-details [resumeId]="resume._id" [contactDetails]="resume.contact_details"></app-contact-details>
       </mat-expansion-panel>
       <mat-expansion-panel>
-        <mat-expansion-panel-header class="res-mat-expansion-panel-header">
+        <mat-expansion-panel-header>
           <mat-panel-title>
             Education
           </mat-panel-title>
@@ -38,7 +38,7 @@ import {Resume} from '../models/resume';
         <app-employment-history [resumeId]="resume._id" [employmentHistories]="resume.employment_history"></app-employment-history>
       </mat-expansion-panel>
       <mat-expansion-panel>
-        <mat-expansion-panel-header class="res-expansion-panel-width">
+        <mat-expansion-panel-header>
           <mat-panel-title>Hobbies & Interests</mat-panel-title>
           <mat-panel-description>
             Describe your hobbies and interest in detail
@@ -65,13 +65,22 @@ import {Resume} from '../models/resume';
         <app-language [resumeId]="resume._id" [languages]="resume.languages"></app-language>
       </mat-expansion-panel>
       <mat-expansion-panel>
-        <mat-expansion-panel-header class="res-expansion-panel-width">
+        <mat-expansion-panel-header>
           <mat-panel-title>Industrial Exposure as an Intern</mat-panel-title>
           <mat-panel-description>
             Describe about your Industrial Exposure as an Intern
           </mat-panel-description>
         </mat-expansion-panel-header>
         <app-industrial-exposure [resumeId]="resume._id" [industrialExposures]="resume.industrialExposures"></app-industrial-exposure>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Awards and Achievement</mat-panel-title>
+          <mat-panel-description>
+            Describe about your Awards and achievements
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-award [resumeId]="resume._id" [awards]="resume.award_achivements"></app-award>
       </mat-expansion-panel>
     </mat-accordion>
   `,

@@ -57,6 +57,10 @@ import {IndustrialExposureComponent} from './components/resume-form/industrial-e
 import {IndustrialExposureListComponent} from './components/resume-form/resume-list/industrial-exposure-list.component';
 import {IndustrialExposureFormComponent} from './components/resume-form/resume-dialogues/industrial-exposure-form.component';
 import {IndustrialExposureCardComponent} from './components/resume-form/resume-card/industrial-exposure-card.component';
+import {AwardComponent} from './components/resume-form/award.component';
+import {AwardListComponent} from './components/resume-form/resume-list/award-list.component';
+import {AwardFormComponent} from './components/resume-form/resume-dialogues/award-form.component';
+import {AwardCardComponent} from './components/resume-form/resume-card/award-card.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +104,11 @@ import {IndustrialExposureCardComponent} from './components/resume-form/resume-c
     IndustrialExposureComponent,
     IndustrialExposureListComponent,
     IndustrialExposureFormComponent,
-    IndustrialExposureCardComponent
+    IndustrialExposureCardComponent,
+    AwardComponent,
+    AwardListComponent,
+    AwardFormComponent,
+    AwardCardComponent
   ],
   imports: [
     BrowserModule,
