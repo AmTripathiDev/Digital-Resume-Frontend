@@ -82,7 +82,12 @@ export class ApiService {
   deleteEducation(educationId: string) {
     return this.httpService.delete('/resume/delete/education/' + educationId);
   }
-  deleteEmploymentHistory(employmentId: string){
+
+  deleteInterest(interestId: string) {
+    return this.httpService.delete('/resume/delete/interest/' + interestId);
+  }
+
+  deleteEmploymentHistory(employmentId: string) {
     return this.httpService.delete('/resume/delete/employmentHistory/' + employmentId);
   }
 
@@ -92,5 +97,13 @@ export class ApiService {
 
   updateEmploymentHistory(data: any, employmentId: string) {
     return this.httpService.patch('/resume/update/employmentHistory/' + employmentId, data);
+  }
+
+  addInterest(data, resumeId: string) {
+    return this.httpService.post('/resume/add/interest/' + resumeId, data);
+  }
+
+  updateInterest(data: any, interestId: string) {
+    return this.httpService.patch('/resume/update/interest/' + interestId, data);
   }
 }

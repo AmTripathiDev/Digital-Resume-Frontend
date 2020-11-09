@@ -35,13 +35,16 @@ import {ContactDetailsComponent} from './components/resume-form/contact-details.
 import {ContactDetailFormComponent} from './components/resume-form/resume-dialogues/contact-detail-form.component';
 import {EducationComponent} from './components/resume-form/education.component';
 import {EducationFormComponent} from './components/resume-form/resume-dialogues/education-form.component';
-import {MatOptionModule} from '@angular/material/core';
 import {EducationCardComponent} from './components/resume-form/resume-card/education-card.component';
 import {EducationListComponent} from './components/resume-form/resume-list/education-list.component';
 import {EmploymentHistoryComponent} from './components/resume-form/employment-history.component';
 import {EmploymentHistoryListComponent} from './components/resume-form/resume-list/employment-history-list.component';
 import {EmploymentHistoryCardComponent} from './components/resume-form/resume-card/employment-history-card.component';
 import {EmploymentHistoryFormComponent} from './components/resume-form/resume-dialogues/employment-history-form.component';
+import {InterestComponent} from './components/resume-form/interest.component';
+import {InterestListComponent} from './components/resume-form/resume-list/interest-list.component';
+import {InterestCardComponent} from './components/resume-form/resume-card/interest-card.component';
+import {InterestFormComponent} from './components/resume-form/resume-dialogues/interest-form.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,11 @@ import {EmploymentHistoryFormComponent} from './components/resume-form/resume-di
     EmploymentHistoryComponent,
     EmploymentHistoryListComponent,
     EmploymentHistoryCardComponent,
-    EmploymentHistoryFormComponent
+    EmploymentHistoryFormComponent,
+    InterestComponent,
+    InterestListComponent,
+    InterestCardComponent,
+    InterestFormComponent
   ],
   imports: [
     BrowserModule,

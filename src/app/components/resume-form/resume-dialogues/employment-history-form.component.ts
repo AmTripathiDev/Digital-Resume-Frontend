@@ -13,7 +13,7 @@ interface DataType {
   selector: 'app-employment-history-form',
   template: `
     <form [formGroup]="this.form" (submit)="this.form.valid && addOrUpdate()">
-      <div class="alternate" fxLayout="column" fxLayoutGap="10px">
+      <div fxLayout="column" fxLayoutGap="10px">
         <mat-form-field>
           <input formControlName="designation" matInput placeholder="Designation"/>
           <mat-error>Designation is Required</mat-error>

@@ -37,6 +37,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-employment-history [resumeId]="resume._id" [employmentHistories]="resume.employment_history"></app-employment-history>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="res-expansion-panel-width">
+          <mat-panel-title>Hobbies & Interests</mat-panel-title>
+          <mat-panel-description>
+            Describe your hobbies and interest in detail
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-interest [resumeId]="this.resume._id" [interests]="resume.interests"></app-interest>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
