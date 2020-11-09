@@ -118,6 +118,15 @@ import {Resume} from '../models/resume';
         </mat-expansion-panel-header>
         <app-strength [resumeId]="resume._id" [strength]="resume.strengths"></app-strength>
       </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Weakness</mat-panel-title>
+          <mat-panel-description>
+            Add your Weakness
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <app-weakness [resumeId]="resume._id" [weaknesses]="resume.weakness"></app-weakness>
+      </mat-expansion-panel>
     </mat-accordion>
   `,
   styles: [`
