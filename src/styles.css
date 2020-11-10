@@ -32,6 +32,7 @@ body {
 .resume-form-info-card-heading {
   margin: 0 !important;;
   font-weight: bold !important;
+  word-break: break-all !important;
 }
 
 .resume-form-mat-icon-button {

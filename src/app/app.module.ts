@@ -81,6 +81,7 @@ import {WeaknessComponent} from './components/resume-form/weakness.component';
 import {WeaknessListComponent} from './components/resume-form/resume-list/weakness-list.component';
 import {WeaknessFormComponent} from './components/resume-form/resume-dialogues/weakness-form.component';
 import {WeaknessCardComponent} from './components/resume-form/resume-card/weakness-card.component';
+import {Truncate} from './pipes/truncate';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,8 @@ import {WeaknessCardComponent} from './components/resume-form/resume-card/weakne
     WeaknessComponent,
     WeaknessListComponent,
     WeaknessFormComponent,
-    WeaknessCardComponent
+    WeaknessCardComponent,
+    Truncate
   ],
   imports: [
     BrowserModule,
