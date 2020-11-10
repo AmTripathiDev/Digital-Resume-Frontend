@@ -74,6 +74,11 @@ body {
   color: white !important;
 }
 
+.mat-expansion-panel-header {
+  height: 5rem !important;
+  padding: 10px !important;
+}
+
 button {
   color: white !important;
 }
