@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../services/api-service';
 import {AlertService} from '../services/alert-service';
 import {Router} from '@angular/router';
+import {AuthRepository} from '../repository/auth-repository';
 
 @Component({
   selector: 'app-signup',
@@ -72,7 +73,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   loading = false;
 
-  constructor(private apiService: ApiService, private alterService: AlertService, private router: Router) {
+  constructor(private authRepository: AuthRepository, private alterService: AlertService, private router: Router) {
     this.signupForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(8)]),
@@ -85,7 +86,7 @@ export class SignupComponent {
 
   signup() {
     this.loading = true;
-    this.apiService.signup(this.signupForm.value).subscribe((data) => {
+    this.authRepository.signup(this.signupForm.value).subscribe((data) => {
       this.loading = false;
       this.alterService.success('signup Successful');
       this.router.navigate(['']);

@@ -23,6 +23,7 @@ export const initialState: UserReducerState = {
 
 export function UserReducer(state = initialState,
                             action: Action): UserReducerState {
+  console.log(action);
   switch (action.type) {
     case USER_PROFILE_REQUEST:
     case LOGIN_REQUEST: {
@@ -37,6 +38,9 @@ export function UserReducer(state = initialState,
     }
     case USER_UPDATE_SUCCESS: {
       return {...state, user: action.payload};
+    }
+    default: {
+      return state;
     }
   }
 }

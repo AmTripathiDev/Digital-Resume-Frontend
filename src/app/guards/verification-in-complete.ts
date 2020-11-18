@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {ApiService} from '../services/api-service';
-import {map} from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
+import {AuthRepository} from '../repository/auth-repository';
 
 @Injectable()
 export class VerificationInComplete implements CanActivate {
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private authRepo: AuthRepository, private router: Router) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    return this.apiService.fetchMe().pipe(map(data => {
+    return this.authRepo.fetchMe().pipe(filter(data => !!data), map(data => {
       if (!data.verified) {
         return true;
       } else {
