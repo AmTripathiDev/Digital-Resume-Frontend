@@ -82,9 +82,10 @@ import {WeaknessListComponent} from './components/resume-form/resume-list/weakne
 import {WeaknessFormComponent} from './components/resume-form/resume-dialogues/weakness-form.component';
 import {WeaknessCardComponent} from './components/resume-form/resume-card/weakness-card.component';
 import {Truncate} from './pipes/truncate';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {rootReducer} from './reducers';
 
 @NgModule({
   declarations: [
@@ -164,8 +165,8 @@ import { environment } from '../environments/environment';
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
   ],
   providers: [HttpService, ApiService,
     AlertService, AuthGuard, AnonGuard, VerificationCompleted,

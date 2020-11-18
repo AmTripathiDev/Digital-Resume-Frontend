@@ -40,3 +40,7 @@ export function UserReducer(state = initialState,
     }
   }
 }
+
+export const loggedIn = (state: UserReducerState) => state.loggedIn;
+export const loggingIn = (state: UserReducerState) => state.loggingIn;
+export const user = (state: UserReducerState) => state.user;
