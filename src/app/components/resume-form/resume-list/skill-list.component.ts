@@ -4,7 +4,7 @@ import {Skill} from '../../../models/skill';
 @Component({
   selector: 'app-skill-list',
   template: `
-    <app-skill-card *ngFor="let skill of skillList"
+    <app-skill-card [resumeId]="resumeId" *ngFor="let skill of skillList"
                     [skill]="skill"></app-skill-card>
   `,
   styles: [``]
@@ -12,6 +12,7 @@ import {Skill} from '../../../models/skill';
 
 export class SkillListComponent {
   @Input() skillList: Skill[];
+  @Input() resumeId: string;
 
   constructor() {
   }

@@ -1,10 +1,13 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Resume} from '../models/resume';
+import {ResumeRepository} from '../repository/resume-repository';
+import {ActivatedRoute} from '@angular/router';
+import {takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-resume-form',
   template: `
-    <mat-accordion fxLayout="column" fxLayoutAlign="center center">
+    <mat-accordion *ngIf="!this.loading" fxLayout="column" fxLayoutAlign="center center">
       <h1 class="tabs-heading res-expansion-title">Enter details which you want to see on your Resume</h1>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -128,6 +131,7 @@ import {Resume} from '../models/resume';
         <app-weakness [resumeId]="resume._id" [weaknesses]="resume.weakness"></app-weakness>
       </mat-expansion-panel>
     </mat-accordion>
+    <mat-spinner *ngIf="this.loading" color="accent" diameter="40"></mat-spinner>
   `,
   styles: [`
     h1 {
@@ -144,10 +148,33 @@ import {Resume} from '../models/resume';
   `]
 })
 
-export class ResumeFormComponent {
-  @Input() resume: Resume;
+export class ResumeFormComponent implements OnInit, OnDestroy {
+  resume: Resume;
+  isAlive = true;
+  loading = false;
 
-  constructor() {
+  constructor(private resumeRepo: ResumeRepository, private route: ActivatedRoute) {
+  }
+
+  ngOnDestroy() {
+    this.isAlive = false;
+  }
+
+  ngOnInit() {
+    this.loading = true;
+    const param$ = this.route.params;
+    param$.pipe(takeWhile(() => this.isAlive)).subscribe(param => {
+      if (!!param) {
+        const observer$ = this.resumeRepo.fetchAllResumes();
+        const resume$ = observer$[2];
+        resume$.pipe(takeWhile(() => this.isAlive))
+          .subscribe((data) => {
+            console.log(data);
+            this.loading = false;
+            this.resume = data[0];
+          });
+      }
+    });
   }
 }
 

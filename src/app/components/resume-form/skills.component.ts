@@ -7,7 +7,7 @@ import {SkillFormComponent} from './resume-dialogues/skill-form.component';
   selector: 'app-skills',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-skill-list [skillList]="skills"></app-skill-list>
+      <app-skill-list [resumeId]="resumeId" [skillList]="skills"></app-skill-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

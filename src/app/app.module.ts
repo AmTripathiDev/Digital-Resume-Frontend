@@ -87,6 +87,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {rootReducer} from './reducers';
 import {AuthRepository} from './repository/auth-repository';
+import {ResumeRepository} from './repository/resume-repository';
 
 @NgModule({
   declarations: [
@@ -171,7 +172,7 @@ import {AuthRepository} from './repository/auth-repository';
   ],
   providers: [HttpService, ApiService,
     AlertService, AuthGuard, AnonGuard, VerificationCompleted,
-    VerificationInComplete, OnBoardingComplete, OnBoardingInComplete, AuthRepository],
+    VerificationInComplete, OnBoardingComplete, OnBoardingInComplete, AuthRepository, ResumeRepository],
   bootstrap: [AppComponent]
 })
 export class AppModule {

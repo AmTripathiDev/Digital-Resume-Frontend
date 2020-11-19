@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {Skill} from '../../../models/skill';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 interface DataType {
   skill: Skill;
@@ -46,7 +47,7 @@ export class SkillFormComponent implements OnInit {
   levelArray = ['basic', 'intermediate', 'advance'];
 
   constructor(public dialogRef: MatDialogRef<SkillFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) {
+              @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepository: ResumeRepository) {
   }
 
   ngOnInit() {
@@ -71,14 +72,14 @@ export class SkillFormComponent implements OnInit {
   }
 
   update() {
-    const observer$ = this.apiService.updateSkill(this.form.value, this.data.skill._id);
+    const observer$ = this.resumeRepository.updateSkill(this.form.value, this.data.skill._id, this.data.resumeId);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });
   }
 
   save() {
-    const observer$ = this.apiService.addSkill(this.form.value, this.data.resumeId);
+    const observer$ = this.resumeRepository.addSkill(this.form.value, this.data.resumeId);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });

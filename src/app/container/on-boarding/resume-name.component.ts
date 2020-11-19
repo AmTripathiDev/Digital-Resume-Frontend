@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Resume} from '../../models/resume';
 import {ApiService} from '../../services/api-service';
+import {ResumeRepository} from '../../repository/resume-repository';
 
 @Component({
   selector: 'app-resume-name',
@@ -42,7 +43,7 @@ export class ResumeNameComponent implements OnInit {
   @Input() isCompleted = false;
   loading = false;
 
-  constructor(private apiService: ApiService) {
+  constructor(private resumeRepo: ResumeRepository) {
   }
 
   ngOnInit() {
@@ -53,7 +54,7 @@ export class ResumeNameComponent implements OnInit {
 
   createResume() {
     this.loading = true;
-    this.apiService.saveResume(this.resumeForm.value).subscribe(data => {
+    this.resumeRepo.saveResume(this.resumeForm.value).subscribe(data => {
       this.loading = false;
       this.isCompleted = true;
     }, error => {

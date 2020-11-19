@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Resume} from '../../models/resume';
 import {ApiService} from '../../services/api-service';
 import {AlertService} from '../../services/alert-service';
+import {ResumeRepository} from '../../repository/resume-repository';
 
 @Component({
   selector: 'app-import-youtube',
@@ -47,7 +48,7 @@ export class ImportYoutubeComponent implements AfterViewInit {
     this.isVideoUploaded = !!this.resume.video_url;
   }
 
-  constructor(private apiService: ApiService, private alertService: AlertService) {
+  constructor(private resumeRepo: ResumeRepository, private alertService: AlertService) {
     this.youtubeForm = new FormGroup({
       video_url: new FormControl(null, [Validators.required, Validators.pattern(this.YOUTUBE_REGEX)])
     });
@@ -55,7 +56,7 @@ export class ImportYoutubeComponent implements AfterViewInit {
 
   uploadVideo() {
     this.loading = true;
-    throw this.apiService.addVideo(this.resume._id, this.youtubeForm.value).subscribe(data => {
+    throw this.resumeRepo.addVideo(this.resume._id, this.youtubeForm.value).subscribe(data => {
       this.loading = false;
       const message = this.isVideoUploaded ? 'Video Updated Successfully' : 'Video uploaded SuccessFully';
       this.isVideoUploaded = true;

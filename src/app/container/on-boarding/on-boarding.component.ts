@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Resume} from '../../models/resume';
 import {ApiService} from '../../services/api-service';
+import {ResumeRepository} from '../../repository/resume-repository';
+import {takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-on-boarding',
@@ -16,7 +18,7 @@ import {ApiService} from '../../services/api-service';
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Resume Form</ng-template>
-        <app-resume-form [resume]="resume"></app-resume-form>
+        <app-resume-form></app-resume-form>
       </mat-step>
     </mat-horizontal-stepper>
     <div *ngIf="this.loading" style="height: 100vh" fxLayout="column" fxLayoutAlign="center center">
@@ -26,16 +28,23 @@ import {ApiService} from '../../services/api-service';
   styles: [``]
 })
 
-export class OnBoardingComponent implements OnInit {
+export class OnBoardingComponent implements OnInit, OnDestroy {
   resume: Resume;
   isFirstStepCompleted = false;
   loading = true;
+  isAlive = true;
 
-  constructor(private apiService: ApiService) {
+  constructor(private resumeRepo: ResumeRepository) {
+  }
+
+  ngOnDestroy() {
+    this.isAlive = false;
   }
 
   ngOnInit() {
-    this.apiService.fetchAllResumes().subscribe(data => {
+    const observer$ = this.resumeRepo.fetchAllResumes();
+    const resume$ = observer$[2];
+    resume$.pipe(takeWhile(() => this.isAlive)).subscribe(data => {
       if (data.length) {
         this.resume = data[0];
         this.isFirstStepCompleted = true;
