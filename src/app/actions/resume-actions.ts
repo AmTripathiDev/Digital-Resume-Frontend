@@ -18,7 +18,7 @@ export const RESUME_UPDATE = 'update Resume';
 export const RESUME_DELETE = 'delete Resume';
 export const RESUME_LIST_REQUEST = 'loading Resume';
 export const RESUME_LIST_SUCCESS = 'loaded Resume';
-
+export const RESUME_ERROR = 'error in loading Resume';
 // nested
 
 export const RESUME_ADD_CONTACT_DETAIL = 'add contact details';
