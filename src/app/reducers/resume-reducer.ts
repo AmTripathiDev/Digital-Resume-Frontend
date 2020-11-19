@@ -14,6 +14,7 @@ import {
 } from '../actions/resume-actions';
 import {StoreUtility} from '../utility/store-utility';
 import {createSelector} from '@ngrx/store';
+import {LOGOUT_ACTION} from '../actions/user-actions';
 
 export interface ResumeReducerState {
   loading: boolean;
@@ -94,6 +95,9 @@ export function ResumeReducer(state = initialState, action: Action): ResumeReduc
       const obj = {[resumeId]: oldResume};
       const newEntities = {...state.entities, ...obj};
       return {...state, ...{entities: newEntities}};
+    }
+    case LOGOUT_ACTION: {
+      return {...initialState};
     }
     case RESUME_UPDATE_SKILL: {
       const skill = action.payload.skill;
