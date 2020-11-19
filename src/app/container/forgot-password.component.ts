@@ -102,7 +102,6 @@ export class ForgotPasswordComponent {
     const observer$ = this.authRepo.resetPassword(this.forgotPasswordForm.value);
     observer$.subscribe((data) => {
       this.loading = false;
-      console.log(data);
       this.router.navigate(['login']);
       this.alertService.success('Password Updated Successfully');
     }, (error => {

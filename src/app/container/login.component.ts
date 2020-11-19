@@ -78,7 +78,6 @@ export class LoginComponent implements OnDestroy {
       this.alterService.success('login Successful');
       this.router.navigate(['verify'], {queryParams: {email: data.email}});
     }, (error) => {
-      console.log(error);
       this.loading = false;
     });
   }
