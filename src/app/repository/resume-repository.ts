@@ -29,6 +29,7 @@ import {
 } from '../actions/resume-actions';
 import {map, take} from 'rxjs/operators';
 import {Resume} from '../models/resume';
+import {UserUpdateAction} from '../actions/user-actions';
 
 @Injectable()
 export class ResumeRepository {
@@ -350,6 +351,12 @@ export class ResumeRepository {
     return this.apiService.deleteWeakness(weaknessId).pipe(map((res) => {
       this.store.dispatch(new DeleteWeaknessAction({weakness: res, resume_id: resumeId}));
       return res;
+    }));
+  }
+
+  updateOnBoarding(data: { onboarding: number }) {
+    return this.apiService.updateOnBoarding(data).pipe(map(res => {
+      this.store.dispatch(new UserUpdateAction(res));
     }));
   }
 

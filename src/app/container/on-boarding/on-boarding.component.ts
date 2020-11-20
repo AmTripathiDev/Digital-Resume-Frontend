@@ -3,6 +3,7 @@ import {Resume} from '../../models/resume';
 import {ApiService} from '../../services/api-service';
 import {ResumeRepository} from '../../repository/resume-repository';
 import {takeWhile} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-on-boarding',
@@ -19,6 +20,9 @@ import {takeWhile} from 'rxjs/operators';
       <mat-step>
         <ng-template matStepLabel>Resume Form</ng-template>
         <app-resume-form></app-resume-form>
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlex="100%">
+          <button (click)="finish()" style="margin-top: 1rem" mat-raised-button color="accent">Finish</button>
+        </div>
       </mat-step>
     </mat-horizontal-stepper>
     <div *ngIf="this.loading" style="height: 100vh" fxLayout="column" fxLayoutAlign="center center">
@@ -34,7 +38,7 @@ export class OnBoardingComponent implements OnInit, OnDestroy {
   loading = true;
   isAlive = true;
 
-  constructor(private resumeRepo: ResumeRepository) {
+  constructor(private resumeRepo: ResumeRepository, private router: Router) {
   }
 
   ngOnDestroy() {
@@ -50,6 +54,12 @@ export class OnBoardingComponent implements OnInit, OnDestroy {
         this.isFirstStepCompleted = true;
         this.loading = false;
       }
+    });
+  }
+
+  finish() {
+    this.resumeRepo.updateOnBoarding({onboarding: 200}).subscribe(data => {
+      this.router.navigate(['dashboard']);
     });
   }
 }
