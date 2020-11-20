@@ -13,6 +13,8 @@ import {VerificationCompleted} from './guards/verification-completed';
 import {OnBoardingInComplete} from './guards/on-boarding-in-complete';
 import {OnBoardingComplete} from './guards/on-boarding-complete';
 import {OnBoardingIntroComponent} from './container/on-boarding/on-boarding-intro.component';
+import {ResumeComponent} from './container/dashboard/resume.component';
+import {SettingComponent} from './container/dashboard/setting.component';
 
 
 const routes: Routes = [
@@ -34,7 +36,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    children: [{path: 'dashboard', component: DashboardComponent}],
+    children: [{
+      path: 'dashboard', component: DashboardComponent,
+      children: [{path: 'resume', component: ResumeComponent},
+        {path: 'settings', component: SettingComponent}]
+    }],
     canActivate: [AuthGuard, VerificationCompleted, OnBoardingComplete]
   }];
 

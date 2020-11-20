@@ -88,6 +88,8 @@ import {environment} from '../environments/environment';
 import {rootReducer} from './reducers';
 import {AuthRepository} from './repository/auth-repository';
 import {ResumeRepository} from './repository/resume-repository';
+import {ResumeComponent} from './container/dashboard/resume.component';
+import {SettingComponent} from './container/dashboard/setting.component';
 
 @NgModule({
   declarations: [
@@ -156,7 +158,9 @@ import {ResumeRepository} from './repository/resume-repository';
     WeaknessListComponent,
     WeaknessFormComponent,
     WeaknessCardComponent,
-    Truncate
+    Truncate,
+    ResumeComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
