@@ -7,7 +7,7 @@ import {WeaknessFormComponent} from './resume-dialogues/weakness-form.component'
   selector: 'app-weakness',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-weakness-list [weaknessList]="weaknesses"></app-weakness-list>
+      <app-weakness-list [resumeId]="resumeId" [weaknessList]="weaknesses"></app-weakness-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

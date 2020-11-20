@@ -8,7 +8,7 @@ import {AwardFormComponent} from './resume-dialogues/award-form.component';
   selector: 'app-award',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-award-list [awardList]="awards"></app-award-list>
+      <app-award-list [resumeId]="resumeId" [awardList]="awards"></app-award-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

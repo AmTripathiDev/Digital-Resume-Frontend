@@ -4,7 +4,7 @@ import {Objective} from '../../../models/objective';
 @Component({
   selector: 'app-objective-list',
   template: `
-    <app-objective-card *ngFor="let data of this.objectives"
+    <app-objective-card [resumeId]="resumeId" *ngFor="let data of this.objectives"
                         [objective]="data"></app-objective-card>
   `,
   styles: [``]
@@ -12,6 +12,7 @@ import {Objective} from '../../../models/objective';
 
 export class ObjectiveListComponent {
   @Input() objectives: Objective[];
+  @Input() resumeId: string;
 
   constructor() {
   }

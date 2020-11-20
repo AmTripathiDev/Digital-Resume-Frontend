@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {ObjectiveFormComponent} from '../resume-dialogues/objective-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-objective-card',
@@ -36,18 +37,19 @@ import {ObjectiveFormComponent} from '../resume-dialogues/objective-form.compone
 
 export class ObjectiveCardComponent {
   @Input() objective: Objective;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(ObjectiveFormComponent, {
-      width: '90%', height: '90%', data: {objective: this.objective}
+      width: '90%', height: '90%', data: {objective: this.objective, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteObjective(this.objective._id)
+    this.resumeRepo.deleteObjective(this.resumeId, this.objective._id)
       .subscribe(data => {
         this.alertService.success('Objective deleted Successfully');
       });

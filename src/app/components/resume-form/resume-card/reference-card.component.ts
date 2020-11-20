@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {ReferenceFormComponent} from '../resume-dialogues/reference-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-reference-card',
@@ -36,18 +37,19 @@ import {ReferenceFormComponent} from '../resume-dialogues/reference-form.compone
 
 export class ReferenceCardComponent {
   @Input() reference: Refrence;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(ReferenceFormComponent, {
-      width: '90%', height: '90%', data: {reference: this.reference}
+      width: '90%', height: '90%', data: {reference: this.reference, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteReference(this.reference._id)
+    this.resumeRepo.deleteReference(this.resumeId, this.reference._id)
       .subscribe(data => {
         this.alertService.success('Reference deleted Successfully');
       });

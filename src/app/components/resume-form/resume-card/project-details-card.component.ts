@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {ProjectDetailsFormComponent} from '../resume-dialogues/project-details-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-project-details-card',
@@ -36,18 +37,19 @@ import {ProjectDetailsFormComponent} from '../resume-dialogues/project-details-f
 
 export class ProjectDetailsCardComponent {
   @Input() projectDetail: ProjectDetail;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(ProjectDetailsFormComponent, {
-      width: '90%', height: '90%', data: {projectDetail: this.projectDetail}
+      width: '90%', height: '90%', data: {projectDetail: this.projectDetail, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteProjectDetail(this.projectDetail._id)
+    this.resumeRepo.deleteProjectDetail(this.resumeId, this.projectDetail._id)
       .subscribe(data => {
         this.alertService.success('Project Details deleted Successfully');
       });

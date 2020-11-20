@@ -46,7 +46,7 @@ export const RESUME_UPDATE_AWARDS = 'update awards';
 export const RESUME_DELETE_AWARDS = 'delete awards';
 export const RESUME_ADD_OBJECTIVE = 'add new objective';
 export const RESUME_UPDATE_OBJECTIVE = 'update objective';
-export const RESUME_DELETE_OBJECTIVES = 'delete objective';
+export const RESUME_DELETE_OBJECTIVE = 'delete objective';
 export const RESUME_ADD_REFERENCE = 'add new reference';
 export const RESUME_UPDATE_REFERENCE = 'update reference';
 export const RESUME_DELETE_REFERENCE = 'delete reference';
@@ -278,7 +278,7 @@ export class UpdateObjectiveAction implements Action {
 }
 
 export class DeleteObjectiveAction implements Action {
-  readonly type = RESUME_DELETE_OBJECTIVES;
+  readonly type = RESUME_DELETE_OBJECTIVE;
 
   constructor(public payload: { objective: Objective, resume_id: string }) {
   }

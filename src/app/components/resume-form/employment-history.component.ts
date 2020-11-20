@@ -7,7 +7,7 @@ import {EmploymentHistoryFormComponent} from './resume-dialogues/employment-hist
   selector: 'app-employment-history',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-employment-history-list [employmentHistoryList]="employmentHistories"></app-employment-history-list>
+      <app-employment-history-list [resumeId]="resumeId" [employmentHistoryList]="employmentHistories"></app-employment-history-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

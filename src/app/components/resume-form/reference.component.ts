@@ -7,7 +7,7 @@ import {Refrence} from '../../models/refrence';
   selector: 'app-reference',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-reference-list [referenceList]="references"></app-reference-list>
+      <app-reference-list [resumeId]="resumeId" [referenceList]="references"></app-reference-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

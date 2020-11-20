@@ -4,7 +4,7 @@ import {ProjectDetail} from '../../../models/project-detail';
 @Component({
   selector: 'app-project-details-list',
   template: `
-    <app-project-details-card *ngFor="let data of this.projectDetailList"
+    <app-project-details-card [resumeId]="resumeId" *ngFor="let data of this.projectDetailList"
                               [projectDetail]="data"></app-project-details-card>
   `,
   styles: [``]
@@ -12,6 +12,7 @@ import {ProjectDetail} from '../../../models/project-detail';
 
 export class ProjectDetailsListComponent {
   @Input() projectDetailList: ProjectDetail[];
+  @Input() resumeId: string;
 
   constructor() {
   }

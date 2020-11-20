@@ -4,7 +4,7 @@ import {AwardsAchivement} from '../../../models/awards-achivement';
 @Component({
   selector: 'app-award-list',
   template: `
-    <app-award-card *ngFor="let data of awardList"
+    <app-award-card [resumeId]="resumeId" *ngFor="let data of awardList"
                     [award]="data"></app-award-card>
   `,
   styles: [``]
@@ -12,6 +12,7 @@ import {AwardsAchivement} from '../../../models/awards-achivement';
 
 export class AwardListComponent {
   @Input() awardList: AwardsAchivement[];
+  @Input() resumeId: string;
 
   constructor() {
   }

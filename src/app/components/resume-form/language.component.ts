@@ -7,7 +7,7 @@ import {LanguageFormComponent} from './resume-dialogues/language-form.component'
   selector: 'app-language',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-language-list [languageList]="languages"></app-language-list>
+      <app-language-list [resumeId]="resumeId" [languageList]="languages"></app-language-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

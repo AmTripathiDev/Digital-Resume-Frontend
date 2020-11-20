@@ -3,6 +3,7 @@ import {Education} from '../../../models/education';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ApiService} from '../../../services/api-service';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 
 export interface DataType {
@@ -67,7 +68,7 @@ export class EducationFormComponent implements OnInit {
     'May', 'June', 'July', 'August', 'September', 'November', 'December'];
 
   constructor(public dialogRef: MatDialogRef<EducationFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) {
+              @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) {
   }
 
   ngOnInit() {
@@ -100,14 +101,14 @@ export class EducationFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addEducation(this.educationForm.value, this.data.resumeId);
+    const observer$ = this.resumeRepo.addEducation(this.educationForm.value, this.data.resumeId);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateEducation(this.educationForm.value, this.data.education._id);
+    const observer$ = this.resumeRepo.updateEducation(this.educationForm.value, this.data.education._id, this.data.resumeId);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });

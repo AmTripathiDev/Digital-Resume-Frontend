@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {WeaknessFormComponent} from '../resume-dialogues/weakness-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-weakness-card',
@@ -33,18 +34,19 @@ import {WeaknessFormComponent} from '../resume-dialogues/weakness-form.component
 
 export class WeaknessCardComponent {
   @Input() weakness: Weakness;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(WeaknessFormComponent, {
-      width: '90%', height: '90%', data: {weakness: this.weakness}
+      width: '90%', height: '90%', data: {weakness: this.weakness, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteWeakness(this.weakness._id)
+    this.resumeRepo.deleteWeakness(this.resumeId, this.weakness._id)
       .subscribe(data => {
         this.alertService.success('strength deleted Successfully');
       });

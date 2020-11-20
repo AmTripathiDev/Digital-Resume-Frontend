@@ -4,7 +4,7 @@ import {Refrence} from '../../../models/refrence';
 @Component({
   selector: 'app-reference-list',
   template: `
-    <app-reference-card *ngFor="let data of referenceList"
+    <app-reference-card [resumeId]="resumeId" *ngFor="let data of referenceList"
                         [reference]="data"></app-reference-card>
   `,
   styles: [``]
@@ -12,6 +12,7 @@ import {Refrence} from '../../../models/refrence';
 
 export class ReferenceListComponent {
   @Input() referenceList: Refrence[];
+  @Input() resumeId: string;
 
   constructor() {
   }

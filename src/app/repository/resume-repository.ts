@@ -4,12 +4,28 @@ import {Store} from '@ngrx/store';
 import {getResume, resumeError, resumeLoaded, resumeLoading} from '../reducers';
 import {combineLatest, Observable} from 'rxjs';
 import {
+  AddAwardAction,
   AddContactDetailAction,
-  AddResumeAction, AddSkillAction, DeleteSkillAction,
+  AddEducationAction,
+  AddEmploymentHistoryAction, AddIndustrialExposureAction,
+  AddInterestAction,
+  AddLanguageAction, AddObjectiveAction, AddProjectDetailAction, AddReferenceAction,
+  AddResumeAction,
+  AddSkillAction, AddStrengthAction, AddWeaknessAction, DeleteAwardAction,
+  DeleteEducationAction,
+  DeleteEmploymentHistoryAction, DeleteIndustrialExposureAction,
+  DeleteInterestAction, DeleteLanguageAction, DeleteObjectiveAction, DeleteProjectDetailAction, DeleteReferenceAction,
+  DeleteSkillAction, DeleteStrengthAction, DeleteWeaknessAction,
   ResumeErrorAction,
   ResumeListRequestAction,
-  ResumeListSuccessAction, UpdateContactDetailAction,
-  UpdateResumeAction, UpdateSkillAction
+  ResumeListSuccessAction, UpdateAwardAction,
+  UpdateContactDetailAction,
+  UpdateEducationAction,
+  UpdateEmploymentHistoryAction, UpdateIndustrialExposureAction,
+  UpdateInterestAction,
+  UpdateLanguageAction, UpdateObjectiveAction, UpdateProjectDetailAction, UpdateReferenceAction,
+  UpdateResumeAction,
+  UpdateSkillAction, UpdateStrengthAction, UpdateWeaknessAction
 } from '../actions/resume-actions';
 import {map, take} from 'rxjs/operators';
 import {Resume} from '../models/resume';
@@ -96,4 +112,245 @@ export class ResumeRepository {
       this.store.dispatch(new DeleteSkillAction({skill: res, resume_id: resumeId}));
     }));
   }
+
+  updateViews(data: { views: number }, id: string) {
+    return this.apiService.updateViewsCount(data, id).pipe(map(res => {
+      this.store.dispatch(new UpdateResumeAction(res));
+    }));
+  }
+
+  addEducation(data, resumeId: string) {
+    return this.apiService.addEducation(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddEducationAction({education: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateEducation(data, educationId: string, resumeId: string,) {
+    return this.apiService.updateEducation(data, educationId).pipe(map((res) => {
+      this.store.dispatch(new UpdateEducationAction({education: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteEducation(resumeId: string, educationId: string) {
+    return this.apiService.deleteEducation(educationId).pipe(map((res) => {
+      this.store.dispatch(new DeleteEducationAction({education: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addEmploymentHistory(data, resumeId: string) {
+    return this.apiService.addEmploymentHistory(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddEmploymentHistoryAction({employment_history: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateEmploymentHistory(data, employmentHistoryId: string, resumeId: string) {
+    return this.apiService.updateEmploymentHistory(data, employmentHistoryId).pipe(map((res) => {
+      this.store.dispatch(new UpdateEmploymentHistoryAction({employment_history: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteEmploymentHistory(employmentHistoryId: string, resumeId: string) {
+    return this.apiService.deleteEmploymentHistory(employmentHistoryId).pipe(map((res) => {
+      this.store.dispatch(new DeleteEmploymentHistoryAction({employment_history: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addInterest(data, resumeId: string) {
+    return this.apiService.addInterest(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddInterestAction({interest: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateInterest(data, resumeId: string, interestId: string) {
+    return this.apiService.updateInterest(data, interestId).pipe(map((res) => {
+      this.store.dispatch(new UpdateInterestAction({interest: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteInterest(resumeId: string, interestId: string) {
+    console.log(interestId);
+    return this.apiService.deleteInterest(interestId).pipe(map((res) => {
+      this.store.dispatch(new DeleteInterestAction({interest: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addLanguage(data, resumeId: string) {
+    return this.apiService.addLanguage(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddLanguageAction({language: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateLanguage(data, resumeId: string, languageId: string) {
+    return this.apiService.updateLanguage(data, languageId).pipe(map((res) => {
+      this.store.dispatch(new UpdateLanguageAction({language: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteLanguage(resumeId: string, languageId: string) {
+    return this.apiService.deleteLanguage(languageId).pipe(map((res) => {
+      this.store.dispatch(new DeleteLanguageAction({language: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addIndustrialExposure(data, resumeId: string) {
+    return this.apiService.addIndustrialExposure(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddIndustrialExposureAction({industrial_exposure: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateIndustrialExposure(data, resumeId: string, industrialExposureId: string) {
+    return this.apiService.updateIndustrialExposure(data, industrialExposureId).pipe(map((res) => {
+      this.store.dispatch(new UpdateIndustrialExposureAction({industrial_exposure: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteIndustrialExposure(resumeId: string, industrialExposureId: string) {
+    return this.apiService.deleteIndustrialExposure(industrialExposureId).pipe(map((res) => {
+      this.store.dispatch(new DeleteIndustrialExposureAction({industrial_exposure: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addAward(data, resumeId: string) {
+    return this.apiService.addAward(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddAwardAction({award: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateAward(data, resumeId: string, awardId: string) {
+    return this.apiService.updateAward(data, awardId).pipe(map((res) => {
+      this.store.dispatch(new UpdateAwardAction({award: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteAward(resumeId: string, awardId: string) {
+    return this.apiService.deleteAward(awardId).pipe(map((res) => {
+      console.log(res);
+      this.store.dispatch(new DeleteAwardAction({award: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addObjective(data, resumeId: string) {
+    return this.apiService.addObjective(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddObjectiveAction({objective: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateObjective(data, resumeId: string, objectiveId: string) {
+    return this.apiService.updateObjective(data, objectiveId).pipe(map((res) => {
+      this.store.dispatch(new UpdateObjectiveAction({objective: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteObjective(resumeId: string, objectiveId: string) {
+    return this.apiService.deleteObjective(objectiveId).pipe(map((res) => {
+      this.store.dispatch(new DeleteObjectiveAction({objective: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addReference(data, resumeId: string) {
+    return this.apiService.addReference(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddReferenceAction({reference: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateReference(data, resumeId: string, referenceId: string) {
+    return this.apiService.updateReference(data, referenceId).pipe(map((res) => {
+      this.store.dispatch(new UpdateReferenceAction({reference: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteReference(resumeId: string, referenceId: string) {
+    return this.apiService.deleteReference(referenceId).pipe(map((res) => {
+      this.store.dispatch(new DeleteReferenceAction({reference: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+
+  addProjectDetail(data, resumeId: string) {
+    return this.apiService.addProjectDetail(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddProjectDetailAction({project_detail: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateProjectDetail(data, resumeId: string, projectDetailId: string) {
+    return this.apiService.updateProjectDetail(data, projectDetailId).pipe(map((res) => {
+      this.store.dispatch(new UpdateProjectDetailAction({project_detail: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteProjectDetail(resumeId: string, projectDetailId: string) {
+    return this.apiService.deleteProjectDetail(projectDetailId).pipe(map((res) => {
+      this.store.dispatch(new DeleteProjectDetailAction({project_detail: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addStrength(data, resumeId: string) {
+    return this.apiService.addStrength(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddStrengthAction({strength: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateStrength(data, resumeId: string, projectDetailId: string) {
+    return this.apiService.updateStrength(data, projectDetailId).pipe(map((res) => {
+      this.store.dispatch(new UpdateStrengthAction({strength: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteStrength(resumeId: string, projectDetailId: string) {
+    return this.apiService.deleteStrength(projectDetailId).pipe(map((res) => {
+      this.store.dispatch(new DeleteStrengthAction({strength: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  addWeakness(data, resumeId: string) {
+    return this.apiService.addWeakness(data, resumeId).pipe(map((res) => {
+      this.store.dispatch(new AddWeaknessAction({weakness: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  updateWeakness(data, resumeId: string, weaknessId: string) {
+    return this.apiService.updateWeakness(data, weaknessId).pipe(map((res) => {
+      this.store.dispatch(new UpdateWeaknessAction({weakness: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
+  deleteWeakness(resumeId: string, weaknessId: string) {
+    return this.apiService.deleteWeakness(weaknessId).pipe(map((res) => {
+      this.store.dispatch(new DeleteWeaknessAction({weakness: res, resume_id: resumeId}));
+      return res;
+    }));
+  }
+
 }

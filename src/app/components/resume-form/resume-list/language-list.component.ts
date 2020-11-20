@@ -5,7 +5,7 @@ import {Language} from '../../../models/language';
 @Component({
   selector: 'app-language-list',
   template: `
-    <app-language-card *ngFor="let  language of languageList"
+    <app-language-card [resumeId]="resumeId" *ngFor="let  language of languageList"
                        [language]="language"></app-language-card>
   `,
   styles: [``]
@@ -13,6 +13,7 @@ import {Language} from '../../../models/language';
 
 export class LanguageListComponent {
   @Input() languageList: Language[];
+  @Input() resumeId: string;
 
   constructor() {
   }

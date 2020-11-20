@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {StrengthFormComponent} from '../resume-dialogues/strength-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-strength-card',
@@ -33,18 +34,19 @@ import {StrengthFormComponent} from '../resume-dialogues/strength-form.component
 
 export class StrengthCardComponent {
   @Input() strength: Strength;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(StrengthFormComponent, {
-      width: '90%', height: '90%', data: {strength: this.strength}
+      width: '90%', height: '90%', data: {strength: this.strength, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteStrength(this.strength._id)
+    this.resumeRepo.deleteStrength(this.resumeId, this.strength._id)
       .subscribe(data => {
         this.alertService.success('strength deleted Successfully');
       });

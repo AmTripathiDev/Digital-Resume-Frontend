@@ -4,7 +4,7 @@ import {Strength} from '../../../models/strength';
 @Component({
   selector: 'app-strength-list',
   template: `
-    <app-strength-card *ngFor="let data of strengthList"
+    <app-strength-card [resumeId]="resumeId" *ngFor="let data of strengthList"
                        [strength]="data"></app-strength-card>
   `,
 
@@ -13,6 +13,7 @@ import {Strength} from '../../../models/strength';
 
 export class StrengthListComponent {
   @Input() strengthList: Strength[];
+  @Input() resumeId: string;
 
   constructor() {
   }

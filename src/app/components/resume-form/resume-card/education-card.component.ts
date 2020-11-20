@@ -4,6 +4,7 @@ import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {MatDialog} from '@angular/material/dialog';
 import {EducationFormComponent} from '../resume-dialogues/education-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-education-card',
@@ -36,18 +37,19 @@ import {EducationFormComponent} from '../resume-dialogues/education-form.compone
 
 export class EducationCardComponent {
   @Input() education: Education;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(EducationFormComponent, {
-      width: '90%', height: '90%', data: {education: this.education}
+      width: '90%', height: '90%', data: {education: this.education, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteEducation(this.education._id)
+    this.resumeRepo.deleteEducation(this.resumeId, this.education._id)
       .subscribe(data => {
         this.alertService.success('education deleted Successfully');
       });

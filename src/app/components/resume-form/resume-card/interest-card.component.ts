@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {InterestFormComponent} from '../resume-dialogues/interest-form.component';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-interest-card',
@@ -33,18 +34,19 @@ import {AlertService} from '../../../services/alert-service';
 
 export class InterestCardComponent {
   @Input() interest: Interest;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(InterestFormComponent, {
-      width: '90%', height: '90%', data: {interest: this.interest}
+      width: '90%', height: '90%', data: {interest: this.interest, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteInterest(this.interest._id)
+    this.resumeRepo.deleteInterest(this.resumeId, this.interest._id)
       .subscribe(data => {
         this.alertService.success('Interest deleted Successfully');
       });

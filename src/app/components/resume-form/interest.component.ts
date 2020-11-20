@@ -7,7 +7,7 @@ import {InterestFormComponent} from './resume-dialogues/interest-form.component'
   selector: 'app-interest',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-interest-list [interestList]="interests"></app-interest-list>
+      <app-interest-list [resumeId]="resumeId" [interestList]="interests"></app-interest-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

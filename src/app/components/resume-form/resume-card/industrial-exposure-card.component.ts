@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {IndustrialExposureFormComponent} from '../resume-dialogues/industrial-exposure-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-industrial-exposure-card',
@@ -39,20 +40,21 @@ import {IndustrialExposureFormComponent} from '../resume-dialogues/industrial-ex
 
 export class IndustrialExposureCardComponent {
   @Input() industrialExposure: IndustrialExposure;
+  @Input() resumeId: string;
 
-  constructor(private dialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private dialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     const dialogRef = this.dialog.open(IndustrialExposureFormComponent, {
       disableClose: true,
-      data: {industrialExposure: this.industrialExposure}
+      data: {industrialExposure: this.industrialExposure, resumeId: this.resumeId}
     });
     dialogRef.updateSize('90%', '90%');
   }
 
   delete() {
-    this.apiService.deleteIndustrialExposure(this.industrialExposure._id)
+    this.resumeRepo.deleteIndustrialExposure(this.resumeId, this.industrialExposure._id)
       .subscribe(data => {
         this.alertService.success('industrialExposure deleted Successfully');
       });

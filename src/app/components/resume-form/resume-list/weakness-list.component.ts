@@ -4,7 +4,7 @@ import {Weakness} from '../../../models/weakness';
 @Component({
   selector: 'app-weakness-list',
   template: `
-    <app-weakness-card *ngFor="let data of weaknessList"
+    <app-weakness-card [resumeId]="resumeId" *ngFor="let data of weaknessList"
                        [weakness]="data"></app-weakness-card>
   `,
   styles: [``]
@@ -12,6 +12,7 @@ import {Weakness} from '../../../models/weakness';
 
 export class WeaknessListComponent {
   @Input() weaknessList: Weakness[];
+  @Input() resumeId: string;
 
   constructor() {
   }

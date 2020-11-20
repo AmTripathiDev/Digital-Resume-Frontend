@@ -4,6 +4,7 @@ import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
 import {Language} from '../../../models/language';
 import {LanguageFormComponent} from '../resume-dialogues/language-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-language-card',
@@ -35,18 +36,19 @@ import {LanguageFormComponent} from '../resume-dialogues/language-form.component
 
 export class LanguageCardComponent {
   @Input() language: Language;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(LanguageFormComponent, {
-      width: '90%', height: '90%', data: {language: this.language}
+      width: '90%', height: '90%', data: {language: this.language, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteLanguage(this.language._id)
+    this.resumeRepo.deleteLanguage(this.resumeId, this.language._id)
       .subscribe(data => {
         this.alertService.success('Language deleted Successfully');
       });

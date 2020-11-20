@@ -7,7 +7,7 @@ import {EducationFormComponent} from './resume-dialogues/education-form.componen
   selector: 'app-education',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-education-list [educationList]="educations"></app-education-list>
+      <app-education-list [resumeId]="resumeId" [educationList]="educations"></app-education-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

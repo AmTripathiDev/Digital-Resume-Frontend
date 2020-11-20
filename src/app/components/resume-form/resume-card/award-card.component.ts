@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {AlertService} from '../../../services/alert-service';
 import {ApiService} from '../../../services/api-service';
 import {AwardFormComponent} from '../resume-dialogues/award-form.component';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-award-card',
@@ -34,18 +35,19 @@ import {AwardFormComponent} from '../resume-dialogues/award-form.component';
 
 export class AwardCardComponent {
   @Input() award: AwardsAchivement;
+  @Input() resumeId: string;
 
-  constructor(private matDialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private matDialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     this.matDialog.open(AwardFormComponent, {
-      width: '90%', height: '90%', data: {award: this.award}
+      width: '90%', height: '90%', data: {award: this.award, resumeId: this.resumeId}
     });
   }
 
   delete() {
-    this.apiService.deleteAward(this.award._id)
+    this.resumeRepo.deleteAward(this.resumeId, this.award._id)
       .subscribe(data => {
         this.alertService.success('Award deleted Successfully');
       });

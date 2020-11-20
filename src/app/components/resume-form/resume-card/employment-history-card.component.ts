@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {EmploymentHistoryFormComponent} from '../resume-dialogues/employment-history-form.component';
 import {ApiService} from '../../../services/api-service';
 import {AlertService} from '../../../services/alert-service';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 @Component({
   selector: 'app-employment-history-card',
@@ -36,20 +37,21 @@ import {AlertService} from '../../../services/alert-service';
 
 export class EmploymentHistoryCardComponent {
   @Input() employmentHistory: EmploymentHistory;
+  @Input() resumeId: string;
 
-  constructor(private dialog: MatDialog, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private dialog: MatDialog, private resumeRepo: ResumeRepository, private alertService: AlertService) {
   }
 
   edit() {
     const dialogRef = this.dialog.open(EmploymentHistoryFormComponent, {
       disableClose: true,
-      data: {employmentHistory: this.employmentHistory}
+      data: {employmentHistory: this.employmentHistory, resumeId: this.resumeId}
     });
     dialogRef.updateSize('90%', '90%');
   }
 
   delete() {
-    this.apiService.deleteEmploymentHistory(this.employmentHistory._id)
+    this.resumeRepo.deleteEmploymentHistory(this.employmentHistory._id, this.resumeId)
       .subscribe(data => {
         this.alertService.success('Employment History deleted Successfully');
       });

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {AwardsAchivement} from '../../../models/awards-achivement';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 interface DataType {
   award: AwardsAchivement;
@@ -35,7 +36,7 @@ export class AwardFormComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AwardFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DataType,
-              private apiService: ApiService) {
+              private resumeRepo: ResumeRepository) {
   }
 
   ngOnInit() {
@@ -54,14 +55,14 @@ export class AwardFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addAward(this.form.value, this.data.resumeId);
+    const observer$ = this.resumeRepo.addAward(this.form.value, this.data.resumeId);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateAward(this.form.value, this.data.award._id);
+    const observer$ = this.resumeRepo.updateAward(this.form.value, this.data.resumeId, this.data.award._id);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });

@@ -7,7 +7,7 @@ import {IndustrialExposureFormComponent} from './resume-dialogues/industrial-exp
   selector: 'app-industrial-exposure',
   template: `
     <div fxLayout="column" fxLayoutGap="30px">
-      <app-industrial-exposure-list [industrialExposureList]="industrialExposures"></app-industrial-exposure-list>
+      <app-industrial-exposure-list [resumeId]="resumeId" [industrialExposureList]="industrialExposures"></app-industrial-exposure-list>
       <button (click)="add()" mat-raised-button color="primary">Add</button>
     </div>
   `,

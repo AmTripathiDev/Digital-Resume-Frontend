@@ -215,4 +215,8 @@ export class ApiService {
   updateWeakness(data: any, weaknessId: string) {
     return this.httpService.patch('/resume/update/weakness/' + weaknessId, data);
   }
+
+  updateViewsCount(data: { views: number }, id: string) {
+    return this.httpService.patch('/resume/update/resume/views/' + id, data);
+  }
 }

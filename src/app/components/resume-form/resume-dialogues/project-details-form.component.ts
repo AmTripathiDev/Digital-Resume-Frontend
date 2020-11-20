@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ApiService} from '../../../services/api-service';
 import {ProjectDetail} from '../../../models/project-detail';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ResumeRepository} from '../../../repository/resume-repository';
 
 interface DataType {
   projectDetail: ProjectDetail;
@@ -49,7 +50,7 @@ export class ProjectDetailsFormComponent implements OnInit {
   form: FormGroup;
 
   constructor(public dialogRef: MatDialogRef<ProjectDetailsFormComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DataType, private apiService: ApiService) {
+              @Inject(MAT_DIALOG_DATA) public data: DataType, private resumeRepo: ResumeRepository) {
   }
 
   ngOnInit() {
@@ -74,14 +75,14 @@ export class ProjectDetailsFormComponent implements OnInit {
   }
 
   save() {
-    const observer$ = this.apiService.addProjectDetail(this.form.value, this.data.resumeId);
+    const observer$ = this.resumeRepo.addProjectDetail(this.form.value, this.data.resumeId);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });
   }
 
   update() {
-    const observer$ = this.apiService.updateProjectDetail(this.form.value, this.data.projectDetail._id);
+    const observer$ = this.resumeRepo.updateProjectDetail(this.form.value, this.data.resumeId, this.data.projectDetail._id);
     observer$.subscribe(data => {
       this.dialogRef.close();
     });
