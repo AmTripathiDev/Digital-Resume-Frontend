@@ -90,6 +90,7 @@ import {AuthRepository} from './repository/auth-repository';
 import {ResumeRepository} from './repository/resume-repository';
 import {ResumeComponent} from './container/dashboard/resume.component';
 import {SettingComponent} from './container/dashboard/setting.component';
+import {HeaderComponent} from './container/layout/header.component';
 
 @NgModule({
   declarations: [
@@ -160,7 +161,8 @@ import {SettingComponent} from './container/dashboard/setting.component';
     WeaknessCardComponent,
     Truncate,
     ResumeComponent,
-    SettingComponent
+    SettingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   template: `
-    <h1>Hello i am dashboard component</h1>
+    <app-header></app-header>
     <router-outlet></router-outlet>
   `,
   styles: [``]
