@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {AuthRepository} from '../../repository/auth-repository';
+import {takeWhile} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ import {AuthRepository} from '../../repository/auth-repository';
                 routerLink="resume" class="nav-bar-button" mat-button>Resumes
         </button>
         <button routerLinkActive="selected" routerLink="settings" class="nav-bar-button" mat-button>Settings</button>
-        <button class="nav-bar-button" mat-button>Logout</button>
+        <button (click)="logout()" class="nav-bar-button" mat-button>Logout</button>
         <span fxFlex="35%"></span>
         <div class="username" fxLayoutAlign="start center" fxLayout="row" fxLayoutGap="10px">
           <mat-icon>account_circle</mat-icon>
@@ -35,7 +37,7 @@ import {AuthRepository} from '../../repository/auth-repository';
                     routerLink="resume" class="nav-bar-button" mat-button>Resumes
             </button>
             <button routerLinkActive="selected" routerLink="settings" class="nav-bar-button" mat-button>Settings</button>
-            <button class="nav-bar-button" mat-button>Logout</button>
+            <button (click)="logout()" class="nav-bar-button" mat-button>Logout</button>
           </div>
         </mat-menu>
       </div>
@@ -80,12 +82,21 @@ import {AuthRepository} from '../../repository/auth-repository';
   `]
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
   userName = '';
+  isAlive = true;
 
-  constructor(private authRepo: AuthRepository) {
-    this.authRepo.fetchMe().subscribe(user => {
+  constructor(private authRepo: AuthRepository, private router: Router) {
+    this.authRepo.fetchMe().pipe(takeWhile(() => this.isAlive)).subscribe(user => {
       this.userName = user.name;
     });
+  }
+
+  ngOnDestroy() {
+    this.isAlive = false;
+  }
+
+  logout() {
+    this.router.navigate(['logout']);
   }
 }

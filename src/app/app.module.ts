@@ -91,6 +91,7 @@ import {ResumeRepository} from './repository/resume-repository';
 import {ResumeComponent} from './container/dashboard/resume.component';
 import {SettingComponent} from './container/dashboard/setting.component';
 import {HeaderComponent} from './container/layout/header.component';
+import {LogoutComponent} from './components/logout.component';
 
 @NgModule({
   declarations: [
@@ -162,7 +163,8 @@ import {HeaderComponent} from './container/layout/header.component';
     Truncate,
     ResumeComponent,
     SettingComponent,
-    HeaderComponent
+    HeaderComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

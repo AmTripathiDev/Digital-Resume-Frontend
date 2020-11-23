@@ -5,12 +5,13 @@ import {catchError} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {ApiService} from './api-service';
 import {AuthUtils} from '../utility/auth-utils';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class HttpService {
   private baseURl = 'http://localhost:5000/api';
 
-  constructor(private httpClient: HttpClient, private alertService: AlertService) {
+  constructor(private httpClient: HttpClient, private alertService: AlertService, private router: Router) {
   }
 
   get(url: string, paramData?: any): Observable<any> {
@@ -45,8 +46,8 @@ export class HttpService {
     const message = response.message;
     const status = response.status;
     if (status === 401) {
-      // user ko logout krna hai and then again send him
-      // to login page
+      this.router.navigate(['logout']);
+      this.alertService.message('Session Expired');
     }
     if (key === 'isTrusted') {
       this.alertService.error('Please connect to internet Connection');
