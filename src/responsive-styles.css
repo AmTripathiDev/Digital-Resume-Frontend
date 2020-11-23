@@ -4,6 +4,15 @@
     font-size: 2rem !important;
   }
 
+  .res-header-image {
+    width: 45% !important;
+    margin-left: -1rem !important;
+  }
+
+  .mat-menu-panel {
+    background: #1d1c1bc2 !important;
+  }
+
   .res-onboarding-desc {
     text-align: center !important;
     font-size: 1rem !important;

@@ -5,9 +5,9 @@ import {AuthRepository} from '../../repository/auth-repository';
   selector: 'app-header',
   template: `
     <div fxLayout="row" fxLayoutAlign="start center" class="header-container">
-      <img style="width: 15%" src="../../../assets/digiresume-light-green.png">
+      <img class="res-header-image" style="width: 15%" src="../../../assets/digiresume-light-green.png">
       <span fxFlex="1 1 auto"></span>
-      <div fxFlex="1 1 auto" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
+      <div fxHide.xs fxFlex="1 1 auto" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="start center">
         <button routerLinkActive="selected"
                 routerLink="resume" class="nav-bar-button" mat-button>Resumes
         </button>
@@ -18,6 +18,26 @@ import {AuthRepository} from '../../repository/auth-repository';
           <mat-icon>account_circle</mat-icon>
           <span>{{this.userName}}</span>
         </div>
+      </div>
+      <div fxHide.gt-xs>
+        <button style="color: #a8ee90 !important;"
+                [matMenuTriggerFor]="menu"
+                mat-icon-button>
+          <mat-icon>dehaze</mat-icon>
+        </button>
+        <mat-menu style="opacity: 0.5;" direction="vertical" [overlapTrigger]="false" #menu>
+          <div fxLayoutGap="30px" fxFlex="100%" fxLayout="column" fxLayoutAlign="center center" class="res-menu">
+            <div fxLayoutGap="10px" fxLayoutAlign="start center" class="username" fxLayout="row">
+              <mat-icon>account_circle</mat-icon>
+              <span>{{this.userName}}</span>
+            </div>
+            <button routerLinkActive="selected"
+                    routerLink="resume" class="nav-bar-button" mat-button>Resumes
+            </button>
+            <button routerLinkActive="selected" routerLink="settings" class="nav-bar-button" mat-button>Settings</button>
+            <button class="nav-bar-button" mat-button>Logout</button>
+          </div>
+        </mat-menu>
       </div>
     </div>
   `,
@@ -41,6 +61,12 @@ import {AuthRepository} from '../../repository/auth-repository';
       background: transparent;
       font-size: 1rem;
       text-transform: uppercase;
+    }
+
+    .res-menu {
+      width: 100vw !important;
+      height: 100vh !important;
+      margin-top: -1rem !important;
     }
 
     .nav-bar-button:hover {
