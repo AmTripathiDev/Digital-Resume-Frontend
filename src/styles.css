@@ -99,3 +99,11 @@ button {
 .alert .mat-simple-snackbar {
   justify-content: center;
 }
+
+.setting-label {
+  font-size: 1.2rem !important;
+}
+
+.settings-input {
+  width: 70% !important;
+}

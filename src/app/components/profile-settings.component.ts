@@ -10,15 +10,15 @@ import {User} from '../models/user';
     <form [formGroup]="this.form" (ngSubmit)="this.form.valid && update()">
       <div fxLayoutGap="30px" fxLayout="column" fxLayoutAlign="start stretch">
         <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
-          <label>Name:</label>
-          <mat-form-field>
+          <label class="setting-label">Name:</label>
+          <mat-form-field class="settings-input">
             <input matInput formControlName="name"
                    placeholder="Name"/>
           </mat-form-field>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="30px">
-          <label>Email:</label>
-          <mat-form-field>
+          <label class="setting-label">Email:</label>
+          <mat-form-field class="settings-input">
             <input disabled [value]="this.user ? this.user.email : ''"
                    matInput placeholder="Email"/>
           </mat-form-field>
@@ -32,14 +32,6 @@ import {User} from '../models/user';
     </form>
   `,
   styles: [`
-
-    mat-form-field {
-      width: 70%;
-    }
-
-    label {
-      font-size: 1.5rem;
-    }
   `]
 })
 

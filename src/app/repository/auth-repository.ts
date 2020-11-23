@@ -69,4 +69,8 @@ export class AuthRepository {
         this.store.dispatch(new UserUpdateAction(res));
       }));
   }
+
+  updatePassword(data) {
+    return this.apiService.updatePassword(data);
+  }
 }

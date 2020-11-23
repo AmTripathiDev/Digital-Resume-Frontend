@@ -94,6 +94,7 @@ import {HeaderComponent} from './container/layout/header.component';
 import {LogoutComponent} from './components/logout.component';
 import {NotFoundComponent} from './container/not-found.component';
 import {ProfileSettingsComponent} from './components/profile-settings.component';
+import {PasswordComponent} from './components/password.component';
 
 @NgModule({
   declarations: [
@@ -168,7 +169,8 @@ import {ProfileSettingsComponent} from './components/profile-settings.component'
     HeaderComponent,
     LogoutComponent,
     NotFoundComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
