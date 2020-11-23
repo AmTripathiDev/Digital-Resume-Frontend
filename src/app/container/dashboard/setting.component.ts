@@ -7,9 +7,10 @@ import {Component} from '@angular/core';
       <div fxLayoutAlign="center center" style="width: 100vw">
         <h1>Settings</h1>
       </div>
-      <div style="padding: 10rem;" fxLayout="column" fxLayoutGap="30px">
-        <div class="profile-container"
-             fxLayout="row" fxLayoutAlign="start stretch">
+      <div class="res-setting-container"
+           style="padding: 10rem;" fxLayout="column" fxLayoutGap="30px">
+        <div class="profile-container  "
+             fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
           <div fxFlex="35%">
             <h1>Profile</h1>
           </div>
@@ -17,8 +18,8 @@ import {Component} from '@angular/core';
             <app-profile-settings></app-profile-settings>
           </div>
         </div>
-        <div class="profile-container"
-             fxLayout="row" fxLayoutAlign="start stretch">
+        <div class="profile-container  "
+             fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start stretch">
           <div fxFlex="35%">
             <h1>Password</h1>
           </div>
@@ -41,7 +42,6 @@ import {Component} from '@angular/core';
       border-bottom: 2px solid #80808017;
       width: 100%;
       padding-bottom: 60px;
-
     }
   `]
 })
