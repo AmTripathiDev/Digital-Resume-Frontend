@@ -8,11 +8,11 @@ import {
   LoginSuccessAction,
   LogoutAction,
   UserProfileRequestAction,
-  UserProfileSuccessAction
+  UserProfileSuccessAction, UserUpdateAction
 } from '../actions/user-actions';
 import {getUser, userLoggedIn, userLoggingIn} from '../reducers';
 import {AuthUtils} from '../utility/auth-utils';
-import {take} from 'rxjs/operators';
+import {map, take} from 'rxjs/operators';
 
 @Injectable()
 export class AuthRepository {
@@ -60,5 +60,13 @@ export class AuthRepository {
   logout() {
     AuthUtils.removeAuthToken();
     this.store.dispatch(new LogoutAction());
+  }
+
+  updateProfile(data) {
+    const userProfile = {...data, ...{job_category: 'abc', experience_level: 'ads'}};
+    return this.apiService.updateUserProfile(userProfile)
+      .pipe(map((res) => {
+        this.store.dispatch(new UserUpdateAction(res));
+      }));
   }
 }

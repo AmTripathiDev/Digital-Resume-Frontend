@@ -3,13 +3,43 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-setting',
   template: `
-    <h1>Hello i am setting component</h1>
+    <div style="margin-top: 2rem" fxLayout="column" fxLayoutGap="30px" fxLayoutAlign="start stretch">
+      <div fxLayoutAlign="center center" style="width: 100vw">
+        <h1>Settings</h1>
+      </div>
+      <div style="padding: 10rem;" fxLayout="row" fxLayoutGap="30px">
+        <div class="profile-container"
+             fxLayout="row" fxLayoutAlign="start stretch">
+          <div fxFlex="35%">
+            <h1>Profile</h1>
+          </div>
+          <div fxFlex="65%">
+            <app-profile-settings></app-profile-settings>
+          </div>
+        </div>
+      </div>
+    </div>
   `,
-  styles: [``]
+  styles: [`
+    h1 {
+      text-transform: uppercase;
+      color: #538ec3;
+      letter-spacing: 2px;
+      font-size: 2rem;
+    }
+
+    .profile-container {
+      border-bottom: 2px solid #80808017;
+      width: 100%;
+      padding-bottom: 60px;
+
+    }
+  `]
 })
 
 export class SettingComponent {
 
   constructor() {
+
   }
 }

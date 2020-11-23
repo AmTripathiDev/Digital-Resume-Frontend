@@ -93,6 +93,7 @@ import {SettingComponent} from './container/dashboard/setting.component';
 import {HeaderComponent} from './container/layout/header.component';
 import {LogoutComponent} from './components/logout.component';
 import {NotFoundComponent} from './container/not-found.component';
+import {ProfileSettingsComponent} from './components/profile-settings.component';
 
 @NgModule({
   declarations: [
@@ -166,7 +167,8 @@ import {NotFoundComponent} from './container/not-found.component';
     SettingComponent,
     HeaderComponent,
     LogoutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProfileSettingsComponent
   ],
   imports: [
     BrowserModule,
