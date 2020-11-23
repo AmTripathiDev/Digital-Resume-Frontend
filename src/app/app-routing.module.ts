@@ -16,6 +16,7 @@ import {OnBoardingIntroComponent} from './container/on-boarding/on-boarding-intr
 import {ResumeComponent} from './container/dashboard/resume.component';
 import {SettingComponent} from './container/dashboard/setting.component';
 import {LogoutComponent} from './components/logout.component';
+import {NotFoundComponent} from './container/not-found.component';
 
 
 const routes: Routes = [
@@ -44,7 +45,8 @@ const routes: Routes = [
     }],
     canActivate: [AuthGuard, VerificationCompleted, OnBoardingComplete]
   },
-  {path: 'logout', component: LogoutComponent}];
+  {path: 'logout', component: LogoutComponent},
+  {path: '**', component: NotFoundComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
