@@ -95,6 +95,8 @@ import {LogoutComponent} from './components/logout.component';
 import {NotFoundComponent} from './container/not-found.component';
 import {ProfileSettingsComponent} from './components/profile-settings.component';
 import {PasswordComponent} from './components/password.component';
+import {ResumeCardComponent} from './components/resume-card.component';
+import {ErrorComponent} from './components/error.component';
 
 @NgModule({
   declarations: [
@@ -170,7 +172,9 @@ import {PasswordComponent} from './components/password.component';
     LogoutComponent,
     NotFoundComponent,
     ProfileSettingsComponent,
-    PasswordComponent
+    PasswordComponent,
+    ResumeCardComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

@@ -11,8 +11,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
-import {MatOptionModule} from '@angular/material/core';
+import {MatOptionModule, MatRippleModule} from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const data = [
   MatButtonModule,
@@ -28,7 +29,9 @@ const data = [
   MatDialogModule,
   MatSelectModule,
   MatOptionModule,
-  MatMenuModule
+  MatMenuModule,
+  MatTooltipModule,
+  MatRippleModule
 ];
 
 @NgModule({
