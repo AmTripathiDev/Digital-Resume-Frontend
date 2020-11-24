@@ -97,6 +97,7 @@ import {ProfileSettingsComponent} from './components/profile-settings.component'
 import {PasswordComponent} from './components/password.component';
 import {ResumeCardComponent} from './components/resume-card.component';
 import {ErrorComponent} from './components/error.component';
+import {AddOrEditResumeComponent} from './components/dialogues/add-or-edit-resume.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +175,8 @@ import {ErrorComponent} from './components/error.component';
     ProfileSettingsComponent,
     PasswordComponent,
     ResumeCardComponent,
-    ErrorComponent
+    ErrorComponent,
+    AddOrEditResumeComponent
   ],
   imports: [
     BrowserModule,

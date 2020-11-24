@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Resume} from '../../models/resume';
 import {ResumeRepository} from '../../repository/resume-repository';
+import {MatDialog} from '@angular/material/dialog';
+import {AddOrEditResumeComponent} from '../../components/dialogues/add-or-edit-resume.component';
 
 @Component({
   selector: 'app-resume',
@@ -10,7 +12,7 @@ import {ResumeRepository} from '../../repository/resume-repository';
          fxLayoutGap="20px">
       <div fxLayout="row wrap"
            fxLayoutAlign="start center" fxLayoutGap="30px">
-        <mat-card class="add-card" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px" matRipple>
+        <mat-card (click)="addResume()" class="add-card" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="30px" matRipple>
           <mat-icon>add_box</mat-icon>
           <mat-card-title style="color: #538ec3;">Add Resume</mat-card-title>
         </mat-card>
@@ -19,7 +21,7 @@ import {ResumeRepository} from '../../repository/resume-repository';
 
       </div>
     </div>
-    <div *ngIf="loading && !error" style="height: 100vh" fxFlex="100%" fxLayoutAlign="center center">
+    <div *ngIf="loading" style="height: 100vh" fxFlex="100%" fxLayoutAlign="center center">
       <mat-spinner></mat-spinner>
     </div>
   `,
@@ -51,7 +53,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
   loading = false;
   error = false;
 
-  constructor(private resumeRepo: ResumeRepository) {
+  constructor(private resumeRepo: ResumeRepository, private matDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -69,6 +71,13 @@ export class ResumeComponent implements OnInit, OnDestroy {
     });
     observer$[0].subscribe(loading => {
       this.loading = loading;
+    });
+  }
+
+  addResume() {
+    this.matDialog.open(AddOrEditResumeComponent, {
+      height: '20%',
+      width: '50%'
     });
   }
 }

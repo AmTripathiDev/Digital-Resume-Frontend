@@ -1,5 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Resume} from '../models/resume';
+import {MatDialog} from '@angular/material/dialog';
+import {AddOrEditResumeComponent} from './dialogues/add-or-edit-resume.component';
 
 @Component({
   selector: 'app-resume-card',
@@ -19,7 +21,7 @@ import {Resume} from '../models/resume';
           <button mat-icon-button>
             <mat-icon class="icon" matTooltip="Delete">delete</mat-icon>
           </button>
-          <button mat-icon-button>
+          <button (click)="editResume()" mat-icon-button>
             <mat-icon class="icon" matTooltip="Edit">create</mat-icon>
           </button>
           <button mat-icon-button>
@@ -72,6 +74,14 @@ export class ResumeCardComponent {
   hover = false;
   @Input() resume: Resume;
 
-  constructor() {
+  constructor(private matDialog: MatDialog) {
+  }
+
+  editResume() {
+    this.matDialog.open(AddOrEditResumeComponent, {
+      data: this.resume,
+      width: '50%',
+      height: '20%'
+    });
   }
 }
