@@ -2,6 +2,8 @@ import {Component, Input} from '@angular/core';
 import {Resume} from '../models/resume';
 import {MatDialog} from '@angular/material/dialog';
 import {AddOrEditResumeComponent} from './dialogues/add-or-edit-resume.component';
+import {ResumeRepository} from '../repository/resume-repository';
+import {AlertService} from '../services/alert-service';
 
 @Component({
   selector: 'app-resume-card',
@@ -19,7 +21,7 @@ import {AddOrEditResumeComponent} from './dialogues/add-or-edit-resume.component
             <mat-icon class="icon" matTooltip="Preview">visibility</mat-icon>
           </button>
           <button mat-icon-button>
-            <mat-icon class="icon" matTooltip="Delete">delete</mat-icon>
+            <mat-icon (click)="delete()" class="icon" matTooltip="Delete">delete</mat-icon>
           </button>
           <button (click)="editResume()" mat-icon-button>
             <mat-icon class="icon" matTooltip="Edit">create</mat-icon>
@@ -74,7 +76,9 @@ export class ResumeCardComponent {
   hover = false;
   @Input() resume: Resume;
 
-  constructor(private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog,
+              private resumeRepo: ResumeRepository,
+              private alertService: AlertService) {
   }
 
   editResume() {
@@ -82,6 +86,12 @@ export class ResumeCardComponent {
       data: this.resume,
       width: '50%',
       height: '20%'
+    });
+  }
+
+  delete() {
+    this.resumeRepo.deleteResume(this.resume._id).subscribe(() => {
+      this.alertService.success('Resume Deleted Successfully');
     });
   }
 }

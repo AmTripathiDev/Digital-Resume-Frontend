@@ -14,7 +14,7 @@ import {
   AddSkillAction, AddStrengthAction, AddWeaknessAction, DeleteAwardAction,
   DeleteEducationAction,
   DeleteEmploymentHistoryAction, DeleteIndustrialExposureAction,
-  DeleteInterestAction, DeleteLanguageAction, DeleteObjectiveAction, DeleteProjectDetailAction, DeleteReferenceAction,
+  DeleteInterestAction, DeleteLanguageAction, DeleteObjectiveAction, DeleteProjectDetailAction, DeleteReferenceAction, DeleteResumeAction,
   DeleteSkillAction, DeleteStrengthAction, DeleteWeaknessAction,
   ResumeErrorAction,
   ResumeListRequestAction,
@@ -64,6 +64,12 @@ export class ResumeRepository {
   editResume(data, resumeId) {
     return this.apiService.editResume(data, resumeId).pipe(map((resume) => {
       this.store.dispatch(new UpdateResumeAction(resume));
+    }));
+  }
+
+  deleteResume(resumeId) {
+    return this.apiService.deleteResume(resumeId).pipe(map((resume) => {
+      this.store.dispatch(new DeleteResumeAction(resumeId));
     }));
   }
 
