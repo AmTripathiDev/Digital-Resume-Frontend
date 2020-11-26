@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddOrEditResumeComponent} from './dialogues/add-or-edit-resume.component';
 import {ResumeRepository} from '../repository/resume-repository';
 import {AlertService} from '../services/alert-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-resume-card',
@@ -27,7 +28,7 @@ import {AlertService} from '../services/alert-service';
             <mat-icon class="icon" matTooltip="Edit">create</mat-icon>
           </button>
           <button mat-icon-button>
-            <mat-icon class="icon" matTooltip="Download">download</mat-icon>
+            <mat-icon (click)="download()" class="icon" matTooltip="Download">download</mat-icon>
           </button>
         </div>
       </div>
@@ -78,6 +79,7 @@ export class ResumeCardComponent {
 
   constructor(private matDialog: MatDialog,
               private resumeRepo: ResumeRepository,
+              private router: Router,
               private alertService: AlertService) {
   }
 
@@ -93,5 +95,9 @@ export class ResumeCardComponent {
     this.resumeRepo.deleteResume(this.resume._id).subscribe(() => {
       this.alertService.success('Resume Deleted Successfully');
     });
+  }
+
+  download() {
+    this.router.navigate(['dashboard', 'resume', 'template', this.resume._id]);
   }
 }
