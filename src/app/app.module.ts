@@ -101,6 +101,7 @@ import {AddOrEditResumeComponent} from './components/dialogues/add-or-edit-resum
 import {TemplatesComponent} from './container/templates.component';
 import { SingleTemplateComponent } from './container/single-template.component';
 import {TemplateCardComponent} from './components/template-card.component';
+import {BluesTemplateComponent} from './components/templates/blues-template.component';
 
 @NgModule({
   declarations: [
@@ -182,7 +183,8 @@ import {TemplateCardComponent} from './components/template-card.component';
     AddOrEditResumeComponent,
     TemplatesComponent,
     SingleTemplateComponent,
-    TemplateCardComponent
+    TemplateCardComponent,
+    BluesTemplateComponent
   ],
   imports: [
     BrowserModule,
