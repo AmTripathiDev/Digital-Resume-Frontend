@@ -25,3 +25,8 @@ export const getResume = createSelector(getResumeRootState, fromResume.getResume
 export const resumeEntities = createSelector(getResumeRootState, fromResume.getEntities);
 export const resumeIds = createSelector(getResumeRootState, fromResume.getIds);
 export const resumeError = createSelector(getResumeRootState, fromResume.getError);
+export const getResumeById = (state: RootReducerState, id) => {
+  const entities = resumeEntities(state);
+  return entities[id];
+};
+

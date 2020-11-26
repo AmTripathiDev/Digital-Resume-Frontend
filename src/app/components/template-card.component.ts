@@ -1,9 +1,10 @@
 import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-template-card',
   template: `
-    <mat-card matRipple fxLayout="column">
+    <mat-card (click)="openTemplate()" matRipple fxLayout="column">
       <img mat-card-image [src]="template.src"/>
       <span style=" text-align: center;
       color: #538ec3;">{{template.name}}</span>
@@ -26,7 +27,13 @@ import {Component, Input} from '@angular/core';
 
 export class TemplateCardComponent {
   @Input() template;
+  @Input() resumeId;
 
-  constructor() {
+  constructor(private router: Router) {
+  }
+
+  openTemplate() {
+    this.router.navigate(['dashboard', 'resume', 'template',
+      this.resumeId, this.template.id]);
   }
 }

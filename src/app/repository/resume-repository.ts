@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ApiService} from '../services/api-service';
 import {Store} from '@ngrx/store';
-import {getResume, resumeError, resumeLoaded, resumeLoading} from '../reducers';
+import {getResume, getResumeById, resumeError, resumeLoaded, resumeLoading} from '../reducers';
 import {combineLatest, Observable} from 'rxjs';
 import {
   AddAwardAction,
@@ -52,6 +52,20 @@ export class ResumeRepository {
       }
     });
     return [loading$, error$, resume$];
+  }
+
+  getResumeById(id, force = false) {
+    const resume$ = this.store.select((state: any) => {
+      return getResumeById(state, id);
+    });
+    resume$.pipe(take(1)).subscribe(data => {
+      if (!data || force) {
+        this.apiService.getResumeById(id).subscribe(res => {
+          this.store.dispatch(new AddResumeAction(res));
+        });
+      }
+    });
+    return resume$;
   }
 
   saveResume(data): Observable<any> {
