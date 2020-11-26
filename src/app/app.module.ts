@@ -100,6 +100,7 @@ import {ErrorComponent} from './components/error.component';
 import {AddOrEditResumeComponent} from './components/dialogues/add-or-edit-resume.component';
 import {TemplatesComponent} from './container/templates.component';
 import { SingleTemplateComponent } from './container/single-template.component';
+import {TemplateCardComponent} from './components/template-card.component';
 
 @NgModule({
   declarations: [
@@ -180,7 +181,8 @@ import { SingleTemplateComponent } from './container/single-template.component';
     ErrorComponent,
     AddOrEditResumeComponent,
     TemplatesComponent,
-    SingleTemplateComponent
+    SingleTemplateComponent,
+    TemplateCardComponent
   ],
   imports: [
     BrowserModule,
