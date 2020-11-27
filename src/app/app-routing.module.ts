@@ -19,6 +19,7 @@ import {LogoutComponent} from './components/logout.component';
 import {NotFoundComponent} from './container/not-found.component';
 import {TemplatesComponent} from './container/templates.component';
 import {SingleTemplateComponent} from './container/single-template.component';
+import {SingleResumeComponent} from './container/single-resume.component';
 
 
 const routes: Routes = [
@@ -39,13 +40,17 @@ const routes: Routes = [
     canActivate: [AuthGuard, VerificationCompleted, OnBoardingInComplete]
   },
   {
+    path: 'resume/view/:id', component: SingleResumeComponent
+  },
+  {
     path: '',
     children: [{
       path: 'dashboard', component: DashboardComponent,
       children: [{path: 'resume', component: ResumeComponent},
         {path: 'settings', component: SettingComponent},
         {path: 'resume/template/:id', component: TemplatesComponent},
-        {path: 'resume/template/:id/:templateId', component: SingleTemplateComponent}]
+        {path: 'resume/template/:id/:templateId', component: SingleTemplateComponent},
+        {path: 'resume/preview/:id', component: SingleResumeComponent}]
     }],
     canActivate: [AuthGuard, VerificationCompleted, OnBoardingComplete]
   },
