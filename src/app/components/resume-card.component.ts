@@ -18,7 +18,7 @@ import {Router} from '@angular/router';
           <button mat-icon-button>
             <mat-icon class="icon" matTooltip="share">share</mat-icon>
           </button>
-          <button mat-icon-button>
+          <button (click)="preview()" mat-icon-button>
             <mat-icon class="icon" matTooltip="Preview">visibility</mat-icon>
           </button>
           <button mat-icon-button>
@@ -99,5 +99,9 @@ export class ResumeCardComponent {
 
   download() {
     this.router.navigate(['dashboard', 'resume', 'template', this.resume._id]);
+  }
+
+  preview() {
+    this.router.navigate(['dashboard', 'resume', 'preview', this.resume._id]);
   }
 }
