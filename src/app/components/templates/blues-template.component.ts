@@ -1,95 +1,98 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Resume} from '../../models/resume';
 
 @Component({
   selector: 'app-blues-template',
   template: `
     <div *ngIf="this.resume" fxLayout="column" fxLayoutAlign="center center">
       <mat-card>
-        <div *ngIf="this.resume.contact_details">
-          <ng-container *ngTemplateOutlet="contactDetail"></ng-container>
-        </div>
-        <div *ngIf="this.resume.industrialExposures.length">
-          <ng-container *ngTemplateOutlet="industrialExposure"></ng-container>
-        </div>
-        <div *ngIf="this.resume.employment_history.length">
-          <ng-container *ngTemplateOutlet="workExpTemplate"></ng-container>
-        </div>
-        <div *ngIf="this.resume.education.length">
-          <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>
-        </div>
-        <div *ngIf="this.resume.skills.length">
-          <ng-container *ngTemplateOutlet="skillTemplate"></ng-container>
-        </div>
-        <div *ngIf="this.resume.languages.length">
-          <ng-container *ngTemplateOutlet="languageTemplate"></ng-container>
-        </div>
-        <div *ngIf="this.resume.award_achivements.length">
-          <h1 class="education-heading">Achievements</h1>
-          <ng-container *ngFor="let award of this.resume['award_achivements']">
-            <ul itemprop="description">
-              <li>
-                <div fxLayout="row" fxLayoutGap="10px">
-                  <i class="fa fa-dot-circle-o" style="color:#538ec3;" aria-hidden="true"></i>
-                  <span class="hack">{{award.awards_and_achivements}}</span>
-                </div>
-              </li>
-            </ul>
-          </ng-container>
-        </div>
-        <div *ngIf="this.resume.interests.length">
-          <h1 class="education-heading">Interests</h1>
-          <ng-container *ngFor="let interest of this.resume['interests']">
-            <ul style="word-break: break-word"
-                itemprop="description">
-              <li>
-                <div fxLayout="row" fxLayoutGap="10px">
-                  <i class="fa fa-dot-circle-o" style="color:#538ec3;" aria-hidden="true"></i>
-                  <span class="hack">{{interest.interest}}</span>
-                </div>
-              </li>
-            </ul>
-          </ng-container>
-        </div>
-        <div *ngIf="this.resume.objectives.length">
-          <ng-container *ngTemplateOutlet="objectiveTemplate"></ng-container>
-        </div>
-        <div *ngIf="this.resume.projectDetails.length">
-          <ng-container *ngTemplateOutlet="projectDetailTemplate"></ng-container>
-        </div>
-        <div *ngIf="this.resume.strengths.length">
-          <h1 class="education-heading">Strength</h1>
-          <ng-container *ngFor="let strength of this.resume['strengths']">
-            <ul>
-              <li>
-                <div fxLayout="row" fxLayoutGap="10px">
-                  <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
-                  <span class="hack">{{strength.name}}</span>
-                </div>
-              </li>
-            </ul>
-          </ng-container>
-        </div>
-        <div *ngIf="this.resume.weakness.length">
-          <h1 class="education-heading">Weakness</h1>
-          <ng-container *ngFor="let weakness of this.resume['weakness']">
-            <ul>
-              <li>
-                <div fxLayout="row" fxLayoutGap="10px">
-                  <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
-                  <span class="hack">{{weakness.name}}</span>
-                </div>
-              </li>
-            </ul>
-          </ng-container>
-        </div>
-        <div *ngIf="this.resume.refrences.length">
-          <ng-container *ngTemplateOutlet="referenceTemplate"></ng-container>
-        </div>
-        <div class="hover" fxLayout="column" fxLayoutAlign="center center">
-          <div fxLayout="row" fxLayoutAlign="center center">
-            <button mat-icon-button>
-              <mat-icon style="cursor: pointer">download</mat-icon>
-            </button>
+        <div id="html">
+          <div *ngIf="this.resume.contact_details">
+            <ng-container *ngTemplateOutlet="contactDetail"></ng-container>
+          </div>
+          <div *ngIf="this.resume.industrialExposures.length">
+            <ng-container *ngTemplateOutlet="industrialExposure"></ng-container>
+          </div>
+          <div *ngIf="this.resume.employment_history.length">
+            <ng-container *ngTemplateOutlet="workExpTemplate"></ng-container>
+          </div>
+          <div *ngIf="this.resume.education.length">
+            <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>
+          </div>
+          <div *ngIf="this.resume.skills.length">
+            <ng-container *ngTemplateOutlet="skillTemplate"></ng-container>
+          </div>
+          <div *ngIf="this.resume.languages.length">
+            <ng-container *ngTemplateOutlet="languageTemplate"></ng-container>
+          </div>
+          <div *ngIf="this.resume.award_achivements.length">
+            <h1 class="education-heading">Achievements</h1>
+            <ng-container *ngFor="let award of this.resume['award_achivements']">
+              <ul itemprop="description">
+                <li>
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#538ec3;" aria-hidden="true"></i>
+                    <span class="hack">{{award.awards_and_achivements}}</span>
+                  </div>
+                </li>
+              </ul>
+            </ng-container>
+          </div>
+          <div *ngIf="this.resume.interests.length">
+            <h1 class="education-heading">Interests</h1>
+            <ng-container *ngFor="let interest of this.resume['interests']">
+              <ul style="word-break: break-word"
+                  itemprop="description">
+                <li>
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#538ec3;" aria-hidden="true"></i>
+                    <span class="hack">{{interest.interest}}</span>
+                  </div>
+                </li>
+              </ul>
+            </ng-container>
+          </div>
+          <div *ngIf="this.resume.objectives.length">
+            <ng-container *ngTemplateOutlet="objectiveTemplate"></ng-container>
+          </div>
+          <div *ngIf="this.resume.projectDetails.length">
+            <ng-container *ngTemplateOutlet="projectDetailTemplate"></ng-container>
+          </div>
+          <div *ngIf="this.resume.strengths.length">
+            <h1 class="education-heading">Strength</h1>
+            <ng-container *ngFor="let strength of this.resume['strengths']">
+              <ul>
+                <li>
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
+                    <span class="hack">{{strength.name}}</span>
+                  </div>
+                </li>
+              </ul>
+            </ng-container>
+          </div>
+          <div *ngIf="this.resume.weakness.length">
+            <h1 class="education-heading">Weakness</h1>
+            <ng-container *ngFor="let weakness of this.resume['weakness']">
+              <ul>
+                <li>
+                  <div fxLayout="row" fxLayoutGap="10px">
+                    <i class="fa fa-dot-circle-o" style="color:#3683cc;" aria-hidden="true"></i>
+                    <span class="hack">{{weakness.name}}</span>
+                  </div>
+                </li>
+              </ul>
+            </ng-container>
+          </div>
+          <div *ngIf="this.resume.refrences.length">
+            <ng-container *ngTemplateOutlet="referenceTemplate"></ng-container>
+          </div>
+          <div class="hover" fxLayout="column" fxLayoutAlign="center center">
+            <div fxLayout="row" fxLayoutAlign="center center">
+              <button (click)="download()" mat-icon-button>
+                <mat-icon style="cursor: pointer">download</mat-icon>
+              </button>
+            </div>
           </div>
         </div>
       </mat-card>
@@ -336,7 +339,134 @@ import {Component} from '@angular/core';
 })
 
 export class BluesTemplateComponent {
+  @Input() resume: Resume;
+  @Output() downloadTemplate = new EventEmitter<string>();
 
   constructor() {
+  }
+
+  download() {
+    const innerHtml = document.getElementById('html').innerHTML;
+    const html =
+      `
+    <html>
+    <head>
+</head>
+<style type="text/css">
+mat-card {
+      width: 8in;
+      margin-top: 1%;
+      box-shadow: 1px 1px 8px 8px rgba(0, 0, 0, 0.2) !important;
+      margin-bottom: 1%;
+    }
+
+    ul {
+      color: #767270;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 2%;
+    }
+
+    .education-heading {
+      color: white;
+      background: #3683cc;
+      margin-top: 2%;
+      padding: 1% 2%;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .h3-span {
+      text-transform: uppercase;
+      color: #3683cc;
+      margin-top: 5%;
+    }
+
+    .hover {
+      position: absolute;
+      background-color: rgba(36, 36, 36, 0.81);
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+    }
+
+    .hover:hover {
+      opacity: 1;
+      transition: opacity .8s;
+    }
+
+    .contact-summary {
+      font-weight: 300;
+      font-size: 10pt;
+      line-height: 17pt;
+      word-wrap: break-word;
+      overflow: hidden;
+    }
+
+    ul li {
+      vertical-align: top;
+      margin-bottom: 5px;
+    }
+
+    * {
+      margin: 0px;
+    }
+
+    #hover-i {
+      color: white;
+      font-size: 60px;
+    }
+
+    .main-heading {
+      text-transform: uppercase;
+      color: #538ec3;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
+    .text-align {
+      text-align: center;
+    }
+
+    .address {
+      color: #767270;
+      word-break: break-word;
+    }
+
+    .education-heading {
+      color: white;
+      background: #3683cc;
+      margin-top: 2%;
+      padding: 1% 2%;
+    }
+
+    .h3-span {
+      text-transform: uppercase;
+      color: #3683cc;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    .h4-p {
+      color: #767270;
+    }
+
+    .container {
+      padding-bottom: 4%;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .h4 {
+      text-transform: capitalize;
+    }
+</style>
+<body>${innerHtml}</body>
+</html>
+    `;
+    this.downloadTemplate.emit(html);
   }
 }

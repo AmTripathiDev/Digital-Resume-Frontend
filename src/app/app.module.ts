@@ -99,9 +99,13 @@ import {ResumeCardComponent} from './components/resume-card.component';
 import {ErrorComponent} from './components/error.component';
 import {AddOrEditResumeComponent} from './components/dialogues/add-or-edit-resume.component';
 import {TemplatesComponent} from './container/templates.component';
-import { SingleTemplateComponent } from './container/single-template.component';
+import {SingleTemplateComponent} from './container/single-template.component';
 import {TemplateCardComponent} from './components/template-card.component';
 import {BluesTemplateComponent} from './components/templates/blues-template.component';
+import {ClassicTemplateComponent} from './components/templates/classic-template.component';
+import {ModernTemplateComponent} from './components/templates/modern-template.component';
+import {RoyalTemplateComponent} from './components/templates/royal-template.component';
+import {TraditionalPanelTemplateComponent} from './components/templates/traditional-panel-template.component';
 
 @NgModule({
   declarations: [
@@ -184,7 +188,11 @@ import {BluesTemplateComponent} from './components/templates/blues-template.comp
     TemplatesComponent,
     SingleTemplateComponent,
     TemplateCardComponent,
-    BluesTemplateComponent
+    BluesTemplateComponent,
+    ClassicTemplateComponent,
+    ModernTemplateComponent,
+    RoyalTemplateComponent,
+    TraditionalPanelTemplateComponent
   ],
   imports: [
     BrowserModule,
