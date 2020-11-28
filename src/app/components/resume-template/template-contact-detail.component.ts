@@ -12,7 +12,7 @@ import {Resume} from '../../models/resume';
       </button>
       <h1>{{this.resume.contact_details.first_name}}
         {{this.resume.contact_details.last_name}}</h1>
-      <app-template-buttons></app-template-buttons>
+      <app-template-buttons [resumeId]="resume._id"></app-template-buttons>
       <div fxLayout="row" fxLayoutGap="30px" class="container border-container">
         <mat-icon>account_circle</mat-icon>
         <p>{{this.resume.contact_details.summary}}</p>

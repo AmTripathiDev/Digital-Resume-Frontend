@@ -15,7 +15,7 @@ import {Router} from '@angular/router';
       </mat-step>
       <mat-step *ngIf="this.isFirstStepCompleted" optional>
         <ng-template matStepLabel>Upload Video & Image</ng-template>
-        <app-upload [resume]="resume"></app-upload>
+        <app-upload></app-upload>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Resume Form</ng-template>
