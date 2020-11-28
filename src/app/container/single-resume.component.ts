@@ -16,26 +16,8 @@ this.resume.weakness.length || this.resume.languages.length || this.resume.stren
                   *ngIf="this.resume && this.isPreview && this.resume.contact_details ">
             <mat-icon style="color: black">remove_red_eye</mat-icon>
           </button>
-          <div fxLayout="column"
-               fxLayoutAlign="center center">
-            <button [ngStyle]="{'background-image':'url('+this.imageUrl+')'}"
-                    mat-fab class="profile-pic">
-
-            </button>
-            <h1>{{this.resume.contact_details.first_name}}
-              {{this.resume.contact_details.last_name}}</h1>
-            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px">
-              <button mat-mini-fab matTooltip="edit resume">
-                <mat-icon>assignment</mat-icon>
-              </button>
-              <button mat-mini-fab matTooltip="edit profile image or vide">
-                <mat-icon>videocam</mat-icon>
-              </button>
-              <button mat-mini-fab matTooltip="share resume">
-                <mat-icon>share</mat-icon>
-              </button>
-            </div>
-          </div>
+          <app-template-contact-detail [resume]="resume">
+          </app-template-contact-detail>
         </div>
       </mat-card>
     </div>
@@ -48,14 +30,6 @@ this.resume.weakness.length || this.resume.languages.length || this.resume.stren
       background-image: url("../../assets/back.jpg");
     }
 
-    h1 {
-      color: #fff;
-      font-weight: bold;
-      text-transform: uppercase;
-      line-height: 37pt;
-      text-align: center;
-    }
-
     .sidebar {
       background: #538EC3;
       margin-left: 12rem;
@@ -63,17 +37,6 @@ this.resume.weakness.length || this.resume.languages.length || this.resume.stren
       box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;
       margin-top: 3rem;
       margin-bottom: 3rem;
-    }
-
-    .profile-pic {
-      background-color: transparent;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center center;
-      margin-bottom: 10%;
-      border: 3px solid white;
-      width: 75%;
-      height: 200px;
     }
   `]
 })
@@ -98,7 +61,6 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
       }), filter(res => !!res));
     resume$.subscribe(data => {
       this.resume = data;
-      this.imageUrl = this.resume.image_url ? this.resume.image_url : '../../assets/testimonial.png';
     });
   }
 
