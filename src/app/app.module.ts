@@ -109,6 +109,10 @@ import {TraditionalPanelTemplateComponent} from './components/templates/traditio
 import { SingleResumeComponent } from './container/single-resume.component';
 import {TemplateContactDetailComponent} from './components/resume-template/template-contact-detail.component';
 import {TemplateButtonsComponent} from './components/resume-template/template-buttons.component';
+import {TemplateSkillCardComponent} from './components/resume-template/template-cards/template-skill-card.component';
+import {TemplateLanguageCardComponent} from './components/resume-template/template-cards/template-language-card.component';
+import {TemplateStrengthCardComponent} from './components/resume-template/template-cards/template-strength-card.component';
+import {TemplateWeaknessCardComponent} from './components/resume-template/template-cards/template-weakness-card.component';
 
 @NgModule({
   declarations: [
@@ -198,7 +202,11 @@ import {TemplateButtonsComponent} from './components/resume-template/template-bu
     TraditionalPanelTemplateComponent,
     SingleResumeComponent,
     TemplateContactDetailComponent,
-    TemplateButtonsComponent
+    TemplateButtonsComponent,
+    TemplateSkillCardComponent,
+    TemplateLanguageCardComponent,
+    TemplateStrengthCardComponent,
+    TemplateWeaknessCardComponent
   ],
   imports: [
     BrowserModule,

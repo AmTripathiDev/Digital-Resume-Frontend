@@ -7,7 +7,7 @@ import {filter, map, switchMap, takeWhile} from 'rxjs/operators';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div class="main-div" fxLayout="row" *ngIf="this.resume">
+    <div  class="main-div" fxLayout="row" *ngIf="this.resume">
       <mat-card class="sidebar" *ngIf="this.resume.contact_details || this.resume.skills.length ||
 this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length">
         <div
@@ -26,7 +26,7 @@ this.resume.weakness.length || this.resume.languages.length || this.resume.stren
 
     .main-div {
       width: 100vw;
-      height: 100vh;
+      height: auto;
       background-image: url("../../assets/back.jpg");
     }
 
@@ -34,9 +34,10 @@ this.resume.weakness.length || this.resume.languages.length || this.resume.stren
       background: #538EC3;
       margin-left: 12rem;
       width: 300px;
+      height: auto;
       box-shadow: 1px 1px 10px 10px rgba(0, 0, 0, 0.3) !important;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
     }
   `]
 })
