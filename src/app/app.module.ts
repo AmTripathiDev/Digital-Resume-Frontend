@@ -106,15 +106,22 @@ import {ClassicTemplateComponent} from './components/templates/classic-template.
 import {ModernTemplateComponent} from './components/templates/modern-template.component';
 import {RoyalTemplateComponent} from './components/templates/royal-template.component';
 import {TraditionalPanelTemplateComponent} from './components/templates/traditional-panel-template.component';
-import { SingleResumeComponent } from './container/single-resume.component';
+import {SingleResumeComponent} from './container/single-resume.component';
 import {TemplateContactDetailComponent} from './components/resume-template/template-contact-detail.component';
 import {TemplateButtonsComponent} from './components/resume-template/template-buttons.component';
 import {TemplateSkillCardComponent} from './components/resume-template/template-cards/template-skill-card.component';
 import {TemplateLanguageCardComponent} from './components/resume-template/template-cards/template-language-card.component';
 import {TemplateStrengthCardComponent} from './components/resume-template/template-cards/template-strength-card.component';
 import {TemplateWeaknessCardComponent} from './components/resume-template/template-cards/template-weakness-card.component';
-import { TemplateDetailsComponent } from './components/resume-template/template-details.component';
+import {TemplateDetailsComponent} from './components/resume-template/template-details.component';
 import {TemplateEducationComponent} from './components/resume-template/template-cards/template-education.component';
+import {TemplateEmploymentHistoryComponent} from './components/resume-template/template-cards/template-employment-history.component';
+import {TemplateInterestComponent} from './components/resume-template/template-cards/template-interest.component';
+import {TemplateIndustrialExposureComponent} from './components/resume-template/template-cards/template-industrial-exposure.component';
+import { TemplateAwardsComponent } from './components/resume-template/template-cards/template-awards.component';
+import {TemplateObjectiveComponent} from './components/resume-template/template-cards/template-objective.component';
+import {TemplateReferenceComponent} from './components/resume-template/template-cards/template-reference.component';
+import {TemplateProjectDetailComponent} from './components/resume-template/template-cards/template-project-detail.component';
 
 @NgModule({
   declarations: [
@@ -210,7 +217,14 @@ import {TemplateEducationComponent} from './components/resume-template/template-
     TemplateStrengthCardComponent,
     TemplateWeaknessCardComponent,
     TemplateDetailsComponent,
-    TemplateEducationComponent
+    TemplateEducationComponent,
+    TemplateEmploymentHistoryComponent,
+    TemplateInterestComponent,
+    TemplateIndustrialExposureComponent,
+    TemplateAwardsComponent,
+    TemplateObjectiveComponent,
+    TemplateReferenceComponent,
+    TemplateProjectDetailComponent
   ],
   imports: [
     BrowserModule,
