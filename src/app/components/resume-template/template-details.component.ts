@@ -19,7 +19,7 @@ import {DomSanitizer} from '@angular/platform-browser';
       <ng-container *ngTemplateOutlet="projectDetailTemplate"></ng-container>
     </div>
     <ng-template #educationTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.education.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
@@ -36,11 +36,11 @@ import {DomSanitizer} from '@angular/platform-browser';
       </mat-card>
     </ng-template>
     <ng-template #experienceTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.employment_history.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>stars</mat-icon>
             <p>Experience</p>
           </div>
         </mat-card-header>
@@ -54,11 +54,11 @@ import {DomSanitizer} from '@angular/platform-browser';
     </ng-template>
 
     <ng-template #interestTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.interests.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>flight_land</mat-icon>
             <p>Interest</p>
           </div>
         </mat-card-header>
@@ -71,11 +71,11 @@ import {DomSanitizer} from '@angular/platform-browser';
       </mat-card>
     </ng-template>
     <ng-template #industrialExposureTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.industrialExposures.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>build_circle</mat-icon>
             <p>Industrial Exposure</p>
           </div>
         </mat-card-header>
@@ -88,11 +88,11 @@ import {DomSanitizer} from '@angular/platform-browser';
       </mat-card>
     </ng-template>
     <ng-template #awardsTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.award_achivements.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>emoji_events</mat-icon>
             <p>Awards & Achievements</p>
           </div>
         </mat-card-header>
@@ -105,11 +105,11 @@ import {DomSanitizer} from '@angular/platform-browser';
       </mat-card>
     </ng-template>
     <ng-template #objectiveTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.objectives.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>emoji_objects</mat-icon>
             <p>Objectives</p>
           </div>
         </mat-card-header>
@@ -122,11 +122,11 @@ import {DomSanitizer} from '@angular/platform-browser';
       </mat-card>
     </ng-template>
     <ng-template #referenceTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.refrences.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>groups</mat-icon>
             <p>Reference</p>
           </div>
         </mat-card-header>
@@ -139,11 +139,11 @@ import {DomSanitizer} from '@angular/platform-browser';
       </mat-card>
     </ng-template>
     <ng-template #projectDetailTemplate>
-      <mat-card fxLayout="column">
+      <mat-card *ngIf="this.resume.projectDetails.length" fxLayout="column">
         <mat-card-header>
           <div fxLayout="row" fxLayoutAlign="start center"
                fxLayoutGap="30px">
-            <mat-icon>school</mat-icon>
+            <mat-icon>create_new_folder</mat-icon>
             <p>Project Details</p>
           </div>
         </mat-card-header>
