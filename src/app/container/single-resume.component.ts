@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Resume} from '../models/resume';
 import {ResumeRepository} from '../repository/resume-repository';
@@ -6,7 +6,6 @@ import {filter, map, switchMap, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-single-resume',
-  encapsulation: ViewEncapsulation.None,
   template: `
     <div class="main-div" fxLayout="{{this.isLeftPanelEnabled ? 'row': 'column'}}"
          fxLayout.xs="column"
