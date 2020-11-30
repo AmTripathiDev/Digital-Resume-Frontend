@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-template-buttons',
   template: `
-    <div style="{{this.isLeftPanelEnabled ? 'margin-top: 2rem;':''}}" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px">
+    <div style="{{this.isLeftPanelEnabled ? 'margin-top: 2rem':''}}" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="30px">
       <button (click)="editResume()" mat-mini-fab matTooltip="edit resume">
         <mat-icon>assignment</mat-icon>
       </button>

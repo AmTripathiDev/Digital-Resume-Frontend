@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Resume} from '../models/resume';
 import {ResumeRepository} from '../repository/resume-repository';
@@ -6,6 +6,7 @@ import {filter, map, switchMap, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-single-resume',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div class="main-div" fxLayout="{{this.isLeftPanelEnabled ? 'row': 'column'}}"
          fxLayout.xs="column"
@@ -31,8 +32,7 @@ import {filter, map, switchMap, takeWhile} from 'rxjs/operators';
 
     .main-div {
       width: 100vw;
-      height: auto;
-      background-image: url("../../assets/back.jpg");
+      height: 100vh;
     }
 
     .sidebar {
@@ -57,6 +57,7 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router, private resumeRepo: ResumeRepository) {
+    document.body.style.backgroundImage = 'url("../../assets/back.jpg")';
   }
 
   ngOnInit() {
@@ -75,5 +76,6 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.isAlive = false;
+    document.body.style.backgroundImage = '';
   }
 }
