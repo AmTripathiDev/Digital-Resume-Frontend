@@ -118,10 +118,12 @@ import {TemplateEducationComponent} from './components/resume-template/template-
 import {TemplateEmploymentHistoryComponent} from './components/resume-template/template-cards/template-employment-history.component';
 import {TemplateInterestComponent} from './components/resume-template/template-cards/template-interest.component';
 import {TemplateIndustrialExposureComponent} from './components/resume-template/template-cards/template-industrial-exposure.component';
-import { TemplateAwardsComponent } from './components/resume-template/template-cards/template-awards.component';
+import {TemplateAwardsComponent} from './components/resume-template/template-cards/template-awards.component';
 import {TemplateObjectiveComponent} from './components/resume-template/template-cards/template-objective.component';
 import {TemplateReferenceComponent} from './components/resume-template/template-cards/template-reference.component';
 import {TemplateProjectDetailComponent} from './components/resume-template/template-cards/template-project-detail.component';
+import {DemoComponent} from './container/demo.component';
+import {DemoChildComponent} from './container/demo-child.component';
 
 @NgModule({
   declarations: [
@@ -224,7 +226,9 @@ import {TemplateProjectDetailComponent} from './components/resume-template/templ
     TemplateAwardsComponent,
     TemplateObjectiveComponent,
     TemplateReferenceComponent,
-    TemplateProjectDetailComponent
+    TemplateProjectDetailComponent,
+    DemoComponent,
+    DemoChildComponent
   ],
   imports: [
     BrowserModule,

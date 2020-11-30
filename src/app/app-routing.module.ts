@@ -22,6 +22,7 @@ import {SingleTemplateComponent} from './container/single-template.component';
 import {SingleResumeComponent} from './container/single-resume.component';
 import {ResumeFormComponent} from './container/resume-form.component';
 import {UploadComponent} from './container/tabs/upload.componet';
+import {DemoComponent} from './container/demo.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
       {path: 'forgot-password', component: ForgotPasswordComponent},
       {path: '', component: LoginComponent}]
   },
+  {path: 'demo', component: DemoComponent},
   {
     path: '', canActivate: [AuthGuard, VerificationInComplete], children: [{
       path: 'verify', component: VerificationComponent,
