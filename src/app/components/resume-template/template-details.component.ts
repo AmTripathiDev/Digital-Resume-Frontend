@@ -5,8 +5,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 @Component({
   selector: 'app-template-details',
   template: `
-    <div class="main-container" fxLayout="column"
-         fxLayoutGap="30px">
+    <div class="main-container" fxLayout="column" fxLayoutGap="30px">
       <iframe *ngIf="!!this.videoUrl" [src]="this.videoUrl"
               width="700px" height="400px"></iframe>
       <ng-container *ngTemplateOutlet="educationTemplate"></ng-container>

@@ -7,10 +7,11 @@ import {filter, map, switchMap, takeWhile} from 'rxjs/operators';
 @Component({
   selector: 'app-single-resume',
   template: `
-    <div class="main-div" fxLayout="row" fxLayoutGap="50px"
-         *ngIf="this.resume">
-      <mat-card class="sidebar" *ngIf="this.resume.contact_details || this.resume.skills.length ||
-this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length">
+    <div class="main-div" fxLayout="{{this.isLeftPanelEnabled ? 'row': 'column'}}"
+         fxLayout.xs="column"
+         fxLayoutAlign="{{this.isLeftPanelEnabled ? 'start start':'center center'}}"
+         fxLayoutGap="50px" *ngIf="this.resume">
+      <mat-card class="sidebar" *ngIf="this.isLeftPanelEnabled">
         <div
           fxLayout="column" fxLayoutGap="20px">
           <button matTooltip="Views: {{this.resume.views}}" style="background: #f1c232;" mat-mini-fab
@@ -21,6 +22,8 @@ this.resume.weakness.length || this.resume.languages.length || this.resume.stren
           </app-template-contact-detail>
         </div>
       </mat-card>
+      <app-template-buttons [isLeftPanelEnabled]="isLeftPanelEnabled"
+                            *ngIf="!isLeftPanelEnabled" [resumeId]="resume._id"></app-template-buttons>
       <app-template-details [resume]="resume"></app-template-details>
     </div>
   `,
@@ -50,6 +53,7 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
   isAlive = true;
   isPreview = false;
   imageUrl = '';
+  isLeftPanelEnabled = false;
 
   constructor(private route: ActivatedRoute,
               private router: Router, private resumeRepo: ResumeRepository) {
@@ -64,6 +68,8 @@ export class SingleResumeComponent implements OnInit, OnDestroy {
       }), filter(res => !!res));
     resume$.subscribe(data => {
       this.resume = data;
+      this.isLeftPanelEnabled = !!(this.resume.contact_details || this.resume.skills.length ||
+        this.resume.weakness.length || this.resume.languages.length || this.resume.strengths.length);
     });
   }
 
