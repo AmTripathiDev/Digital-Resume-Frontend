@@ -1,5 +1,5 @@
 import {ApiService} from '../services/api-service';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {combineLatest, Observable} from 'rxjs';
 import {User} from '../models/user';
 import {Store} from '@ngrx/store';
@@ -13,10 +13,11 @@ import {
 import {getUser, userLoggedIn, userLoggingIn} from '../reducers';
 import {AuthUtils} from '../utility/auth-utils';
 import {map, take} from 'rxjs/operators';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class AuthRepository {
-  constructor(private apiService: ApiService, private store: Store) {
+  constructor(private apiService: ApiService, private store: Store, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   login(data: { email: string, password: string }): Observable<User> {
@@ -58,7 +59,9 @@ export class AuthRepository {
   }
 
   logout() {
-    AuthUtils.removeAuthToken();
+    if (isPlatformBrowser(this.platformId)) {
+      AuthUtils.removeAuthToken();
+    }
     this.store.dispatch(new LogoutAction());
   }
 

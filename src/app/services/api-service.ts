@@ -1,16 +1,17 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {HttpService} from './http-service';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
 import {map} from 'rxjs/operators';
 import {AuthUtils} from '../utility/auth-utils';
 import {Resume} from '../models/resume';
+import {isPlatformBrowser} from '@angular/common';
 
 
 @Injectable()
 export class ApiService {
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
 
@@ -23,7 +24,9 @@ export class ApiService {
 
   loginAndSetToken(data: { email: string, password: string }): Observable<User> {
     return this.httpService.get('/user/login', data).pipe(map(res => {
-      AuthUtils.setAuthToken(res.token);
+      if (isPlatformBrowser(this.platformId)) {
+        AuthUtils.setAuthToken(res.token);
+      }
       return res.user;
     }));
   }

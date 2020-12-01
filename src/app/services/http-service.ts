@@ -1,17 +1,19 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {AlertService} from './alert-service';
 import {catchError} from 'rxjs/operators';
 import {Observable, throwError} from 'rxjs';
 import {ApiService} from './api-service';
 import {AuthUtils} from '../utility/auth-utils';
 import {Router} from '@angular/router';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class HttpService {
   private baseURl = 'http://localhost:5000/api';
 
-  constructor(private httpClient: HttpClient, private alertService: AlertService, private router: Router) {
+  constructor(private httpClient: HttpClient,
+              private alertService: AlertService, @Inject(PLATFORM_ID) private platformId: any, private router: Router) {
   }
 
   get(url: string, paramData?: any): Observable<any> {
@@ -37,9 +39,11 @@ export class HttpService {
 
 
   private getAuthHeaders() {
-    return {
-      Authorization: `Bearer ${AuthUtils.getAuthToken()}`
-    };
+    if (isPlatformBrowser(this.platformId)) {
+      return {
+        Authorization: `Bearer ${AuthUtils.getAuthToken()}`
+      };
+    }
   }
 
   private errorHandler(response: any) {

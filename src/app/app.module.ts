@@ -233,7 +233,7 @@ import {SecondaryComponent} from './container/secondary.component';
     SecondaryComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,

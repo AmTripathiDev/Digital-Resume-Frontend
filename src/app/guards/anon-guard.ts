@@ -1,16 +1,19 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {AuthUtils} from '../utility/auth-utils';
 import {filter, map} from 'rxjs/operators';
 import {AuthRepository} from '../repository/auth-repository';
+import {isPlatformBrowser} from '@angular/common';
 
 @Injectable()
 export class AnonGuard implements CanActivate {
-  constructor(private router: Router, private authRepo: AuthRepository) {
+  constructor(private router: Router,
+              private authRepo: AuthRepository, @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    if (!AuthUtils.getAuthToken()) {
+    const isLoggedIn = isPlatformBrowser(this.platformId) ? !AuthUtils.getAuthToken() : true;
+    if (isLoggedIn) {
       return true;
     } else {
       const user$ = this.authRepo.fetchMe();
@@ -20,7 +23,7 @@ export class AnonGuard implements CanActivate {
         } else if (data.onboarding !== 200) {
           this.router.navigate(['on-boarding']);
         } else {
-          this.router.navigate(['dashboard','resume']);
+          this.router.navigate(['dashboard', 'resume']);
         }
       }));
     }
