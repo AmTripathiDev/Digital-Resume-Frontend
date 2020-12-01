@@ -124,6 +124,7 @@ import {TemplateReferenceComponent} from './components/resume-template/template-
 import {TemplateProjectDetailComponent} from './components/resume-template/template-cards/template-project-detail.component';
 import {DemoComponent} from './container/demo.component';
 import {DemoChildComponent} from './container/demo-child.component';
+import {SecondaryComponent} from './container/secondary.component';
 
 @NgModule({
   declarations: [
@@ -228,7 +229,8 @@ import {DemoChildComponent} from './container/demo-child.component';
     TemplateReferenceComponent,
     TemplateProjectDetailComponent,
     DemoComponent,
-    DemoChildComponent
+    DemoChildComponent,
+    SecondaryComponent
   ],
   imports: [
     BrowserModule,

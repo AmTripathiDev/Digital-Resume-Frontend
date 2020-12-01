@@ -23,6 +23,7 @@ import {SingleResumeComponent} from './container/single-resume.component';
 import {ResumeFormComponent} from './container/resume-form.component';
 import {UploadComponent} from './container/tabs/upload.componet';
 import {DemoComponent} from './container/demo.component';
+import {SecondaryComponent} from './container/secondary.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,10 @@ const routes: Routes = [
       {path: '', component: LoginComponent}]
   },
   {path: 'demo', component: DemoComponent},
+  {
+    path: 'chat', component: SecondaryComponent,
+    outlet: 'chat-r'
+  },
   {
     path: '', canActivate: [AuthGuard, VerificationInComplete], children: [{
       path: 'verify', component: VerificationComponent,
