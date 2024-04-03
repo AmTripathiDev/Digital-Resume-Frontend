@@ -1,34 +1,42 @@
-import {Inject, Injectable, PLATFORM_ID} from '@angular/core';
-import {HttpService} from './http-service';
-import {Observable} from 'rxjs';
-import {User} from '../models/user';
-import {map} from 'rxjs/operators';
-import {AuthUtils} from '../utility/auth-utils';
-import {Resume} from '../models/resume';
-import {isPlatformBrowser} from '@angular/common';
-
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { HttpService } from './http-service';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
+import { map } from 'rxjs/operators';
+import { AuthUtils } from '../utility/auth-utils';
+import { Resume } from '../models/resume';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class ApiService {
-
-  constructor(private httpService: HttpService, @Inject(PLATFORM_ID) private platformId: any) {
-  }
-
+  constructor(
+    private httpService: HttpService,
+    @Inject(PLATFORM_ID) private platformId: any
+  ) {}
 
   signup(data: {
-    email: string, password: string, confirm_password: string,
-    name: string, job_category: string, experience_level: string
+    email: string;
+    password: string;
+    confirm_password: string;
+    name: string;
+    job_category: string;
+    experience_level: string;
   }): Observable<User> {
     return this.httpService.post('/user/signup', data);
   }
 
-  loginAndSetToken(data: { email: string, password: string }): Observable<User> {
-    return this.httpService.get('/user/login', data).pipe(map(res => {
-      if (isPlatformBrowser(this.platformId)) {
-        AuthUtils.setAuthToken(res.token);
-      }
-      return res.user;
-    }));
+  loginAndSetToken(data: {
+    email: string;
+    password: string;
+  }): Observable<User> {
+    return this.httpService.get('/user/login', data).pipe(
+      map((res) => {
+        if (isPlatformBrowser(this.platformId)) {
+          AuthUtils.setAuthToken(res.token);
+        }
+        return res.user;
+      })
+    );
   }
 
   updateUserProfile(data) {
@@ -43,7 +51,11 @@ export class ApiService {
     return this.httpService.get('/user/reset/password/email', data);
   }
 
-  resetPassword(data: { code: string, new_password: string, confirm_password: string }): Observable<User> {
+  resetPassword(data: {
+    code: string;
+    new_password: string;
+    confirm_password: string;
+  }): Observable<User> {
     return this.httpService.patch('/user/reset/password', data);
   }
 
@@ -86,11 +98,17 @@ export class ApiService {
   }
 
   updateContactDetails(data, contactDetailId: string) {
-    return this.httpService.patch('/resume/update/contactDetails/' + contactDetailId, data);
+    return this.httpService.patch(
+      '/resume/update/contactDetails/' + contactDetailId,
+      data
+    );
   }
 
   addContactDetails(data, resumeId: string) {
-    return this.httpService.post('/resume/add/contactDetails/' + resumeId, data);
+    return this.httpService.post(
+      '/resume/add/contactDetails/' + resumeId,
+      data
+    );
   }
 
   addEducation(data, resumeId: string) {
@@ -98,7 +116,10 @@ export class ApiService {
   }
 
   updateEducation(data, educationId: string) {
-    return this.httpService.patch('/resume/update/education/' + educationId, data);
+    return this.httpService.patch(
+      '/resume/update/education/' + educationId,
+      data
+    );
   }
 
   deleteEducation(educationId: string) {
@@ -110,15 +131,23 @@ export class ApiService {
   }
 
   deleteEmploymentHistory(employmentId: string) {
-    return this.httpService.delete('/resume/delete/employmentHistory/' + employmentId);
+    return this.httpService.delete(
+      '/resume/delete/employmentHistory/' + employmentId
+    );
   }
 
   addEmploymentHistory(data, resumeId: string) {
-    return this.httpService.post('/resume/add/employmentHistory/' + resumeId, data);
+    return this.httpService.post(
+      '/resume/add/employmentHistory/' + resumeId,
+      data
+    );
   }
 
   updateEmploymentHistory(data: any, employmentId: string) {
-    return this.httpService.patch('/resume/update/employmentHistory/' + employmentId, data);
+    return this.httpService.patch(
+      '/resume/update/employmentHistory/' + employmentId,
+      data
+    );
   }
 
   addInterest(data, resumeId: string) {
@@ -126,7 +155,10 @@ export class ApiService {
   }
 
   updateInterest(data: any, interestId: string) {
-    return this.httpService.patch('/resume/update/interest/' + interestId, data);
+    return this.httpService.patch(
+      '/resume/update/interest/' + interestId,
+      data
+    );
   }
 
   addSkill(data, resumeId: string) {
@@ -143,11 +175,13 @@ export class ApiService {
 
   addLanguage(data, resumeId: string) {
     return this.httpService.post('/resume/add/language/' + resumeId, data);
-
   }
 
   updateLanguage(data: any, languageId: string) {
-    return this.httpService.patch('/resume/update/language/' + languageId, data);
+    return this.httpService.patch(
+      '/resume/update/language/' + languageId,
+      data
+    );
   }
 
   deleteLanguage(languageId: string) {
@@ -155,15 +189,23 @@ export class ApiService {
   }
 
   addIndustrialExposure(data, resumeId: string) {
-    return this.httpService.post('/resume/add/industrialExposure/' + resumeId, data);
+    return this.httpService.post(
+      '/resume/add/industrialExposure/' + resumeId,
+      data
+    );
   }
 
   updateIndustrialExposure(data: any, industrialExposureId: string) {
-    return this.httpService.patch('/resume/update/industrialExposure/' + industrialExposureId, data);
+    return this.httpService.patch(
+      '/resume/update/industrialExposure/' + industrialExposureId,
+      data
+    );
   }
 
   deleteIndustrialExposure(industrialExposureId: string) {
-    return this.httpService.delete('/resume/delete/industrialExposure/' + industrialExposureId);
+    return this.httpService.delete(
+      '/resume/delete/industrialExposure/' + industrialExposureId
+    );
   }
 
   addAward(data, resumeId: string) {
@@ -171,11 +213,16 @@ export class ApiService {
   }
 
   updateAward(data: any, awardId: string) {
-    return this.httpService.patch('/resume/update/awardAchivements/' + awardId, data);
+    return this.httpService.patch(
+      '/resume/update/awardAchivements/' + awardId,
+      data
+    );
   }
 
   deleteAward(awardId: string) {
-    return this.httpService.delete('/resume/delete/awardAchivements/' + awardId);
+    return this.httpService.delete(
+      '/resume/delete/awardAchivements/' + awardId
+    );
   }
 
   addObjective(data, resumeId: string) {
@@ -183,7 +230,10 @@ export class ApiService {
   }
 
   updateObjective(data: any, objectiveId: string) {
-    return this.httpService.patch('/resume/update/objective/' + objectiveId, data);
+    return this.httpService.patch(
+      '/resume/update/objective/' + objectiveId,
+      data
+    );
   }
 
   deleteObjective(objectiveId: string) {
@@ -195,7 +245,10 @@ export class ApiService {
   }
 
   updateReference(data: any, referenceId: string) {
-    return this.httpService.patch('/resume/update/refrence/' + referenceId, data);
+    return this.httpService.patch(
+      '/resume/update/refrence/' + referenceId,
+      data
+    );
   }
 
   deleteReference(referenceId: string) {
@@ -207,11 +260,16 @@ export class ApiService {
   }
 
   updateProjectDetail(data: any, projectDetailId: string) {
-    return this.httpService.patch('/resume/update/projectDetail/' + projectDetailId, data);
+    return this.httpService.patch(
+      '/resume/update/projectDetail/' + projectDetailId,
+      data
+    );
   }
 
   deleteProjectDetail(projectDetailId: string) {
-    return this.httpService.delete('/resume/delete/projectDetail/' + projectDetailId);
+    return this.httpService.delete(
+      '/resume/delete/projectDetail/' + projectDetailId
+    );
   }
 
   addStrength(data, resumeId: string) {
@@ -219,7 +277,10 @@ export class ApiService {
   }
 
   updateStrength(data: any, strengthId: string) {
-    return this.httpService.patch('/resume/update/strength/' + strengthId, data);
+    return this.httpService.patch(
+      '/resume/update/strength/' + strengthId,
+      data
+    );
   }
 
   deleteStrength(strengthId: string) {
@@ -235,7 +296,10 @@ export class ApiService {
   }
 
   updateWeakness(data: any, weaknessId: string) {
-    return this.httpService.patch('/resume/update/weakness/' + weaknessId, data);
+    return this.httpService.patch(
+      '/resume/update/weakness/' + weaknessId,
+      data
+    );
   }
 
   updateViewsCount(data: { views: number }, id: string) {

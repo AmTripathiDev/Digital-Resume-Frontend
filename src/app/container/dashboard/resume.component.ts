@@ -19,7 +19,7 @@ import {AddOrEditResumeComponent} from '../../components/dialogues/add-or-edit-r
         <app-resume-card *ngFor="let resume of resumeList"
                          [resume]="resume"></app-resume-card>
 
-      </div>
+      </div>   
     </div>
     <div *ngIf="loading" style="height: 100vh" fxFlex="100%" fxLayoutAlign="center center">
       <mat-spinner></mat-spinner>

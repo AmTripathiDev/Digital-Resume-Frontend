@@ -84,7 +84,5 @@ export class LoginComponent implements OnDestroy {
 
   signup() {
     this.router.navigate(['signup']);
-    // we are using this navigate to change our route
-
   }
 }

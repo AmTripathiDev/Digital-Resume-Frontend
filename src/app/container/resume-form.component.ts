@@ -157,7 +157,7 @@ export class ResumeFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.isAlive = false;
+    this.isAlive = false;  
   }
 
   ngOnInit() {

@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Resume} from '../../models/resume';
-import {ApiService} from '../../services/api-service';
 import {ResumeRepository} from '../../repository/resume-repository';
 
 @Component({

@@ -268,7 +268,6 @@ export class ResumeRepository {
 
   deleteAward(resumeId: string, awardId: string) {
     return this.apiService.deleteAward(awardId).pipe(map((res) => {
-      console.log(res);
       this.store.dispatch(new DeleteAwardAction({award: res, resume_id: resumeId}));
       return res;
     }));

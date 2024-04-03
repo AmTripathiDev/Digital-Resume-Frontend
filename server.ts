@@ -1,9 +1,7 @@
 import 'zone.js/dist/zone-node';
-
 import {ngExpressEngine} from '@nguniversal/express-engine';
 import * as express from 'express';
 import {join} from 'path';
-
 import {AppServerModule} from './src/main.server';
 import {APP_BASE_HREF} from '@angular/common';
 import {existsSync} from 'fs';
@@ -14,11 +12,10 @@ export function app(): express.Express {
   const distFolder = join(process.cwd(), 'dist/angular-course/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';
 
-  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,
   }));
-
+  
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
@@ -43,7 +40,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env.PORT || 4000;
+  const port = process.env.PORT || 3000;
 
   // Start up the Node server
   const server = app();

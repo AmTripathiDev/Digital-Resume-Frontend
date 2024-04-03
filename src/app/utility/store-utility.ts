@@ -19,7 +19,8 @@ export class StoreUtility {
   }
 
   // [1,2,3,4,5,1];
-  static filterDuplicateIds(ids: string[]) {
+  static 
+  filterDuplicateIds(ids: string[]) {
     return ids.filter((elem, index, self) => index === self.indexOf(elem));
   }
 

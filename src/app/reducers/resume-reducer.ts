@@ -41,7 +41,6 @@ export interface ResumeReducerState {
   loading: boolean;
   error: boolean;
   loaded: boolean;
-  // tslint:disable-next-line:variable-name
   entities: { [_id: string]: Resume };
   ids: string[];
 }
