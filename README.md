@@ -1,28 +1,54 @@
-# AngularCourse
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
+# Digital Resume    
 
-Require Node-version 18
-## Development server
+This project is an Angular-based web application designed to help users create and manage their resumes digitally. It provides a user-friendly interface for creating, editing, and sharing resumes in various formats. The application utilizes Angular, NgRx for state management, and Angular Material for UI components.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+**User Authentication**: Users can sign up and log in securely to access their resumes.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Resume Creation**: Users can create their resumes by filling out a form with their personal and professional details.
 
-## Running end-to-end tests
+**Resume Templates**: Multiple resume templates are available for users to choose from when creating their resumes.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+**Dashboard**: Users can view and manage their resumes from a centralized dashboard.
 
-## Further help
+**Download Resumes**: Users can download their resumes in different formats and templates.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+**Share Profiles**: Users can share their profiles digitally with others via email or social media.
+
+**Profile Editing**: Users can edit their personal details, profile picture, and other information easily.
+
+
+
+## Tech Stack
+
+
+**Angular**: A powerful JavaScript framework for building single-page web applications.
+
+**NgRx**: A state management library for Angular applications, used for managing application state and data flow.
+
+**Angular Material**: A UI component library for Angular applications, providing pre-built components for faster development.
+
+**Express**: A fast, unopinionated, minimalist web framework for Node.js, used for server-side rendering (SSR) with Angular Universal.
+
+
+## Installation
+
+Clone this Repository
+
+```bash
+  git clone https://github.com/AmTripathiDev/custom-youtube-video-player.git
+  cd Digital-Resume-Frontend
+  npm install --force
+  npm start
+```
+    
+## Contributing
+
+Contributions are welcome! Feel free to submit issues or pull requests to help improve the project.
+
