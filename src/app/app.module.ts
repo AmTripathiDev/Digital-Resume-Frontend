@@ -237,7 +237,7 @@ import {SecondaryComponent} from './container/secondary.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,  
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,

@@ -173,5 +173,8 @@
       }
     }
   },
-  "defaultProject": "angular-course"
+  "defaultProject": "angular-course",
+  "cli": {
+    "analytics": "6c1dc70c-e9ae-406b-928b-463f7f9a756d"
+  }
 }

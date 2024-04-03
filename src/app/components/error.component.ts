@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
       <mat-icon>error_outline</mat-icon>
       <span>{{errorTitle || 'Error Occured!'}}</span>
       <button (click)="reload.next()" mat-raised-button color="warn">Try Again</button>
-    </div>
+</div>  
   `,
   styles: [``]
 })
