@@ -33,6 +33,13 @@ export function app(): express.Express {
       res.sendFile(path);
       return;
     }
+
+    console.log(req.path , " orboarding path ")
+    if (req.url.includes('on-boarding')) {
+      res.sendFile(path);
+      return;
+    }
+ 
     res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
   });
 

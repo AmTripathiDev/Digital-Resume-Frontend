@@ -9,7 +9,8 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    const isLoggedIn = isPlatformBrowser(this.platformId) ? !!AuthUtils.getAuthToken() : null;
+    
+    const isLoggedIn = isPlatformBrowser(this.platformId) ? !!AuthUtils.getAuthToken() : true;
     if (isLoggedIn) {
       return true;
     } else {
@@ -17,3 +18,4 @@ export class AuthGuard implements CanActivate {
     }
   }
 }
+  

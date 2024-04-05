@@ -19,6 +19,8 @@ export class AnonGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
+    console.log(isPlatformBrowser(this.platformId), ' new platform ID ');
+
     const isLoggedIn = isPlatformBrowser(this.platformId)
       ? !AuthUtils.getAuthToken()
       : true;
@@ -29,7 +31,7 @@ export class AnonGuard implements CanActivate {
       return user$.pipe(
         filter((data) => !!data),
         map((data) => {
-           if(!data.verified) {
+          if (!data.verified) {
             this.router.navigate(['verify']);
           } else if (data.onboarding !== 200) {
             this.router.navigate(['on-boarding']);
