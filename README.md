@@ -45,7 +45,7 @@ version is mentioned in dockerfile. don't use any other version
 Clone this Repository
 
 ```bash
-  git clone https://github.com/AmTripathiDev/custom-youtube-video-player.git
+  git clone https://github.com/AmTripathiDev/Digital-Resume-Frontend.git
   cd Digital-Resume-Frontend
   npm install --force
   npm start
@@ -58,7 +58,7 @@ Clone this Repository
 you can use docker which will save your time. you don't need to fulfill the requirements
 
 ```bash
-git clone https://github.com/AmTripathiDev/custom-youtube-video-player.git
+git clone https://github.com/AmTripathiDev/Digital-Resume-Frontend.git
 cd Digital-Resume-Frontend
 docker build -t <your-image-name> .
 docker run -p 4200:4200 -v .:/src/frontend <your-image-name>
