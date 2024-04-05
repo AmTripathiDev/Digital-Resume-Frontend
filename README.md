@@ -47,7 +47,7 @@ Clone this Repository
 ```bash
   git clone https://github.com/AmTripathiDev/Digital-Resume-Frontend.git
   cd Digital-Resume-Frontend
-  npm install --force
+  npm install
   npm start
 ```
     
