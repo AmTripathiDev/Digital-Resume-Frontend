@@ -48,6 +48,20 @@ Clone this Repository
   npm start
 ```
     
+
+
+## use Docker
+
+you can use docker which will save your time. you don't need to fulfill the requirements
+
+```bash
+git clone https://github.com/AmTripathiDev/custom-youtube-video-player.git
+cd Digital-Resume-Frontend
+docker build -t digi-app-frontend:dev .
+docker run -p 4200:4200 -v .:/src/frontend  <your-image-name>
+```
+
+
 ## Contributing
 
 Contributions are welcome! Feel free to submit issues or pull requests to help improve the project.
