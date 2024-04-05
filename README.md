@@ -57,8 +57,8 @@ you can use docker which will save your time. you don't need to fulfill the requ
 ```bash
 git clone https://github.com/AmTripathiDev/custom-youtube-video-player.git
 cd Digital-Resume-Frontend
-docker build -t digi-app-frontend:dev .
-docker run -p 4200:4200 -v .:/src/frontend  <your-image-name>
+docker build -t <your-image-name> .
+docker run -p 4200:4200 -v .:/src/frontend <your-image-name>
 ```
 
 
