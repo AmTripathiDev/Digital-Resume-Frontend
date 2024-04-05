@@ -4,7 +4,10 @@
 This project is an Angular-based web application designed to help users create and manage their resumes digitally. It provides a user-friendly interface for creating, editing, and sharing resumes in various formats. The application utilizes Angular, NgRx for state management, and Angular Material for UI components.
 
 
-  
+## version
+
+version is mentioned in dockerfile. don't use any other version
+
 
 ## Features
 
